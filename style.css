@@ -1,0 +1,135 @@
+.container {
+  height: 89vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #7E57C2, #d4c8ea);
+  }
+
+  .subheading {
+    margin: 10px;
+    font-size: large;
+  }
+
+  .scriptRules {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffffc8, #d4c8ea00);
+    border-top-left-radius: 50px; /* Радиус скругления левого верхнего угла */
+    border-top-right-radius: 50px;
+    border: #ffffff;
+  }
+
+  #getDataButton {
+    padding: 10px 20px;
+    background-color: #4c6aaf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  #getDataButton:hover {
+    background-color: #3a528a;
+  }
+
+  #output {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .button-row {
+    display: flex;
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px; /* закругленные углы */
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  #button-up {
+    background-color: #4CAF50; /* Зеленый */
+    color: white;
+  }
+  #button-up:active {
+    background-color: #45a049; /* Новый цвет при нажатии */
+  }
+
+  #button-eq {
+    background-color: #008CBA; /* Синий */
+    color: white;
+  }
+  #button-eq:active {
+    background-color: #0e638c; /* Новый цвет при нажатии */
+  }
+
+  #button-down {
+    background-color: #f44336; /* Красный */
+    color: white;
+  }
+  #button-down:active {
+    background-color: #c62828; /* Новый цвет при нажатии */
+  }
+
+  button.active {
+    filter: brightness(50%); /* Можно использовать любые CSS-свойства для изменения цвета */
+  }
+
+  .currentPrice {
+    display: inline-block;
+  }
+
+
+  .number {
+    font-family: Arial, sans-serif; /* Используйте шрифт без засечек для лучшей читаемости */
+    font-size: 16px; /* Размер шрифта */
+    color: #001e80; /* Цвет текста */
+    font-weight: bold; /* Жирный шрифт */
+    text-align: center; /* Выравнивание по центру */
+    padding: 5px; /* Поля вокруг числа */
+  }
+
+  .priceChanges {
+    padding: 20px;
+  }
+
+  header {
+    background-color: #7E57C2; /* фиолетовый оттенок */
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+  }
+
+  .header-right {
+    display: flex; /* Отображение элементов внутри .header-right блока как flex */
+    flex: 1; /* Растягивает .header-right блок, чтобы занять всё доступное пространство справа */
+    justify-content: flex-end; /* Размещаем элементы внутри .header-right в конце (справа) */
+    align-items: center;
+  }
+
+  .moneyBag {
+    font-size: 30px;
+  }
+
+  .userPoints {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+
+
+

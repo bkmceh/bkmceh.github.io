@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorify</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./index.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="header-right">
+      <div class="userPoints" id="userPoints"></div>
+      <div class="moneyBag">💰</div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="scriptRules">
+<h1>BITCOIN CASINO</h1>
+    <p class="subheading">
+      Проверь свою интуицию и сделай ставку какой будет цена!
+    </p>
+    <p class="subheading">
+      Изначально у тебя 100 монет.
+    </p>
+    <p class="subheading">
+      За каждое угадывание вырастет цена или упадет, ты получаешь 50 монет.
+    </p>
+    <p class="subheading">
+      За каждую неудачу ты теряешь 25 монет.
+    </p>
+    <p class="subheading">
+      Если угадаешь, что цена не изменится, ты получаешь 100 монет.
+    </p>
+    </div>
+
+    <button id="getDataButton">ПРОВЕРИТЬ УДАЧУ</button>
+    <div>
+      <div class="currentPrice" id="textPrice">ТЕКУЩАЯ ЦЕНА: </div>
+      <div class="currentPrice number" id="output"></div>
+    </div>
+
+    <div class="button-row">
+      <button id="button-up" onclick="saveChoice(1); changeColor(this)">UP</button>
+      <button id="button-eq" onclick="saveChoice(0); changeColor(this)">=</button>
+      <button id="button-down" onclick="saveChoice(-1); changeColor(this)">DOWN</button>
+    </div>
+    <div id="result"></div>
+    <div class="priceChanges">
+      <div>
+        <div class="currentPrice">БЫЛО: </div>
+        <div class="currentPrice number" id="oldPrice"></div>
+      </div>
+      <div>
+        <div class="currentPrice">СТАЛО: </div>
+        <div class="currentPrice number" id="newPrice"></div>
+      </div>
+    </div>
+    <button onclick="scamMamont()">ВЫВЕСТИ НА КАРТУ</button>
+  </div>
+</body>
+
+</html>
