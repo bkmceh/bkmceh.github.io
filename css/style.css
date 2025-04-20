@@ -432,10 +432,39 @@ nav {
 .tech-visual {
     width: 450px;
     height: 450px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,50 350,150 350,300 225,400 100,300 100,150" stroke="url(%23grad)" stroke-width="2" fill="none" /><polygon points="225,100 325,175 325,275 225,350 125,275 125,175" stroke="url(%23grad)" stroke-width="2" fill="none" /><polygon points="225,150 275,200 275,250 225,300 175,250 175,200" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,90 360,315 90,315" fill="url(%23grad)" opacity="0.2" /><polygon points="225,120 330,285 120,285" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
     background-repeat: no-repeat;
     background-position: center;
-    animation: pulse 8s ease-in-out infinite;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.tech-visual::before,
+.tech-visual::after,
+.tech-visual .ring-inner {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tech-visual::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,120 330,285 120,285" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="120" r="6" fill="%234a6bff" /><circle cx="330" cy="285" r="6" fill="%236e42e5" /><circle cx="120" cy="285" r="6" fill="%234a6bff" /></svg>');
+    animation: rotate-ring1 25s linear infinite;
+}
+
+.tech-visual::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="125" r="5" fill="%234a6bff" /><circle cx="325" cy="225" r="5" fill="%236e42e5" /><circle cx="225" cy="325" r="5" fill="%234a6bff" /><circle cx="125" cy="225" r="5" fill="%236e42e5" /><circle cx="288" cy="162" r="5" fill="%234a6bff" /><circle cx="288" cy="288" r="5" fill="%236e42e5" /><circle cx="162" cy="288" r="5" fill="%234a6bff" /><circle cx="162" cy="162" r="5" fill="%236e42e5" /></svg>');
+    animation: rotate-ring2 18s linear infinite reverse;
+}
+
+.tech-visual .ring-inner {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="175" r="4" fill="%234a6bff" /><circle cx="275" cy="225" r="4" fill="%236e42e5" /><circle cx="225" cy="275" r="4" fill="%234a6bff" /><circle cx="175" cy="225" r="4" fill="%236e42e5" /></svg>');
+    animation: rotate-ring3 12s linear infinite;
 }
 
 @keyframes pulse {
@@ -982,15 +1011,6 @@ footer {
     flex: 1;
     display: flex;
     justify-content: center;
-}
-
-.tech-visual {
-    width: 450px;
-    height: 450px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,50 350,150 350,300 225,400 100,300 100,150" stroke="url(%23grad)" stroke-width="2" fill="none" /><polygon points="225,100 325,175 325,275 225,350 125,275 125,175" stroke="url(%23grad)" stroke-width="2" fill="none" /><polygon points="225,150 275,200 275,250 225,300 175,250 175,200" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
