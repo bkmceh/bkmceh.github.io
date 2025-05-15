@@ -195,9 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 current += step;
                 if (current >= target) {
                     clearInterval(counter);
-                    stat.textContent = target + '+';
+                    stat.textContent = target.toString();
                 } else {
-                    stat.textContent = Math.floor(current) + '+';
+                    stat.textContent = Math.floor(current).toString();
                 }
             }, 10);
         });
