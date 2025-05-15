@@ -351,3 +351,67 @@ document.head.insertAdjacentHTML('beforeend', `
         }
     </style>
 `);
+
+// Функциональность карусели проектов
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.projects-carousel');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    const projectCards = document.querySelectorAll('.projects-carousel .project-card');
+    
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+    
+    // Определяем количество карточек, видимых одновременно, в зависимости от ширины экрана
+    function getCardsPerView() {
+        if (window.innerWidth > 1200) {
+            return 3;
+        } else if (window.innerWidth > 768) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+    
+    // Обновляем количество карточек при изменении размера окна
+    window.addEventListener('resize', function() {
+        cardsPerView = getCardsPerView();
+        updateCarousel();
+    });
+    
+    // Обработчик для кнопки "Предыдущий"
+    prevArrow.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+    
+    // Обработчик для кнопки "Следующий"
+    nextArrow.addEventListener('click', function() {
+        if (currentIndex < projectCards.length - cardsPerView) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+    
+    // Обновление положения карусели
+    function updateCarousel() {
+        // Вычисляем ширину карточки с учетом отступа
+        const cardWidth = projectCards[0].offsetWidth + 30; // 30px - это gap между карточками
+        
+        // Обновляем положение карусели
+        carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        
+        // Обновляем состояние кнопок
+        prevArrow.disabled = currentIndex === 0;
+        nextArrow.disabled = currentIndex >= projectCards.length - cardsPerView;
+        
+        // Визуальное отображение состояния кнопок
+        prevArrow.style.opacity = prevArrow.disabled ? '0.5' : '1';
+        nextArrow.style.opacity = nextArrow.disabled ? '0.5' : '1';
+    }
+    
+    // Инициализация карусели
+    updateCarousel();
+});

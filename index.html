@@ -40,11 +40,11 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Innovative solutions in <span class="gradient-text">AI and blockchain</span></h1>
+                <h1>Digital transformation through <span class="gradient-text">AI and blockchain</span></h1>
                 <p>We deliver effective solutions with speed, reliability, and personalized approach to every client</p>
                 <div class="cta-buttons">
                     <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
+                    <a href="#" class="btn btn-secondary" id="learn-more-btn">Learn More</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -229,31 +229,51 @@
                 <h2>Our <span class="gradient-text">Projects</span></h2>
                 <p>Innovative solutions we are proud of</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" style="background-image: url('images/project1.png')"></div>
-                    <div class="project-info">
-                        <h3>Decentralized Data Exchange Platform</h3>
-                        <p>Secure blockchain-based data exchange system for medical institutions</p>
-                        <a href="#" class="btn btn-small">Learn more</a>
+            <div class="projects-carousel-container">
+                <button class="carousel-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+                <div class="projects-carousel">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('images/project1.png')"></div>
+                        <div class="project-info">
+                            <h3>TON Blockchain Betting Platform</h3>
+                            <p>Place bets on the TON blockchain without intermediaries</p>
+                            <!-- <a href="#" class="btn btn-small">Learn more</a> -->
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('images/project2.png')"></div>
+                        <div class="project-info">
+                            <h3>Tour Tinder for Joint Travels</h3>
+                            <p>Create events and find companions with a convenient swipe system</p>
+                            <!-- <a href="#" class="btn btn-small">Learn more</a> -->
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('images/project3.png')"></div>
+                        <div class="project-info">
+                            <h3>Smart Contracts for Agreements</h3>
+                            <p>Transfer agreements from the legal field to blockchain without any issues</p>
+                            <!-- <a href="#" class="btn btn-small">Learn more</a> -->
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('images/project4.png')"></div>
+                        <div class="project-info">
+                            <h3>AI-Powered Surveillance System</h3>
+                            <p>Analyze employee performance quality through a convenient service</p>
+                            <!-- <a href="#" class="btn btn-small">Learn more</a> -->
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('images/project5.png')"></div>
+                        <div class="project-info">
+                            <h3>Telegram Clicker Game Russian Roulette</h3>
+                            <p>Earn points in a simple and engaging game right in Telegram</p>
+                            <!-- <a href="#" class="btn btn-small">Learn more</a> -->
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image" style="background-image: url('images/project2.png')"></div>
-                    <div class="project-info">
-                        <h3>AI Market Prediction System</h3>
-                        <p>Analytical platform for forecasting financial market trends</p>
-                        <a href="#" class="btn btn-small">Learn more</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image" style="background-image: url('images/project3.png')"></div>
-                    <div class="project-info">
-                        <h3>Smart Contracts for Logistics</h3>
-                        <p>Automated blockchain-based supply chain management system</p>
-                        <a href="#" class="btn btn-small">Learn more</a>
-                    </div>
-                </div>
+                <button class="carousel-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -299,11 +319,68 @@
         </div>
     </footer>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>About <span class="gradient-text">TriAxis</span></h2>
+            <p>The name TriAxis represents the three core directions of our expertise:</p>
+            
+            <h3>Three axes of our expertise</h3>
+            <ul>
+                <li><strong>Artificial Intelligence (AI):</strong> Intelligent systems for business automation and data analysis</li>
+                <li><strong>Blockchain:</strong> Decentralized applications and secure data exchange systems</li>
+                <li><strong>Traditional IT Solutions:</strong> Web, mobile and enterprise applications</li>
+            </ul>
+            
+            <p>These three directions form a space of possibilities where we create tailored solutions for our clients.</p>
+            
+            <h3>Our approach</h3>
+            <p>We believe in the synergy of technologies. By combining AI and blockchain with traditional IT solutions, we create products that solve current challenges while opening new opportunities for growth.</p>
+            
+            <p>The TriAxis team consists of specialists with deep knowledge in all three directions, ready to apply their expertise to your business challenges.</p>
+            
+            <p>Ready for digital transformation? Contact us to discuss how we can help you achieve your goals.</p>
+        </div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="js/main.js"></script>
     <script>
         // Set current year for copyright
         document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Modal functionality
+        const modal = document.getElementById('modal');
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    const closeModal = document.querySelector('.close-modal');
+    
+    learnMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        // Добавляем небольшую задержку перед добавлением класса active
+        // для обеспечения плавной анимации
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
+    });
+    
+    closeModal.addEventListener('click', function() {
+        modal.classList.remove('active');
+        // Ждем завершения анимации перед скрытием модального окна
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 500);
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            // Ждем завершения анимации перед скрытием модального окна
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+    });
     </script>
 </body>
 </html>
