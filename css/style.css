@@ -452,11 +452,6 @@ nav {
     background-position: center;
 }
 
-.tech-visual::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,120 330,285 120,285" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="120" r="6" fill="%234a6bff" /><circle cx="330" cy="285" r="6" fill="%236e42e5" /><circle cx="120" cy="285" r="6" fill="%234a6bff" /></svg>');
-    animation: rotate-ring1 25s linear infinite;
-}
-
 .tech-visual::after {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="125" r="5" fill="%234a6bff" /><circle cx="325" cy="225" r="5" fill="%236e42e5" /><circle cx="225" cy="325" r="5" fill="%234a6bff" /><circle cx="125" cy="225" r="5" fill="%236e42e5" /><circle cx="288" cy="162" r="5" fill="%234a6bff" /><circle cx="288" cy="288" r="5" fill="%236e42e5" /><circle cx="162" cy="288" r="5" fill="%234a6bff" /><circle cx="162" cy="162" r="5" fill="%236e42e5" /></svg>');
     animation: rotate-ring2 18s linear infinite reverse;
@@ -465,6 +460,140 @@ nav {
 .tech-visual .ring-inner {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="175" r="4" fill="%234a6bff" /><circle cx="275" cy="225" r="4" fill="%236e42e5" /><circle cx="225" cy="275" r="4" fill="%234a6bff" /><circle cx="175" cy="225" r="4" fill="%236e42e5" /></svg>');
     animation: rotate-ring3 12s linear infinite;
+}
+
+/* Добавляем стрелки к tech-visual */
+.tech-visual .arrows {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.tech-visual .arrow {
+    position: absolute;
+    font-size: 24px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: arrow-fade 8s infinite ease-in-out;
+    text-shadow: 0 0 10px rgba(74, 107, 255, 0.3);
+    transform-origin: center;
+}
+
+.tech-visual .arrow-right {
+    right: 20%;
+    top: 45%;
+    animation: arrow-right-move 8s infinite ease-in-out;
+}
+
+.tech-visual .arrow-left {
+    left: 20%;
+    top: 45%;
+    animation: arrow-left-move 8s infinite ease-in-out;
+    animation-delay: 2s;
+}
+
+.tech-visual .arrow-up {
+    top: 20%;
+    left: 48%;
+    animation: arrow-up-move 8s infinite ease-in-out;
+    animation-delay: 4s;
+}
+
+.tech-visual .arrow-down {
+    bottom: 20%;
+    left: 48%;
+    animation: arrow-down-move 8s infinite ease-in-out;
+    animation-delay: 6s;
+}
+
+.tech-visual .arrow-up-right {
+    top: 30%;
+    right: 30%;
+    animation: arrow-up-right-move 8s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+.tech-visual .arrow-up-left {
+    top: 30%;
+    left: 30%;
+    animation: arrow-up-left-move 8s infinite ease-in-out;
+    animation-delay: 3s;
+}
+
+.tech-visual .arrow-down-right {
+    bottom: 30%;
+    right: 30%;
+    animation: arrow-down-right-move 8s infinite ease-in-out;
+    animation-delay: 5s;
+}
+
+.tech-visual .arrow-down-left {
+    bottom: 30%;
+    left: 30%;
+    animation: arrow-down-left-move 8s infinite ease-in-out;
+    animation-delay: 7s;
+}
+
+@keyframes arrow-right-move {
+    0%, 100% { opacity: 0; transform: translateX(0) scale(0.8); }
+    10% { opacity: 0.2; transform: translateX(0) scale(1); }
+    50% { opacity: 0.8; transform: translateX(15px) scale(1.2); }
+    90% { opacity: 0.2; transform: translateX(0) scale(1); }
+}
+
+@keyframes arrow-left-move {
+    0%, 100% { opacity: 0; transform: translateX(0) scale(0.8); }
+    10% { opacity: 0.2; transform: translateX(0) scale(1); }
+    50% { opacity: 0.8; transform: translateX(-15px) scale(1.2); }
+    90% { opacity: 0.2; transform: translateX(0) scale(1); }
+}
+
+@keyframes arrow-up-move {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.8); }
+    10% { opacity: 0.2; transform: translateY(0) scale(1); }
+    50% { opacity: 0.8; transform: translateY(-15px) scale(1.2); }
+    90% { opacity: 0.2; transform: translateY(0) scale(1); }
+}
+
+@keyframes arrow-down-move {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.8); }
+    10% { opacity: 0.2; transform: translateY(0) scale(1); }
+    50% { opacity: 0.8; transform: translateY(15px) scale(1.2); }
+    90% { opacity: 0.2; transform: translateY(0) scale(1); }
+}
+
+@keyframes arrow-up-right-move {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    10% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+    50% { opacity: 0.8; transform: translate(10px, -10px) scale(1.2); }
+    90% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes arrow-up-left-move {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    10% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+    50% { opacity: 0.8; transform: translate(-10px, -10px) scale(1.2); }
+    90% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes arrow-down-right-move {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    10% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+    50% { opacity: 0.8; transform: translate(10px, 10px) scale(1.2); }
+    90% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes arrow-down-left-move {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    10% { opacity: 0.2; transform: translate(0, 0) scale(1); }
+    50% { opacity: 0.8; transform: translate(-10px, 10px) scale(1.2); }
+    90% { opacity: 0.2; transform: translate(0, 0) scale(1); }
 }
 
 @keyframes pulse {
