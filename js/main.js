@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             "color": {
-                "value": "#4a6bff"
+                "value": ["#1588b9", "#31cf6d", "#0a6591"]
             },
             "shape": {
                 "type": "circle",
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#6e42e5",
+                "color": "#1588b9",
                 "opacity": 0.4,
                 "width": 1
             },
@@ -415,3 +415,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация карусели
     updateCarousel();
 });
+
+// Интерактивность для Techfrens визуального элемента
+document.addEventListener('DOMContentLoaded', function() {
+    const techfrensVisual = document.querySelector('.techfrens-visual');
+    if (techfrensVisual) {
+        // Следование за курсором
+        techfrensVisual.addEventListener('mousemove', function(e) {
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                // Вычисляем положение глаз относительно курсора
+                const rect = eye.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+                
+                // Вычисляем угол между глазом и курсором
+                const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+                
+                // Ограничиваем движение глаз
+                const distance = 3;
+                const moveX = Math.cos(angle) * distance;
+                const moveY = Math.sin(angle) * distance;
+                
+                // Применяем трансформацию
+                eye.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+        
+        // Возвращаем глаза в исходное положение при уходе курсора
+        techfrensVisual.addEventListener('mouseleave', function() {
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                eye.style.transform = 'translate(0, 0)';
+            });
+        });
+        
+        // Анимация улыбки при клике
+        techfrensVisual.addEventListener('click', function() {
+            const smile = document.querySelector('.friend-smile');
+            smile.style.borderBottomWidth = '6px';
+            smile.style.height = '25px';
+            
+            setTimeout(() => {
+                smile.style.borderBottomWidth = '4px';
+                smile.style.height = '20px';
+            }, 300);
+        });
+    }
+});
+
+// // Функция для случайного расположения ключевых слов при загрузке страницы
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Получаем все ключевые слова
+//     const keywords = document.querySelectorAll('.keyword-item');
+    
+//     // Функция для получения случайного числа в диапазоне
+//     function getRandomPosition(min, max) {
+//         return Math.floor(Math.random() * (max - min + 1)) + min;
+//     }
+    
+//     // Устанавливаем случайное положение для каждого ключевого слова
+//     keywords.forEach(keyword => {
+//         // Получаем случайные координаты в пределах контейнера
+//         const randomTop = getRandomPosition(15, 75);
+//         const randomLeft = getRandomPosition(10, 80);
+        
+//         // Применяем случайное положение
+//         keyword.style.top = randomTop + '%';
+//         keyword.style.left = randomLeft + '%';
+        
+//         // Устанавливаем случайную задержку анимации
+//         const randomDelay = getRandomPosition(0, 6);
+//         keyword.style.animationDelay = randomDelay + 's';
+//     });
+// });

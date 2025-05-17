@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #4a6bff;
-    --secondary-color: #6e42e5;
-    --accent-color: #00d4ff;
-    --dark-blue: #1a2151;
-    --light-blue: #e6f0ff;
-    --dark-purple: #3a1f5d;
-    --text-color: #333;
-    --light-text: #f5f5f5;
-    --background: #f8faff;
-    --card-bg: #ffffff;
+    --primary-color: #1588b9;      /* Обновлено для соответствия градиенту */
+    --secondary-color: #31cf6d;    /* Обновлено для соответствия градиенту */
+    --accent-color: #00d4ff;       /* Оставлено без изменений */
+    --dark-blue: #0a6591;          /* Обновлено для соответствия новому primary */
+    --light-blue: #e6f5ff;         /* Слегка обновлено для соответствия */
+    --dark-purple: #0a6591;        /* Заменено на темно-синий */
+    --text-color: #333;            /* Оставлено без изменений */
+    --light-text: #f5f5f5;         /* Оставлено без изменений */
+    --background: #f8faff;         /* Оставлено без изменений */
+    --card-bg: #ffffff;            /* Оставлено без изменений */
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -153,7 +153,32 @@ nav {
 }
 
 .logo-text {
-    color: var(--dark-blue);
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.logo-text .highlight {
+    background: linear-gradient(135deg, #1588b9, #38ef7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.friendly-symbol {
+    margin-left: 5px;
+    font-size: 1.5rem;
+    color: #31cf6d;
+    display: inline-block;
+    transform: rotate(45deg);
+    text-shadow: 0 0 10px rgba(49, 207, 109, 0.3);
+    transition: var(--transition);
+}
+
+.logo:hover .friendly-symbol {
+    color: #1588b9;
+    text-shadow: 0 0 15px rgba(21, 136, 185, 0.4);
+    transform: rotate(45deg) scale(1.1);
 }
 
 .highlight {
@@ -223,7 +248,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(74, 107, 255, 0.05) 0%, rgba(110, 66, 229, 0.05) 90%);
+    background: radial-gradient(circle at 10% 20%, rgba(21, 136, 185, 0.05) 0%, rgba(49, 207, 109, 0.05) 90%);
     z-index: -1;
 }
 
@@ -258,7 +283,7 @@ nav {
 .blockchain-visual {
     width: 500px;
     height: 500px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="200" fill="url(%23grad)" opacity="0.2" /><circle cx="250" cy="250" r="150" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="250" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="250" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="200" fill="url(%23grad)" opacity="0.2" /><circle cx="250" cy="250" r="150" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="250" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="250" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -279,12 +304,12 @@ nav {
 }
 
 .blockchain-visual::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="150" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="100" r="6" fill="%234a6bff" /><circle cx="400" cy="250" r="6" fill="%236e42e5" /><circle cx="250" cy="400" r="6" fill="%234a6bff" /><circle cx="100" cy="250" r="6" fill="%236e42e5" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="150" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="100" r="6" fill="%231588b9" /><circle cx="400" cy="250" r="6" fill="%2331cf6d" /><circle cx="250" cy="400" r="6" fill="%231588b9" /><circle cx="100" cy="250" r="6" fill="%2331cf6d" /></svg>');
     animation: rotate-ring1 20s linear infinite;
 }
 
 .blockchain-visual::after {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="150" r="5" fill="%234a6bff" /><circle cx="350" cy="250" r="5" fill="%236e42e5" /><circle cx="250" cy="350" r="5" fill="%234a6bff" /><circle cx="150" cy="250" r="5" fill="%236e42e5" /><circle cx="320" cy="180" r="5" fill="%234a6bff" /><circle cx="320" cy="320" r="5" fill="%236e42e5" /><circle cx="180" cy="320" r="5" fill="%234a6bff" /><circle cx="180" cy="180" r="5" fill="%236e42e5" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="250" cy="250" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="250" cy="150" r="5" fill="%231588b9" /><circle cx="350" cy="250" r="5" fill="%2331cf6d" /><circle cx="250" cy="350" r="5" fill="%231588b9" /><circle cx="150" cy="250" r="5" fill="%2331cf6d" /><circle cx="320" cy="180" r="5" fill="%231588b9" /><circle cx="320" cy="320" r="5" fill="%2331cf6d" /><circle cx="180" cy="320" r="5" fill="%231588b9" /><circle cx="180" cy="180" r="5" fill="%2331cf6d" /></svg>');
     animation: rotate-ring2 15s linear infinite reverse;
 }
 
@@ -433,7 +458,7 @@ nav {
 .tech-visual {
     width: 450px;
     height: 450px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,90 360,315 90,315" fill="url(%23grad)" opacity="0.2" /><polygon points="225,120 330,285 120,285" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><polygon points="225,90 360,315 90,315" fill="url(%23grad)" opacity="0.2" /><polygon points="225,120 330,285 120,285" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /></svg>');
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -454,12 +479,12 @@ nav {
 }
 
 .tech-visual::after {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="125" r="5" fill="%234a6bff" /><circle cx="325" cy="225" r="5" fill="%236e42e5" /><circle cx="225" cy="325" r="5" fill="%234a6bff" /><circle cx="125" cy="225" r="5" fill="%236e42e5" /><circle cx="288" cy="162" r="5" fill="%234a6bff" /><circle cx="288" cy="288" r="5" fill="%236e42e5" /><circle cx="162" cy="288" r="5" fill="%234a6bff" /><circle cx="162" cy="162" r="5" fill="%236e42e5" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="100" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="125" r="5" fill="%231588b9" /><circle cx="325" cy="225" r="5" fill="%2331cf6d" /><circle cx="225" cy="325" r="5" fill="%231588b9" /><circle cx="125" cy="225" r="5" fill="%2331cf6d" /><circle cx="288" cy="162" r="5" fill="%231588b9" /><circle cx="288" cy="288" r="5" fill="%2331cf6d" /><circle cx="162" cy="288" r="5" fill="%231588b9" /><circle cx="162" cy="162" r="5" fill="%2331cf6d" /></svg>');
     animation: rotate-ring2 18s linear infinite reverse;
 }
 
 .tech-visual .ring-inner {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a6bff;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%236e42e5;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="175" r="4" fill="%234a6bff" /><circle cx="275" cy="225" r="4" fill="%236e42e5" /><circle cx="225" cy="275" r="4" fill="%234a6bff" /><circle cx="175" cy="225" r="4" fill="%236e42e5" /></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 450 450"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231588b9;stop-opacity:0.7" /><stop offset="100%" style="stop-color:%2331cf6d;stop-opacity:0.7" /></linearGradient></defs><rect width="100%" height="100%" fill="none" /><circle cx="225" cy="225" r="50" stroke="url(%23grad)" stroke-width="2" fill="none" /><circle cx="225" cy="175" r="4" fill="%231588b9" /><circle cx="275" cy="225" r="4" fill="%2331cf6d" /><circle cx="225" cy="275" r="4" fill="%231588b9" /><circle cx="175" cy="225" r="4" fill="%2331cf6d" /></svg>');
     animation: rotate-ring3 12s linear infinite;
 }
 
@@ -482,7 +507,7 @@ nav {
     background-clip: text;
     opacity: 0;
     animation: arrow-fade 8s infinite ease-in-out;
-    text-shadow: 0 0 10px rgba(74, 107, 255, 0.3);
+    text-shadow: 0 0 10px rgba(21, 136, 185, 0.3);
     transform-origin: center;
 }
 
@@ -1330,13 +1355,6 @@ footer {
     max-width: 300px;
 }
 
-.footer-logo .logo-text {
-    color: white;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
 .footer-links {
     display: flex;
     gap: 50px;
@@ -1860,4 +1878,704 @@ footer {
         min-width: calc(100% - 10px);
         max-width: calc(100% - 10px);
     }
+}
+
+
+/* Стили для интерактивного визуального элемента с центральной точкой и лучами */
+.techfrens-visual {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(25,25,35,0.9) 0%, rgba(45,45,65,0.9) 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floating-keywords {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Центральная точка */
+.central-point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, var(--secondary-color), var(--primary-color));
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(21, 136, 185, 0.5);
+    z-index: 5;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Лучи от центральной точки */
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    transform-origin: left center;
+    z-index: 4;
+    opacity: 0.6;
+}
+
+
+/* Позиционирование и поворот лучей */
+.ray-1 {
+    width: 25%;
+    transform: translate(0, -50%) rotate(30deg);
+}
+
+.ray-2 {
+    width: 20%;
+    transform: translate(0, -50%) rotate(130deg);
+}
+
+.ray-3 {
+    width: 22%;
+    transform: translate(0, -50%) rotate(180deg);
+}
+
+.ray-4 {
+    width: 22%;
+    transform: translate(0, -50%) rotate(207deg);
+}
+
+.ray-5 {
+    width: 15%;
+    transform: translate(0, -50%) rotate(270deg);
+}
+
+.ray-6 {
+    width: 20%;
+    transform: translate(0, -50%) rotate(342deg);
+}
+
+.keyword-item {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: float-keyword 8s infinite ease-in-out;
+    transform: translate(-50%, -50%); /* Центрирование относительно точки позиционирования */
+    z-index: 10;
+}
+
+/* Обновленные позиции элементов для соответствия лучам */
+.ai-keyword {
+    top: 30%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+.blockchain-keyword {
+    top: 40%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.web-keyword {
+    top: 80%;
+    left: 30%;
+    animation-delay: 4s;
+}
+
+/* Позиционирование бизнес-метрик */
+.speed-keyword {
+    top: 20%;
+    left: 50%;
+    animation-delay: 1.5s;
+}
+
+.quality-keyword {
+    top: 50%;
+    left: 20%;
+    animation-delay: 3.5s;
+}
+
+.result-keyword {
+    top: 70%;
+    left: 70%;
+    animation-delay: 5.5s;
+}
+
+/* Модифицируем анимацию для более плавного движения */
+@keyframes float-keyword {
+    0% { transform: translate(-50%, -50%); }
+    25% { transform: translate(-45%, -55%); }
+    50% { transform: translate(-50%, -50%); }
+    75% { transform: translate(-55%, -45%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+/* Анимация пульсации для центральной точки */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 15px rgba(21, 136, 185, 0.5);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        box-shadow: 0 0 25px rgba(21, 136, 185, 0.7);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 15px rgba(21, 136, 185, 0.5);
+    }
+}
+
+/* Анимация для лучей */
+@keyframes ray-pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+}
+
+.ray-1 { animation: ray-pulse 3s infinite ease-in-out; }
+.ray-2 { animation: ray-pulse 3s infinite ease-in-out 0.5s; }
+.ray-3 { animation: ray-pulse 3s infinite ease-in-out 1s; }
+.ray-4 { animation: ray-pulse 3s infinite ease-in-out 1.5s; }
+.ray-5 { animation: ray-pulse 3s infinite ease-in-out 2s; }
+.ray-6 { animation: ray-pulse 3s infinite ease-in-out 2.5s; }
+
+.keyword-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px; /* Увеличенный размер шрифта */
+    color: white;
+    z-index: 2;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #1588b9, #31cf6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.keyword-item:hover .keyword-text {
+    transform: scale(1.1);
+}
+
+/* Стили для анимации AI */
+.ai-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.ai-keyword:hover .ai-animation {
+    opacity: 1;
+}
+
+.ai-node {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #1588b9;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.ai-connection {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, #1588b9, #31cf6d);
+    transform-origin: left center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.ai-keyword:hover .ai-node.n1 {
+    opacity: 1;
+    transform: translate(60px, -20px);
+    transition-delay: 0.1s;
+}
+
+.ai-keyword:hover .ai-node.n2 {
+    opacity: 1;
+    transform: translate(-60px, -10px);
+    transition-delay: 0.2s;
+}
+
+.ai-keyword:hover .ai-node.n3 {
+    opacity: 1;
+    transform: translate(40px, 20px);
+    transition-delay: 0.3s;
+}
+
+.ai-keyword:hover .ai-connection.c1 {
+    width: 60px;
+    opacity: 0.7;
+    transform: translate(0, -5px) rotate(-30deg);
+    transition-delay: 0.15s;
+}
+
+.ai-keyword:hover .ai-connection.c2 {
+    width: 60px;
+    opacity: 0.7;
+    transform: translate(0, 0) rotate(170deg);
+    transition-delay: 0.25s;
+}
+
+.ai-keyword:hover .ai-connection.c3 {
+    width: 70px;
+    opacity: 0.7;
+    transform: translate(-20px, 10px) rotate(45deg);
+    transition-delay: 0.35s;
+}
+
+/* Стили для анимации Blockchain */
+.blockchain-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.blockchain-keyword:hover .blockchain-animation {
+    opacity: 1;
+}
+
+.block {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    background: rgba(21, 136, 185, 0.2);
+    border: 1px solid #1588b9;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.block-hash {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    color: #31cf6d;
+}
+
+.chain-link {
+    position: absolute;
+    height: 2px;
+    background: #1588b9;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.blockchain-keyword:hover .block.b1 {
+    opacity: 1;
+    transform: translate(-40px, -30px);
+    transition-delay: 0.1s;
+}
+
+.blockchain-keyword:hover .block.b2 {
+    opacity: 1;
+    transform: translate(30px, -30px);
+    transition-delay: 0.2s;
+}
+
+.blockchain-keyword:hover .block.b3 {
+    opacity: 1;
+    transform: translate(100px, -30px);
+    transition-delay: 0.3s;
+}
+
+.blockchain-keyword:hover .chain-link.l1 {
+    width: 20px;
+    opacity: 1;
+    transform: translate(10px, -15px);
+    transition-delay: 0.25s;
+}
+
+.blockchain-keyword:hover .chain-link.l2 {
+    width: 20px;
+    opacity: 1;
+    transform: translate(80px, -15px);
+    transition-delay: 0.35s;
+}
+
+/* Стили для анимации Web Services */
+.web-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.web-keyword:hover .web-animation {
+    opacity: 1;
+}
+
+.web-element {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.web-element.server {
+    width: 40px;
+    height: 50px;
+    background: rgba(21, 136, 185, 0.2);
+    border: 1px solid #1588b9;
+    border-radius: 5px;
+}
+
+.web-element.client1, .web-element.client2 {
+    width: 30px;
+    height: 20px;
+    background: rgba(49, 207, 109, 0.2);
+    border: 1px solid #31cf6d;
+    border-radius: 3px;
+}
+
+.web-connection {
+    position: absolute;
+    height: 2px;
+    background: #31cf6d;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.web-packet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #1588b9;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.web-keyword:hover .web-element.server {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-delay: 0.1s;
+}
+
+.web-keyword:hover .web-element.client1 {
+    opacity: 1;
+    transform: translate(-80px, -20px);
+    transition-delay: 0.2s;
+}
+
+.web-keyword:hover .web-element.client2 {
+    opacity: 1;
+    transform: translate(80px, -20px);
+    transition-delay: 0.3s;
+}
+
+.web-keyword:hover .web-connection.wc1 {
+    width: 80px;
+    opacity: 0.7;
+    transform: translate(-80px, -10px) rotate(-30deg);
+    transition-delay: 0.25s;
+}
+
+.web-keyword:hover .web-connection.wc2 {
+    width: 80px;
+    opacity: 0.7;
+    transform: translate(0, -10px) rotate(30deg);
+    transition-delay: 0.35s;
+}
+
+.web-keyword:hover .web-packet.p1 {
+    opacity: 1;
+    animation: movePacket1 2s infinite;
+    animation-delay: 0.5s;
+}
+
+.web-keyword:hover .web-packet.p2 {
+    opacity: 1;
+    animation: movePacket2 2s infinite;
+    animation-delay: 0.7s;
+}
+
+/* Добавляем стили для новых бизнес-терминов */
+/* Стили для анимации Скорость */
+.speed-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.speed-keyword:hover .speed-animation {
+    opacity: 1;
+}
+
+.speed-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(21, 136, 185, 0), #1588b9);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.speed-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid #1588b9;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.speed-keyword:hover .speed-line.sl1 {
+    width: 80px;
+    opacity: 0.8;
+    transform: translate(30px, -10px);
+    transition-delay: 0.1s;
+}
+
+.speed-keyword:hover .speed-line.sl2 {
+    width: 60px;
+    opacity: 0.6;
+    transform: translate(30px, 0px);
+    transition-delay: 0.2s;
+}
+
+.speed-keyword:hover .speed-line.sl3 {
+    width: 40px;
+    opacity: 0.4;
+    transform: translate(30px, 10px);
+    transition-delay: 0.3s;
+}
+
+.speed-keyword:hover .speed-arrow {
+    opacity: 1;
+    transform: translate(110px, -5px);
+    transition-delay: 0.4s;
+}
+
+/* Стили для анимации Качество */
+.quality-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.quality-keyword:hover .quality-animation {
+    opacity: 1;
+}
+
+.quality-star {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #31cf6d;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.quality-keyword:hover .quality-star.s1 {
+    opacity: 1;
+    transform: translate(-15px, -10px);
+    transition-delay: 0.1s;
+}
+
+.quality-keyword:hover .quality-star.s2 {
+    opacity: 1;
+    transform: translate(15px, -10px);
+    transition-delay: 0.2s;
+}
+
+.quality-keyword:hover .quality-star.s3 {
+    opacity: 1;
+    transform: translate(45px, -10px);
+    transition-delay: 0.3s;
+}
+
+.quality-keyword:hover .quality-star.s4 {
+    opacity: 1;
+    transform: translate(75px, -10px);
+    transition-delay: 0.4s;
+}
+
+.quality-keyword:hover .quality-star.s5 {
+    opacity: 1;
+    transform: translate(105px, -10px);
+    transition-delay: 0.5s;
+}
+
+/* Стили для анимации Результат */
+.result-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.result-keyword:hover .result-animation {
+    opacity: 1;
+}
+
+.result-chart {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    border-left: 2px solid #1588b9;
+    border-bottom: 2px solid #1588b9;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.result-chart:after {
+    content: '';
+    position: absolute;
+    width: 38px;
+    height: 2px;
+    background: linear-gradient(90deg, #1588b9, #31cf6d);
+    transform: rotate(-30deg);
+    transform-origin: left bottom;
+    bottom: 0;
+    left: 0;
+}
+
+.result-flag {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #31cf6d;
+    border-radius: 0 3px 3px 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    left: -50px; /* Добавляем позиционирование слева */
+    top: 0;
+}
+
+.result-flag:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 25px;
+    background: #1588b9;
+    bottom: -5px;
+    left: -2px;
+}
+
+.result-keyword:hover .result-chart {
+    opacity: 1;
+    transform: translate(-50px, 0);
+    transition-delay: 0.1s;
+}
+
+.result-keyword:hover .result-flag {
+    opacity: 1;
+    transform: translate(40px, -15px);
+    transition-delay: 0.3s;
+}
+
+/* Стили для бизнес-метрик */
+.speed-keyword .keyword-text,
+.quality-keyword .keyword-text,
+.result-keyword .keyword-text {
+    background: linear-gradient(45deg, #cb7c22, #ffd04f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Обновляем стили анимации для Speed */
+.speed-line {
+    background: linear-gradient(90deg, rgba(255, 152, 0, 0), #FF9800);
+}
+
+.speed-arrow {
+    border-left: 10px solid #FFC107;
+}
+
+/* Обновляем стили анимации для Quality */
+.quality-star {
+    background: #FF9800;
+}
+
+/* Обновляем стили анимации для Result */
+.result-chart {
+    border-left: 2px solid #FF9800;
+    border-bottom: 2px solid #FF9800;
+}
+
+.result-chart:after {
+    background: linear-gradient(90deg, #FF9800, #FFC107);
+}
+
+.result-flag {
+    background: #FFC107;
+}
+
+.result-flag:before {
+    background: #FF9800;
+}
+
+/* Добавляем эффект свечения при наведении для бизнес-метрик */
+.speed-keyword:hover .keyword-text,
+.quality-keyword:hover .keyword-text,
+.result-keyword:hover .keyword-text {
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}
+
+@keyframes movePacket1 {
+    0% { transform: translate(-70px, -15px); }
+    50% { transform: translate(-10px, -5px); }
+    100% { transform: translate(-70px, -15px); }
+}
+
+@keyframes movePacket2 {
+    0% { transform: translate(10px, -5px); }
+    50% { transform: translate(70px, -15px); }
+    100% { transform: translate(10px, -5px); }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .techfrens-visual {
+        height: 250px;
+    }
+    
+    .keyword-text {
+        font-size: 24px;
+    }
+    
+    .block, .ai-node, .web-element {
+        transform: scale(0.8);
+    }
+}
+
+
+/* Стиль для выделения слова "Trusted" в слогане с градиентом */
+.trusted-highlight {
+    background: linear-gradient(45deg, #FFA000, #FFD04F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
