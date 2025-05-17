@@ -2100,41 +2100,80 @@ footer {
 
 .ai-keyword:hover .ai-node.n1 {
     opacity: 1;
-    transform: translate(60px, -20px);
+    transform: translate(-30px, -20px);
     transition-delay: 0.1s;
 }
 
 .ai-keyword:hover .ai-node.n2 {
     opacity: 1;
-    transform: translate(-60px, -10px);
+    transform: translate(-30px, -40px);
     transition-delay: 0.2s;
 }
 
 .ai-keyword:hover .ai-node.n3 {
     opacity: 1;
-    transform: translate(40px, 20px);
+    transform: translate(40px, -10px);
+    transition-delay: 0.3s;
+}
+
+.ai-keyword:hover .ai-node.n4 {
+    opacity: 1;
+    transform: translate(40px, -30px);
+    transition-delay: 0.3s;
+}
+
+.ai-keyword:hover .ai-node.n5 {
+    opacity: 1;
+    transform: translate(40px, -50px);
     transition-delay: 0.3s;
 }
 
 .ai-keyword:hover .ai-connection.c1 {
-    width: 60px;
+    width: 62px;
     opacity: 0.7;
-    transform: translate(0, -5px) rotate(-30deg);
-    transition-delay: 0.15s;
-}
-
-.ai-keyword:hover .ai-connection.c2 {
-    width: 60px;
-    opacity: 0.7;
-    transform: translate(0, 0) rotate(170deg);
+    transform: translate(-15px, -35px) rotate(-10deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
     transition-delay: 0.25s;
 }
 
-.ai-keyword:hover .ai-connection.c3 {
-    width: 70px;
+.ai-keyword:hover .ai-connection.c2 {
+    width: 62px;
     opacity: 0.7;
-    transform: translate(-20px, 10px) rotate(45deg);
+    transform: translate(-15px, -35px) rotate(10deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
     transition-delay: 0.35s;
+}
+
+.ai-keyword:hover .ai-connection.c3 {
+    width: 62px;
+    opacity: 0.7;
+    transform: translate(-15px, -35px) rotate(30deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
+    transition-delay: 0.45s;
+}
+
+.ai-keyword:hover .ai-connection.c4 {
+    width: 62px;
+    opacity: 0.7;
+    transform: translate(-15px, -15px) rotate(-27deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
+    transition-delay: 0.45s;
+}
+
+.ai-keyword:hover .ai-connection.c5 {
+    width: 62px;
+    opacity: 0.7;
+    transform: translate(-15px, -15px) rotate(-10deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
+    transition-delay: 0.35s;
+}
+
+.ai-keyword:hover .ai-connection.c6 {
+    width: 62px;
+    opacity: 0.7;
+    transform: translate(-15px, -15px) rotate(10deg);
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
+    transition-delay: 0.25s;
 }
 
 /* Стили для анимации Blockchain */
