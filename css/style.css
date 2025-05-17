@@ -2271,25 +2271,27 @@ footer {
 }
 
 .web-element.server {
-    width: 40px;
-    height: 50px;
-    background: rgba(21, 136, 185, 0.2);
-    border: 1px solid #1588b9;
-    border-radius: 5px;
+    width: 0;
+    height: 0;
+    border-left: 18.75px solid transparent;
+    border-right: 18.75px solid transparent;
+    border-bottom: 32.475px solid rgba(49, 207, 109, 0.2);
+    top: -30px;
+    left: -10px;
 }
 
-.web-element.client1, .web-element.client2 {
+.web-element.client1 {
     width: 30px;
     height: 20px;
-    background: rgba(49, 207, 109, 0.2);
-    border: 1px solid #31cf6d;
+    background: rgba(21, 136, 185, 0.2);
+    border: 1px solid #1588b9;
     border-radius: 3px;
 }
 
 .web-connection {
     position: absolute;
-    height: 2px;
-    background: #31cf6d;
+    height: 1px;
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
     opacity: 0;
     transition: all 0.5s ease;
 }
@@ -2302,6 +2304,10 @@ footer {
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s ease;
+    top: -10px;
+    transform: translate(25px, -5px);
+    animation: movePacket1 3s infinite ease-in-out;
+    animation-fill-mode: both;
 }
 
 .web-keyword:hover .web-element.server {
@@ -2312,39 +2318,34 @@ footer {
 
 .web-keyword:hover .web-element.client1 {
     opacity: 1;
-    transform: translate(-80px, -20px);
+    transform: translate(80px, -20px);
     transition-delay: 0.2s;
 }
 
-.web-keyword:hover .web-element.client2 {
-    opacity: 1;
-    transform: translate(80px, -20px);
-    transition-delay: 0.3s;
-}
-
 .web-keyword:hover .web-connection.wc1 {
-    width: 80px;
+    width: 35px;
     opacity: 0.7;
-    transform: translate(-80px, -10px) rotate(-30deg);
-    transition-delay: 0.25s;
+    transform: translate(-18px, -15px) rotate(-60deg);
+    transition-delay: 0.35s;
 }
 
 .web-keyword:hover .web-connection.wc2 {
-    width: 80px;
+    width: 35px;
     opacity: 0.7;
-    transform: translate(0, -10px) rotate(30deg);
+    transform: translate(0, -15px) rotate(60deg);
+    transition-delay: 0.35s;
+}
+
+.web-keyword:hover .web-connection.wc3 {
+    width: 35px;
+    opacity: 0.7;
+    transform: translate(-9px, 1px) rotate(0deg);
     transition-delay: 0.35s;
 }
 
 .web-keyword:hover .web-packet.p1 {
     opacity: 1;
     animation: movePacket1 2s infinite;
-    animation-delay: 0.5s;
-}
-
-.web-keyword:hover .web-packet.p2 {
-    opacity: 1;
-    animation: movePacket2 2s infinite;
     animation-delay: 0.7s;
 }
 
@@ -2485,6 +2486,8 @@ footer {
     border-bottom: 2px solid #1588b9;
     opacity: 0;
     transition: all 0.5s ease;
+    left: 160px;
+    top: 5px;
 }
 
 .result-chart:after {
@@ -2507,8 +2510,8 @@ footer {
     border-radius: 0 3px 3px 0;
     opacity: 0;
     transition: all 0.5s ease;
-    left: -50px; /* Добавляем позиционирование слева */
-    top: 0;
+    left: 110px;
+    top: 5px;
 }
 
 .result-flag:before {
@@ -2583,15 +2586,9 @@ footer {
 }
 
 @keyframes movePacket1 {
-    0% { transform: translate(-70px, -15px); }
-    50% { transform: translate(-10px, -5px); }
-    100% { transform: translate(-70px, -15px); }
-}
-
-@keyframes movePacket2 {
-    0% { transform: translate(10px, -5px); }
-    50% { transform: translate(70px, -15px); }
-    100% { transform: translate(10px, -5px); }
+    0% { transform: translate(25px, -5px); }
+    50% { transform: translate(68px, -5px); }
+    100% { transform: translate(25px, -5px); }
 }
 
 /* Адаптивность для мобильных устройств */
