@@ -2486,7 +2486,7 @@ footer {
     border-bottom: 2px solid #1588b9;
     opacity: 0;
     transition: all 0.5s ease;
-    left: 160px;
+    left: calc(100% + 60px); /* Привязка к правому краю родителя */
     top: 5px;
 }
 
@@ -2510,7 +2510,7 @@ footer {
     border-radius: 0 3px 3px 0;
     opacity: 0;
     transition: all 0.5s ease;
-    left: 110px;
+    left: calc(100% + 7px);
     top: 5px;
 }
 
