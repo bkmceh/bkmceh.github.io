@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunSay - Профиль блогера</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">FunSay</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="surprises.html" class="nav-link">Сюрпризы</a>
+                <a href="#" class="nav-link">Профиль</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline">Войти</button>
+                <button class="btn btn-primary">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main blogger-page">
+        <div class="container">
+            <div class="back-button">
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Назад к поиску
+                </a>
+            </div>
+
+            <div class="blogger-profile" id="bloggerProfile">
+                <!-- Профиль блогера будет загружен через JavaScript -->
+            </div>
+
+            <div class="services-section">
+                <h2 class="section-title">Доступные услуги</h2>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Услуги будут загружены через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for service booking -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Заказать услугу</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="service-details" id="serviceDetails">
+                    <!-- Service details will be loaded here -->
+                </div>
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-group">
+                        <label for="recipientName">Имя получателя</label>
+                        <input type="text" id="recipientName" name="recipientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequest">Особые пожелания</label>
+                        <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Расскажите, что именно вы хотите..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryDate">Желаемая дата выполнения</label>
+                        <input type="date" id="deliveryDate" name="deliveryDate" required>
+                    </div>
+                    <div class="payment-section">
+                        <h4>Способ оплаты</h4>
+                        <div class="payment-methods">
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <span class="payment-icon"><i class="fas fa-credit-card"></i></span>
+                                <span>Банковская карта</span>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="wallet">
+                                <span class="payment-icon"><i class="fas fa-wallet"></i></span>
+                                <span>Электронный кошелек</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="total-price">
+                        <span>Итого к оплате: </span>
+                        <span class="price" id="totalPrice">0₽</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-lock"></i> Оплатить безопасно
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FunSay</h3>
+                    <p>Платформа для безопасного взаимодействия с блогерами</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Пользователям</h4>
+                        <a href="#">Как заказать</a>
+                        <a href="#">Безопасность</a>
+                        <a href="#">Поддержка</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Блогерам</h4>
+                        <a href="#">Стать блогером</a>
+                        <a href="#">Условия</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="blogger.js"></script>
+</body>
+</html>

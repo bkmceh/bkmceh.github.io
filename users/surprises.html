@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunSay - Мои сюрпризы</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">FunSay</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="surprises.html" class="nav-link active">Сюрпризы</a>
+                <a href="#" class="nav-link">Профиль</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline">Войти</button>
+                <button class="btn btn-primary">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main surprises-page">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Мои сюрпризы</h1>
+                <p class="page-subtitle">Здесь вы можете отслеживать статус ваших заказов и просматривать готовые сюрпризы</p>
+            </div>
+
+            <div class="surprises-filters">
+                <button class="filter-btn active" data-status="all">Все заказы</button>
+                <button class="filter-btn" data-status="pending">В обработке</button>
+                <button class="filter-btn" data-status="in-progress">Выполняется</button>
+                <button class="filter-btn" data-status="completed">Готово</button>
+                <button class="filter-btn" data-status="delivered">Доставлено</button>
+            </div>
+
+            <div class="surprises-content" id="surprisesContent">
+                <!-- Заказы будут загружены через JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for viewing completed surprises -->
+    <div class="modal" id="surpriseModal">
+        <div class="modal-content surprise-modal">
+            <div class="modal-header">
+                <h3 id="surpriseModalTitle">Ваш сюрприз готов!</h3>
+                <button class="modal-close" onclick="closeSurpriseModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="surprise-content" id="surpriseContent">
+                    <!-- Surprise content will be loaded here -->
+                </div>
+                <div class="surprise-actions">
+                    <button class="btn btn-outline" onclick="downloadSurprise()">Скачать</button>
+                    <button class="btn btn-primary" onclick="shareSurprise()">Поделиться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="surpriseModalOverlay" onclick="closeSurpriseModal()"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FunSay</h3>
+                    <p>Платформа для безопасного взаимодействия с блогерами</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Пользователям</h4>
+                        <a href="#">Как заказать</a>
+                        <a href="#">Безопасность</a>
+                        <a href="#">Поддержка</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Блогерам</h4>
+                        <a href="#">Стать блогером</a>
+                        <a href="#">Условия</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="surprises.js"></script>
+</body>
+</html>
