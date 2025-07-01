@@ -1,4 +1,5 @@
 :root {
+    --primary-color: #667eea;
     --primary-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     --secondary-gradient: linear-gradient(135deg, #f7931e 0%, #ac32e4 50%, #7918f2 100%);
     --accent-color: #f7931e;
