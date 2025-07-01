@@ -41,10 +41,7 @@ function renderBloggerProfile() {
                         <i class="fas fa-users"></i>
                         <span>${currentBlogger.followers} подписчиков</span>
                     </div>
-                    <div class="stat">
-                        <i class="fas fa-star"></i>
-                        <span>${currentBlogger.rating} рейтинг</span>
-                    </div>
+
                     <div class="stat">
                         <i class="fas fa-check-circle"></i>
                         <span>Проверенный блогер</span>
@@ -70,7 +67,7 @@ function renderServices() {
             <div class="service-card ${isOutOfStock ? 'out-of-stock' : ''}">
                 <div class="service-header">
                     <h3 class="service-name">${service.name}</h3>
-                    <div class="service-price">${service.price}₽</div>
+                    <div class="service-price">${service.price}</div>
                 </div>
                 <div class="service-availability">
                     <div class="availability-bar">
@@ -143,13 +140,13 @@ function openBookingModal(serviceIndex) {
             <h4>${selectedService.name}</h4>
             <p>${getServiceDescription(selectedService.name)}</p>
             <div class="service-meta">
-                <span class="price">${selectedService.price}₽</span>
+                <span class="price">${selectedService.price}</span>
                 <span class="availability">Доступно: ${selectedService.available} из ${selectedService.total}</span>
             </div>
         </div>
     `;
     
-    totalPrice.textContent = `${selectedService.price}₽`;
+    totalPrice.textContent = selectedService.price;
     
     // Set minimum date to tomorrow
     const tomorrow = new Date();

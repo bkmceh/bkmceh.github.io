@@ -6,12 +6,12 @@ const bloggers = [
         category: "gaming",
         avatar: "АС",
         followers: "125K",
-        rating: "4.9",
-        priceFrom: "от 500₽",
+        experience: "3 года",
+        priceFrom: "от 0.02 ETH",
         services: [
-            { name: "Поздравление с ДР", price: 800, available: 15, total: 50 },
-            { name: "Игровая сессия", price: 1200, available: 8, total: 20 },
-            { name: "Персональный совет", price: 600, available: 25, total: 30 }
+            { name: "Поздравление с ДР", price: "0.032 ETH", available: 15, total: 50 },
+            { name: "Игровая сессия", price: "0.048 ETH", available: 8, total: 20 },
+            { name: "Персональный совет", price: "0.024 ETH", available: 25, total: 30 }
         ]
     },
     {
@@ -20,12 +20,12 @@ const bloggers = [
         category: "lifestyle",
         avatar: "МЛ",
         followers: "89K",
-        rating: "4.8",
-        priceFrom: "от 400₽",
+        experience: "2 года",
+        priceFrom: "от 0.015 ETH",
         services: [
-            { name: "Мотивационное видео", price: 700, available: 12, total: 40 },
-            { name: "Поздравление", price: 500, available: 20, total: 35 },
-            { name: "Лайфхак на заказ", price: 900, available: 5, total: 15 }
+            { name: "Мотивационное видео", price: "0.028 ETH", available: 12, total: 40 },
+            { name: "Поздравление", price: "0.02 ETH", available: 20, total: 35 },
+            { name: "Лайфхак на заказ", price: "0.036 ETH", available: 5, total: 15 }
         ]
     },
     {
@@ -34,12 +34,12 @@ const bloggers = [
         category: "music",
         avatar: "СМ",
         followers: "200K",
-        rating: "4.9",
-        priceFrom: "от 1000₽",
+        experience: "5 лет",
+        priceFrom: "от 0.04 ETH",
         services: [
-            { name: "Песня на заказ", price: 2000, available: 3, total: 10 },
-            { name: "Голосовое поздравление", price: 1000, available: 18, total: 25 },
-            { name: "Кавер любимой песни", price: 1500, available: 7, total: 15 }
+            { name: "Песня на заказ", price: "0.08 ETH", available: 3, total: 10 },
+            { name: "Голосовое поздравление", price: "0.04 ETH", available: 18, total: 25 },
+            { name: "Кавер любимой песни", price: "0.06 ETH", available: 7, total: 15 }
         ]
     },
     {
@@ -48,12 +48,12 @@ const bloggers = [
         category: "comedy",
         avatar: "ДС",
         followers: "156K",
-        rating: "4.7",
-        priceFrom: "от 600₽",
+        experience: "4 года",
+        priceFrom: "от 0.025 ETH",
         services: [
-            { name: "Шуточное поздравление", price: 800, available: 22, total: 40 },
-            { name: "Стендап на заказ", price: 1200, available: 6, total: 12 },
-            { name: "Розыгрыш друга", price: 1000, available: 10, total: 20 }
+            { name: "Шуточное поздравление", price: "0.032 ETH", available: 22, total: 40 },
+            { name: "Стендап на заказ", price: "0.048 ETH", available: 6, total: 12 },
+            { name: "Розыгрыш друга", price: "0.04 ETH", available: 10, total: 20 }
         ]
     },
     {
@@ -62,12 +62,12 @@ const bloggers = [
         category: "lifestyle",
         avatar: "ЕФ",
         followers: "95K",
-        rating: "4.8",
-        priceFrom: "от 350₽",
+        experience: "2 года",
+        priceFrom: "от 0.012 ETH",
         services: [
-            { name: "Персональная тренировка", price: 1500, available: 8, total: 15 },
-            { name: "Мотивация к спорту", price: 600, available: 30, total: 50 },
-            { name: "План питания", price: 800, available: 12, total: 25 }
+            { name: "Персональная тренировка", price: "0.06 ETH", available: 8, total: 15 },
+            { name: "Мотивация к спорту", price: "0.024 ETH", available: 30, total: 50 },
+            { name: "План питания", price: "0.032 ETH", available: 12, total: 25 }
         ]
     },
     {
@@ -76,12 +76,12 @@ const bloggers = [
         category: "gaming",
         avatar: "АГ",
         followers: "180K",
-        rating: "4.9",
-        priceFrom: "от 700₽",
+        experience: "4 года",
+        priceFrom: "от 0.03 ETH",
         services: [
-            { name: "Обучение игре", price: 1000, available: 15, total: 30 },
-            { name: "Совместная игра", price: 800, available: 25, total: 40 },
-            { name: "Разбор геймплея", price: 1200, available: 8, total: 20 }
+            { name: "Обучение игре", price: "0.04 ETH", available: 15, total: 30 },
+            { name: "Совместная игра", price: "0.032 ETH", available: 25, total: 40 },
+            { name: "Разбор геймплея", price: "0.048 ETH", available: 8, total: 20 }
         ]
     }
 ];
@@ -139,7 +139,7 @@ function renderBloggers() {
             <p class="blogger-category">${getCategoryName(blogger.category)}</p>
             <div class="blogger-stats">
                 <span><i class="fas fa-users"></i> ${blogger.followers}</span>
-                <span><i class="fas fa-star"></i> ${blogger.rating}</span>
+                <span><i class="fas fa-clock"></i> ${blogger.experience}</span>
             </div>
             <div class="blogger-price">${blogger.priceFrom}</div>
         </div>

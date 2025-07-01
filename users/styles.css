@@ -1,3 +1,17 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --secondary-gradient: linear-gradient(135deg, #f7931e 0%, #ac32e4 50%, #7918f2 100%);
+    --accent-color: #f7931e;
+    --crypto-gold: #f7931e;
+    --crypto-purple: #7918f2;
+    --text-primary: #e2e8f0;
+    --text-secondary: #a0aec0;
+    --background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    --card-shadow: 0 10px 25px rgba(247, 147, 30, 0.15);
+    --border-radius: 12px;
+    --crypto-glow: 0 0 20px rgba(247, 147, 30, 0.3);
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -6,10 +20,10 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-primary);
+    background: var(--background);
     min-height: 100vh;
 }
 
@@ -21,13 +35,13 @@ body {
 
 /* Header */
 .header {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(26, 26, 46, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(247, 147, 30, 0.2);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(247, 147, 30, 0.1);
 }
 
 .nav {
@@ -42,10 +56,11 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(247, 147, 30, 0.5));
 }
 
 .nav-menu {
@@ -55,7 +70,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #4a5568;
+    color: var(--text-primary);
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
@@ -63,7 +78,7 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #667eea;
+    color: var(--crypto-gold);
 }
 
 .nav-link.active::after {
@@ -73,8 +88,9 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     border-radius: 1px;
+    box-shadow: var(--crypto-glow);
 }
 
 .nav-auth {
@@ -96,26 +112,28 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    background: var(--secondary-gradient);
+    color: #1a1a2e;
+    box-shadow: var(--crypto-glow);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 6px 20px rgba(247, 147, 30, 0.6);
 }
 
 .btn-outline {
     background: transparent;
-    color: #667eea;
-    border: 2px solid #667eea;
+    color: var(--crypto-gold);
+    border: 2px solid var(--crypto-gold);
 }
 
 .btn-outline:hover {
-    background: #667eea;
-    color: white;
+    background: var(--crypto-gold);
+    color: #1a1a2e;
     transform: translateY(-2px);
+    box-shadow: var(--crypto-glow);
 }
 
 /* Hero Section */
@@ -179,14 +197,15 @@ body {
 }
 
 .search-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: var(--secondary-gradient);
+    color: #1a1a2e;
     border: none;
     padding: 1rem 2rem;
     border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--crypto-glow);
 }
 
 .search-btn:hover {
@@ -198,33 +217,39 @@ body {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 1.5rem;
 }
 
 .filter-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(247, 147, 30, 0.1);
+    color: var(--crypto-gold);
+    border: 2px solid rgba(247, 147, 30, 0.3);
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    backdrop-filter: blur(10px);
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: white;
-    color: #667eea;
-    border-color: white;
+    background: var(--crypto-gold);
+    color: #1a1a2e;
+    border-color: var(--crypto-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--crypto-glow);
 }
 
 /* Main Content */
 .main {
-    background: white;
+    background: rgba(26, 26, 46, 0.95);
     margin-top: -2rem;
     border-radius: 2rem 2rem 0 0;
     position: relative;
     z-index: 10;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(247, 147, 30, 0.2);
 }
 
 .featured-bloggers {
@@ -236,7 +261,11 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: #2d3748;
+    color: var(--text-primary);
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .bloggers-grid {
@@ -246,18 +275,20 @@ body {
 }
 
 .blogger-card {
-    background: white;
+    background: rgba(15, 15, 35, 0.8);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid #f7fafc;
+    border: 1px solid rgba(247, 147, 30, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .blogger-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(247, 147, 30, 0.3);
+    border-color: var(--crypto-gold);
 }
 
 .blogger-avatar {
@@ -265,13 +296,14 @@ body {
     height: 80px;
     border-radius: 50%;
     margin: 0 auto 1rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #1a1a2e;
     font-size: 2rem;
     font-weight: 700;
+    box-shadow: var(--crypto-glow);
 }
 
 .blogger-name {
@@ -279,12 +311,12 @@ body {
     font-weight: 600;
     text-align: center;
     margin-bottom: 0.5rem;
-    color: #2d3748;
+    color: var(--text-primary);
 }
 
 .blogger-category {
     text-align: center;
-    color: #667eea;
+    color: var(--crypto-gold);
     font-weight: 500;
     margin-bottom: 1rem;
 }
@@ -294,63 +326,112 @@ body {
     justify-content: space-between;
     margin-bottom: 1rem;
     font-size: 0.9rem;
-    color: #718096;
+    color: var(--text-secondary);
 }
 
 .blogger-price {
     text-align: center;
     font-size: 1.25rem;
     font-weight: 700;
-    color: #667eea;
+    color: var(--crypto-gold);
+    text-shadow: 0 0 10px rgba(247, 147, 30, 0.5);
 }
 
 /* How it works */
 .how-it-works {
     padding: 4rem 0;
-    background: #f8fafc;
+    background: rgba(15, 15, 35, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem;
+    position: relative;
+}
+
+.steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: var(--secondary-gradient);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .steps-grid::before {
+        display: none;
+    }
 }
 
 .step {
     text-align: center;
     padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    right: -1.5rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--crypto-gold);
+    font-weight: bold;
+    text-shadow: var(--crypto-glow);
+}
+
+@media (max-width: 768px) {
+    .step:not(:last-child)::after {
+        content: '↓';
+        right: 50%;
+        top: 100%;
+        transform: translateX(50%);
+    }
 }
 
 .step-icon {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
-    color: white;
+    color: #1a1a2e;
     font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: var(--crypto-glow);
+    border: 2px solid var(--crypto-gold);
 }
 
 .step h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2d3748;
+    color: var(--text-primary);
 }
 
 .step p {
-    color: #718096;
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
 /* Footer */
 .footer {
-    background: #2d3748;
-    color: white;
+    background: rgba(15, 15, 35, 0.95);
+    color: var(--text-primary);
     padding: 3rem 0 2rem;
+    border-top: 1px solid rgba(247, 147, 30, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .footer-content {
@@ -362,7 +443,7 @@ body {
 .footer-brand h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -376,19 +457,19 @@ body {
 
 .footer-column h4 {
     margin-bottom: 1rem;
-    color: #e2e8f0;
+    color: var(--text-primary);
 }
 
 .footer-column a {
     display: block;
-    color: #a0aec0;
+    color: var(--text-secondary);
     text-decoration: none;
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
 }
 
 .footer-column a:hover {
-    color: #667eea;
+    color: var(--crypto-gold);
 }
 
 /* Responsive */
@@ -423,11 +504,12 @@ body {
 
 /* Blogger Page Styles */
 .blogger-page {
-    padding-top: 2rem;
+    padding-top: 6rem;
 }
 
 .back-button {
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .blogger-header {
@@ -435,23 +517,27 @@ body {
     gap: 3rem;
     margin-bottom: 4rem;
     padding: 3rem;
-    background: white;
+    background: rgba(26, 26, 46, 0.8);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(247, 147, 30, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .blogger-avatar-large {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #1a1a2e;
     font-size: 3rem;
     font-weight: 700;
     flex-shrink: 0;
+    box-shadow: var(--crypto-glow);
+    border: 2px solid var(--crypto-gold);
 }
 
 .blogger-info {
@@ -462,12 +548,12 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #2d3748;
+    color: var(--text-primary);
 }
 
 .blogger-category-large {
     font-size: 1.25rem;
-    color: #667eea;
+    color: var(--crypto-gold);
     font-weight: 600;
     margin-bottom: 2rem;
 }
@@ -482,16 +568,16 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #718096;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .stat i {
-    color: #667eea;
+    color: var(--crypto-gold);
 }
 
 .blogger-description {
-    color: #4a5568;
+    color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1.1rem;
 }
@@ -499,31 +585,38 @@ body {
 /* Services Grid */
 .services-section {
     margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 .service-card {
-    background: white;
+    background: rgba(26, 26, 46, 0.8);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
-    border: 1px solid #f7fafc;
+    border: 1px solid rgba(247, 147, 30, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(247, 147, 30, 0.3);
+    border-color: var(--crypto-gold);
 }
 
 .service-card.out-of-stock {
     opacity: 0.6;
-    background: #f8f9fa;
+    background: rgba(26, 26, 46, 0.4);
 }
 
 .service-header {
@@ -536,14 +629,15 @@ body {
 .service-name {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--text-primary);
     margin: 0;
 }
 
 .service-price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #667eea;
+    color: var(--crypto-gold);
+    text-shadow: 0 0 10px rgba(247, 147, 30, 0.5);
 }
 
 .service-availability {
@@ -553,7 +647,7 @@ body {
 .availability-bar {
     width: 100%;
     height: 8px;
-    background: #e2e8f0;
+    background: rgba(247, 147, 30, 0.2);
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 0.5rem;
@@ -561,13 +655,13 @@ body {
 
 .availability-fill {
     height: 100%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--secondary-gradient);
     transition: width 0.3s ease;
 }
 
 .availability-text {
     font-size: 0.9rem;
-    color: #718096;
+    color: var(--text-secondary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -596,9 +690,10 @@ body {
 }
 
 .service-description {
-    color: #718096;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 2rem;
+    flex-grow: 1;
 }
 
 .btn-full {
@@ -606,8 +701,8 @@ body {
 }
 
 .btn-disabled {
-    background: #e2e8f0;
-    color: #a0aec0;
+    background: rgba(247, 147, 30, 0.2);
+    color: var(--text-secondary);
     cursor: not-allowed;
 }
 
