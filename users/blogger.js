@@ -140,13 +140,25 @@ function openBookingModal(serviceIndex) {
             <h4>${selectedService.name}</h4>
             <p>${getServiceDescription(selectedService.name)}</p>
             <div class="service-meta">
-                <span class="price">${selectedService.price}</span>
+                <div class="price-info">
+                    <span class="price-rub">${selectedService.price}</span>
+                    <span class="price-crypto">≈ ${selectedService.priceEth}</span>
+                </div>
                 <span class="availability">Доступно: ${selectedService.available} из ${selectedService.total}</span>
+            </div>
+            <div class="smart-contract-info">
+                <i class="fas fa-shield-alt"></i>
+                <p>Если заказ не будет выполнен в течение недели, сумма автоматически вернется на ваш кошелек благодаря смарт-контрактам</p>
             </div>
         </div>
     `;
     
-    totalPrice.textContent = selectedService.price;
+    totalPrice.innerHTML = `
+        <div class="total-price-info">
+            <div class="price-rub">${selectedService.price}</div>
+            <div class="price-crypto">≈ ${selectedService.priceEth}</div>
+        </div>
+    `;
     
     // Set minimum date to tomorrow
     const tomorrow = new Date();
