@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль блогера - FunSay</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blogger-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">FunSay</div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="#" class="nav-link">Как это работает</a>
+                <a href="#" class="nav-link">Преимущества</a>
+                <a href="profile.html" class="nav-link active">Профиль</a>
+            </div>
+            <div class="nav-auth">
+                <a href="#" class="btn btn-outline">Настройки</a>
+                <a href="#" class="btn btn-primary">Выйти</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+        <div class="container">
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-details">
+                    <h1>Анна Блогерова</h1>
+                    <p class="profile-description">Lifestyle блогер | Верифицированный аккаунт</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Активных заказов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Выполнено</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">4.9</div>
+                            <div class="stat-label">Рейтинг</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">₽45,230</div>
+                            <div class="stat-label">Заработано</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-nav">
+                <button class="dashboard-tab active" data-tab="orders">Активные заказы</button>
+                <button class="dashboard-tab" data-tab="services">Мои услуги</button>
+                <button class="dashboard-tab" data-tab="history">История</button>
+                <button class="dashboard-tab" data-tab="analytics">Аналитика</button>
+            </div>
+
+            <div class="dashboard-content">
+                <!-- Orders Tab -->
+                <div class="tab-content active" id="orders">
+                    <div class="orders-header">
+                        <h2>Активные заказы</h2>
+                        <div class="orders-filters">
+                            <select class="filter-select" id="sortBy">
+                                <option value="date">По дате</option>
+                                <option value="price">По цене</option>
+                                <option value="deadline">По сроку</option>
+                            </select>
+                            <select class="filter-select" id="filterStatus">
+                                <option value="all">Все статусы</option>
+                                <option value="new">Новые</option>
+                                <option value="in-progress">В работе</option>
+                                <option value="pending">Ожидают</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="orders-grid" id="ordersGrid">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Services Tab -->
+                <div class="tab-content" id="services">
+                    <div class="services-header">
+                        <h2>Мои услуги</h2>
+                        <button class="btn btn-primary" onclick="openCreateServiceModal()">Создать услугу</button>
+                    </div>
+                    <div class="services-grid" id="servicesGrid">
+                        <!-- Services will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div class="tab-content" id="history">
+                    <h2>История заказов</h2>
+                    <div class="orders-grid" id="historyGrid">
+                        <!-- History will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div class="tab-content" id="analytics">
+                    <h2>Аналитика</h2>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Доходы за месяц</h3>
+                            <div class="analytics-value">₽12,450</div>
+                            <div class="analytics-change positive">+15% к прошлому месяцу</div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Средний чек</h3>
+                            <div class="analytics-value">₽850</div>
+                            <div class="analytics-change positive">+5% к прошлому месяцу</div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Конверсия</h3>
+                            <div class="analytics-value">78%</div>
+                            <div class="analytics-change negative">-2% к прошлому месяцу</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Service Modal -->
+    <div class="modal" id="createServiceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Создать новую услугу</h3>
+                <button class="modal-close" onclick="closeCreateServiceModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="createServiceForm">
+                <div class="form-group">
+                    <label class="form-label" for="serviceName">Название услуги</label>
+                    <input type="text" class="form-input" id="serviceName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="serviceDescription">Описание</label>
+                    <textarea class="form-textarea" id="serviceDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="servicePrice">Цена (₽)</label>
+                    <input type="number" class="form-input" id="servicePrice" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="serviceLimit">Ограниченное количество</label>
+                    <input type="number" class="form-input" id="serviceLimit" min="1" placeholder="Оставьте пустым для неограниченного">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="serviceDeadline">Срок выполнения (дней)</label>
+                    <input type="number" class="form-input" id="serviceDeadline" min="1" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeCreateServiceModal()">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Создать услугу</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FunSay</h3>
+                    <p>Безопасная платформа для взаимодействия блогеров и подписчиков</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Платформа</h4>
+                        <a href="#">Как это работает</a>
+                        <a href="#">Безопасность</a>
+                        <a href="#">Поддержка</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Блогерам</h4>
+                        <a href="#">Регистрация</a>
+                        <a href="#">Профиль</a>
+                        <a href="#">Заработок</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакты</h4>
+                        <a href="#">Поддержка</a>
+                        <a href="#">Telegram</a>
+                        <a href="#">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FunSay. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blogger-script.js"></script>
+</body>
+</html>
