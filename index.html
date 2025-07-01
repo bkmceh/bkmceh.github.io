@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunSay - Найди своего блогера</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">FunSay</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">Главная</a>
+                <a href="surprises.html" class="nav-link">Сюрпризы</a>
+                <a href="#" class="nav-link">Профиль</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline">Войти</button>
+                <button class="btn btn-primary">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Найди идеального блогера для твоего сюрприза</h1>
+                    <p class="hero-subtitle">Закажи персональное поздравление, подпись или любую другую услугу от твоего любимого блогера</p>
+                    
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" placeholder="Найти блогера по имени или категории..." id="searchInput">
+                            <button class="search-btn" onclick="searchBloggers()">Найти</button>
+                        </div>
+                        <div class="search-filters">
+                            <button class="filter-btn active" data-category="all">Все</button>
+                            <button class="filter-btn" data-category="тикток">ТикТок</button>
+                            <button class="filter-btn" data-category="ютуб">YouTube</button>
+                            <button class="filter-btn" data-category="стример">Стример</button>
+                            <button class="filter-btn" data-category="онлифанс">OnlyFans</button>
+                            <button class="filter-btn" data-category="художник">Художник</button>
+                            <button class="filter-btn" data-category="косплей">Косплей</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-bloggers">
+            <div class="container">
+                <h2 class="section-title">Популярные блогеры</h2>
+                <div class="bloggers-grid" id="bloggersGrid">
+                    <!-- Блогеры будут загружены через JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">Как это работает</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Найди блогера</h3>
+                        <p>Используй поиск или просматривай категории, чтобы найти подходящего блогера</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Выбери услугу</h3>
+                        <p>Просмотри доступные услуги и выбери то, что тебе нужно</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Оплати безопасно</h3>
+                        <p>Произведи оплату через защищенную платежную систему</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Получи сюрприз</h3>
+                        <p>Блогер выполнит заказ, и ты получишь уведомление о готовности</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FunSay</h3>
+                    <p>Платформа для безопасного взаимодействия с блогерами</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Пользователям</h4>
+                        <a href="#">Как заказать</a>
+                        <a href="#">Безопасность</a>
+                        <a href="#">Поддержка</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Блогерам</h4>
+                        <a href="bloggers/index.html">Стать блогером</a>
+                        <a href="#">Условия</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
