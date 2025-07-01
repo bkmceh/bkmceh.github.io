@@ -61,7 +61,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(247, 147, 30, 0.5));
 }
 
 .nav-menu {
@@ -304,7 +303,6 @@ body {
     color: #1a1a2e;
     font-size: 2rem;
     font-weight: 700;
-    box-shadow: var(--crypto-glow);
 }
 
 .blogger-name {
@@ -521,7 +519,6 @@ body {
     font-size: 3rem;
     font-weight: 700;
     flex-shrink: 0;
-    box-shadow: var(--crypto-glow);
     border: 2px solid var(--crypto-gold);
 }
 
@@ -981,7 +978,7 @@ body {
 .page-title {
     font-size: 3rem;
     font-weight: 700;
-    color: #2d3748;
+    color: #ffffff;
     margin-bottom: 1rem;
 }
 
