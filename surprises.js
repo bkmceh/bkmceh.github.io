@@ -29,7 +29,7 @@ function generateDemoOrders() {
             bloggerId: 1,
             bloggerName: "Анна Стримова",
             serviceName: "Поздравление с ДР",
-            price: 800,
+            donationAmount: 800,
             recipientName: "Мария",
             specialRequest: "Поздравить с 25-летием, упомянуть любовь к кошкам",
             deliveryDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
@@ -44,7 +44,7 @@ function generateDemoOrders() {
             bloggerId: 3,
             bloggerName: "София Мьюзик",
             serviceName: "Голосовое поздравление",
-            price: 1000,
+            donationAmount: 1000,
             recipientName: "Алексей",
             specialRequest: "Поздравление с повышением на работе",
             deliveryDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0],
@@ -57,7 +57,7 @@ function generateDemoOrders() {
             bloggerId: 4,
             bloggerName: "Дмитрий Смех",
             serviceName: "Шуточное поздравление",
-            price: 800,
+            donationAmount: 800,
             recipientName: "Игорь",
             specialRequest: "Поздравить с днем рождения, добавить шутки про программистов",
             deliveryDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
@@ -127,8 +127,8 @@ function renderSurprises() {
                 <div class="empty-icon">
                     <i class="fas fa-gift"></i>
                 </div>
-                <h3>Пока нет заказов</h3>
-                <p>Когда вы сделаете первый заказ, он появится здесь</p>
+                <h3>Пока нет поддержек</h3>
+                <p>Когда вы поддержите первого блогера, это появится здесь</p>
                 <a href="index.html" class="btn btn-primary">Найти блогера</a>
             </div>
         `;
@@ -183,8 +183,8 @@ function renderOrderCard(order) {
                     <span class="detail-value">${deliveryDate}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Стоимость:</span>
-                    <span class="detail-value">${order.price}₽</span>
+                    <span class="detail-label">Размер поддержки:</span>
+                    <span class="detail-value">${order.donationAmount}₽</span>
                 </div>
                 ${order.specialRequest ? `
                     <div class="detail-row">
@@ -284,7 +284,7 @@ function viewSurprise(orderId) {
             
             <div class="surprise-message">
                 <h5>Сообщение от блогера:</h5>
-                <p>"Спасибо за заказ! Надеюсь, вам понравится результат. Было очень приятно работать над этим сюрпризом!"</p>
+                <p>"Спасибо за поддержку! Надеюсь, вам понравится результат. Было очень приятно работать над этим сюрпризом!"</p>
             </div>
         </div>
     `;
@@ -335,13 +335,13 @@ function shareSurprise() {
 }
 
 function cancelOrder(orderId) {
-    if (confirm('Вы уверены, что хотите отменить заказ?')) {
+    if (confirm('Вы уверены, что хотите отменить поддержку?')) {
         const orderIndex = userOrders.findIndex(o => o.id === orderId);
         if (orderIndex !== -1) {
             userOrders.splice(orderIndex, 1);
             localStorage.setItem('userOrders', JSON.stringify(userOrders));
             renderSurprises();
-            showNotification('Заказ отменен', 'info');
+            showNotification('Поддержка отменена', 'info');
         }
     }
 }

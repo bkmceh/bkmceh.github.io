@@ -1,6 +1,6 @@
 // Get blogger data from localStorage or URL
 let currentBlogger = null;
-let selectedService = null;
+let selectedSupportOption = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     loadBloggerData();
@@ -9,19 +9,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadBloggerData() {
     const bloggerId = localStorage.getItem('selectedBloggerId');
+    console.log('Загружаем данные блогера с ID:', bloggerId);
+    console.log('window.bloggersData доступен:', !!window.bloggersData);
     
     if (!bloggerId || !window.bloggersData) {
+        console.error('Не найден ID блогера или данные блогеров недоступны');
         // Redirect to main page if no blogger selected
         window.location.href = 'index.html';
         return;
     }
     
     currentBlogger = window.bloggersData.find(b => b.id == bloggerId);
+    console.log('Найден блогер:', currentBlogger);
     
     if (!currentBlogger) {
+        console.error('Блогер с ID', bloggerId, 'не найден в данных');
         window.location.href = 'index.html';
         return;
     }
+    
+    console.log('supportOptions блогера:', currentBlogger.supportOptions);
     
     renderBloggerProfile();
     renderServices();
@@ -30,12 +37,17 @@ function loadBloggerData() {
 function renderBloggerProfile() {
     const profileContainer = document.getElementById('bloggerProfile');
     
+    // Преобразуем массив категорий в строку с названиями категорий
+    const categoryNames = Array.isArray(currentBlogger.category) 
+        ? currentBlogger.category.map(cat => getCategoryName(cat)).join(', ')
+        : getCategoryName(currentBlogger.category);
+    
     profileContainer.innerHTML = `
         <div class="blogger-header">
             <div class="blogger-avatar-large">${currentBlogger.avatar}</div>
             <div class="blogger-info">
                 <h1 class="blogger-name-large">${currentBlogger.name}</h1>
-                <p class="blogger-category-large">${getCategoryName(currentBlogger.category)}</p>
+                <p class="blogger-category-large">${categoryNames}</p>
                 <div class="blogger-stats-large">
                     <div class="stat">
                         <i class="fas fa-users"></i>
@@ -48,7 +60,7 @@ function renderBloggerProfile() {
                     </div>
                 </div>
                 <div class="blogger-description">
-                    <p>Привет! Я ${currentBlogger.name} и я создаю контент в категории "${getCategoryName(currentBlogger.category)}". Буду рада выполнить для вас персональный заказ! Все услуги выполняются качественно и в срок.</p>
+                    <p>Привет! Я ${currentBlogger.name} и я создаю контент в категории "${categoryNames}". Буду рада выполнить для вас персональный заказ! Все услуги выполняются качественно и в срок.</p>
                 </div>
             </div>
         </div>
@@ -56,40 +68,44 @@ function renderBloggerProfile() {
 }
 
 function renderServices() {
+    console.log('Начинаем рендеринг услуг блогера');
     const servicesContainer = document.getElementById('servicesGrid');
+    console.log('Элемент servicesGrid найден:', !!servicesContainer);
     
-    servicesContainer.innerHTML = currentBlogger.services.map((service, index) => {
-        const availability = service.available / service.total;
+    servicesContainer.innerHTML = currentBlogger.supportOptions.map((supportOption, index) => {
+        console.log(`Обработка варианта поддержки ${index}:`, supportOption);
+        const availability = supportOption.available / supportOption.total;
         const isLowStock = availability < 0.3;
-        const isOutOfStock = service.available === 0;
+        const isOutOfStock = supportOption.available === 0;
         
         return `
             <div class="service-card ${isOutOfStock ? 'out-of-stock' : ''}">
                 <div class="service-header">
-                    <h3 class="service-name">${service.name}</h3>
-                    <div class="service-price">${service.price}</div>
+                    <h3 class="service-name">${supportOption.name}</h3>
+            <div class="service-price">${supportOption.donationAmount}₽</div>
                 </div>
                 <div class="service-availability">
                     <div class="availability-bar">
                         <div class="availability-fill" style="width: ${availability * 100}%"></div>
                     </div>
                     <div class="availability-text ${isLowStock ? 'low-stock' : ''}">
-                        ${service.available} из ${service.total} доступно
+                        ${supportOption.available} из ${supportOption.total} доступно
                         ${isLowStock && !isOutOfStock ? '<span class="low-stock-badge">Мало осталось!</span>' : ''}
                         ${isOutOfStock ? '<span class="out-of-stock-badge">Нет в наличии</span>' : ''}
                     </div>
                 </div>
                 <div class="service-description">
-                    ${getServiceDescription(service.name)}
+                    ${getServiceDescription(supportOption.name)}
                 </div>
                 <button class="btn ${isOutOfStock ? 'btn-disabled' : 'btn-primary'} btn-full" 
                         onclick="${isOutOfStock ? '' : `openBookingModal(${index})`}"
                         ${isOutOfStock ? 'disabled' : ''}>
-                    ${isOutOfStock ? 'Недоступно' : 'Заказать'}
+                    ${isOutOfStock ? 'Недоступно' : 'Поддержать'}
                 </button>
             </div>
         `;
     }).join('');
+    console.log('Рендеринг услуг завершен');
 }
 
 function getServiceDescription(serviceName) {
@@ -114,7 +130,7 @@ function getServiceDescription(serviceName) {
         'Разбор геймплея': 'Анализ вашего геймплея с советами по улучшению.'
     };
     
-    return descriptions[serviceName] || 'Персональная услуга от блогера.';
+    return descriptions[serviceName] || 'Персональная поддержка от блогера.';
 }
 
 function getCategoryName(category) {
@@ -128,7 +144,7 @@ function getCategoryName(category) {
 }
 
 function openBookingModal(serviceIndex) {
-    selectedService = currentBlogger.services[serviceIndex];
+    selectedSupportOption = currentBlogger.supportOptions[serviceIndex];
     
     const modal = document.getElementById('bookingModal');
     const overlay = document.getElementById('modalOverlay');
@@ -137,14 +153,14 @@ function openBookingModal(serviceIndex) {
     
     serviceDetails.innerHTML = `
         <div class="selected-service">
-            <h4>${selectedService.name}</h4>
-            <p>${getServiceDescription(selectedService.name)}</p>
+            <h4>${selectedSupportOption.name}</h4>
+        <p>${getServiceDescription(selectedSupportOption.name)}</p>
             <div class="service-meta">
                 <div class="price-info">
-                    <span class="price-rub">${selectedService.price}</span>
-                    <span class="price-crypto">≈ ${selectedService.priceEth}</span>
+                    <span class="price-rub">${selectedSupportOption.donationAmount}₽</span>
+            <span class="price-crypto">≈ ${selectedSupportOption.priceEth}</span>
                 </div>
-                <span class="availability">Доступно: ${selectedService.available} из ${selectedService.total}</span>
+                <span class="availability">Доступно: ${selectedSupportOption.available} из ${selectedSupportOption.total}</span>
             </div>
             <div class="smart-contract-info">
                 <i class="fas fa-shield-alt"></i>
@@ -155,8 +171,8 @@ function openBookingModal(serviceIndex) {
     
     totalPrice.innerHTML = `
         <div class="total-price-info">
-            <div class="price-rub">${selectedService.price}</div>
-            <div class="price-crypto">≈ ${selectedService.priceEth}</div>
+            <div class="price-rub">${selectedSupportOption.donationAmount}₽</div>
+            <div class="price-crypto">≈ ${selectedSupportOption.priceEth}</div>
         </div>
     `;
     
@@ -180,7 +196,7 @@ function closeModal() {
     
     // Reset form
     document.getElementById('bookingForm').reset();
-    selectedService = null;
+    selectedSupportOption = null;
 }
 
 function setupEventListeners() {
@@ -200,14 +216,14 @@ function setupEventListeners() {
 }
 
 function processBooking() {
-    if (!selectedService) return;
+    if (!selectedSupportOption) return;
     
     const formData = new FormData(document.getElementById('bookingForm'));
     const bookingData = {
         bloggerId: currentBlogger.id,
         bloggerName: currentBlogger.name,
-        serviceName: selectedService.name,
-        price: selectedService.price,
+        serviceName: selectedSupportOption.name,
+        donationAmount: selectedSupportOption.donationAmount,
         recipientName: formData.get('recipientName'),
         specialRequest: formData.get('specialRequest'),
         deliveryDate: formData.get('deliveryDate'),
@@ -223,9 +239,9 @@ function processBooking() {
         // Save order to localStorage (in real app, this would be sent to server)
         saveOrder(bookingData);
         
-        // Update service availability
-        selectedService.available--;
-        renderServices();
+        // Update support option availability
+    selectedSupportOption.available--;
+    renderServices();
         
         // Show success message
         showSuccessMessage();

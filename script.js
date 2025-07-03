@@ -8,10 +8,10 @@ const bloggers = [
         followers: "125K",
         experience: "3 года",
         priceFrom: "от 800₽",
-        services: [
-            { name: "Поздравление с ДР", price: 800, priceEth: "0.032 ETH", available: 15, total: 50 },
-            { name: "Игровая сессия", price: 1200, priceEth: "0.048 ETH", available: 8, total: 20 },
-            { name: "Персональный совет", price: 600, priceEth: "0.024 ETH", available: 25, total: 30 }
+        supportOptions: [
+            { name: "Поздравление с ДР", donationAmount: 800, priceEth: "0.032 ETH", available: 15, total: 50 },
+            { name: "Игровая сессия", donationAmount: 1200, priceEth: "0.048 ETH", available: 8, total: 20 },
+            { name: "Персональный совет", donationAmount: 600, priceEth: "0.024 ETH", available: 25, total: 30 }
         ]
     },
     {
@@ -22,10 +22,10 @@ const bloggers = [
         followers: "89K",
         experience: "2 года",
         priceFrom: "от 500₽",
-        services: [
-            { name: "Мотивационное видео", price: 700, priceEth: "0.028 ETH", available: 12, total: 40 },
-            { name: "Поздравление", price: 500, priceEth: "0.02 ETH", available: 20, total: 35 },
-            { name: "Лайфхак на заказ", price: 900, priceEth: "0.036 ETH", available: 5, total: 15 }
+        supportOptions: [
+            { name: "Мотивационное видео", donationAmount: 700, priceEth: "0.028 ETH", available: 12, total: 40 },
+            { name: "Поздравление", donationAmount: 500, priceEth: "0.02 ETH", available: 20, total: 35 },
+            { name: "Лайфхак на заказ", donationAmount: 900, priceEth: "0.036 ETH", available: 5, total: 15 }
         ]
     },
     {
@@ -36,10 +36,10 @@ const bloggers = [
         followers: "200K",
         experience: "5 лет",
         priceFrom: "от 1000₽",
-        services: [
-            { name: "Песня на заказ", price: 2000, priceEth: "0.08 ETH", available: 3, total: 10 },
-            { name: "Голосовое поздравление", price: 1000, priceEth: "0.04 ETH", available: 18, total: 25 },
-            { name: "Кавер любимой песни", price: 1500, priceEth: "0.06 ETH", available: 7, total: 15 }
+        supportOptions: [
+            { name: "Песня на заказ", donationAmount: 2000, priceEth: "0.08 ETH", available: 3, total: 10 },
+            { name: "Голосовое поздравление", donationAmount: 1000, priceEth: "0.04 ETH", available: 18, total: 25 },
+            { name: "Кавер любимой песни", donationAmount: 1500, priceEth: "0.06 ETH", available: 7, total: 15 }
         ]
     },
     {
@@ -50,10 +50,10 @@ const bloggers = [
         followers: "156K",
         experience: "4 года",
         priceFrom: "от 800₽",
-        services: [
-            { name: "Шуточное поздравление", price: 800, priceEth: "0.032 ETH", available: 22, total: 40 },
-            { name: "Стендап на заказ", price: 1200, priceEth: "0.048 ETH", available: 6, total: 12 },
-            { name: "Розыгрыш друга", price: 1000, priceEth: "0.04 ETH", available: 10, total: 20 }
+        supportOptions: [
+            { name: "Шуточное поздравление", donationAmount: 800, priceEth: "0.032 ETH", available: 22, total: 40 },
+            { name: "Стендап на заказ", donationAmount: 1200, priceEth: "0.048 ETH", available: 6, total: 12 },
+            { name: "Розыгрыш друга", donationAmount: 1000, priceEth: "0.04 ETH", available: 10, total: 20 }
         ]
     },
     {
@@ -64,10 +64,10 @@ const bloggers = [
         followers: "95K",
         experience: "2 года",
         priceFrom: "от 600₽",
-        services: [
-            { name: "Персональная тренировка", price: 1500, priceEth: "0.06 ETH", available: 8, total: 15 },
-            { name: "Мотивация к спорту", price: 600, priceEth: "0.024 ETH", available: 30, total: 50 },
-            { name: "План питания", price: 800, priceEth: "0.032 ETH", available: 12, total: 25 }
+        supportOptions: [
+            { name: "Персональная тренировка", donationAmount: 1500, priceEth: "0.06 ETH", available: 8, total: 15 },
+            { name: "Мотивация к спорту", donationAmount: 600, priceEth: "0.024 ETH", available: 30, total: 50 },
+            { name: "План питания", donationAmount: 800, priceEth: "0.032 ETH", available: 12, total: 25 }
         ]
     },
     {
@@ -78,10 +78,10 @@ const bloggers = [
         followers: "180K",
         experience: "4 года",
         priceFrom: "от 800₽",
-        services: [
-            { name: "Обучение игре", price: 1000, priceEth: "0.04 ETH", available: 15, total: 30 },
-            { name: "Совместная игра", price: 800, priceEth: "0.032 ETH", available: 25, total: 40 },
-            { name: "Разбор геймплея", price: 1200, priceEth: "0.048 ETH", available: 8, total: 20 }
+        supportOptions: [
+            { name: "Обучение игре", donationAmount: 1000, priceEth: "0.04 ETH", available: 15, total: 30 },
+            { name: "Совместная игра", donationAmount: 800, priceEth: "0.032 ETH", available: 25, total: 40 },
+            { name: "Разбор геймплея", donationAmount: 1200, priceEth: "0.048 ETH", available: 8, total: 20 }
         ]
     },
     {
@@ -92,10 +92,10 @@ const bloggers = [
         followers: "45K",
         experience: "4 года",
         priceFrom: "от 1200₽",
-        services: [
-            { name: "Цифровой портрет", price: 2500, priceEth: "0.1 ETH", available: 5, total: 10 },
-            { name: "Персонаж для игры", price: 1800, priceEth: "0.072 ETH", available: 8, total: 15 },
-            { name: "Логотип на заказ", price: 1200, priceEth: "0.048 ETH", available: 12, total: 20 }
+        supportOptions: [
+            { name: "Цифровой портрет", donationAmount: 2500, priceEth: "0.1 ETH", available: 5, total: 10 },
+            { name: "Персонаж для игры", donationAmount: 1800, priceEth: "0.072 ETH", available: 8, total: 15 },
+            { name: "Логотип на заказ", donationAmount: 1200, priceEth: "0.048 ETH", available: 12, total: 20 }
         ]
     },
     {
@@ -106,10 +106,10 @@ const bloggers = [
         followers: "92K",
         experience: "3 года",
         priceFrom: "от 1500₽",
-        services: [
-            { name: "Персональный косплей", price: 3000, priceEth: "0.12 ETH", available: 3, total: 8 },
-            { name: "Фотосессия в образе", price: 2000, priceEth: "0.08 ETH", available: 6, total: 12 },
-            { name: "Видео-поздравление", price: 1500, priceEth: "0.06 ETH", available: 10, total: 15 }
+        supportOptions: [
+            { name: "Персональный косплей", donationAmount: 3000, priceEth: "0.12 ETH", available: 3, total: 8 },
+            { name: "Фотосессия в образе", donationAmount: 2000, priceEth: "0.08 ETH", available: 6, total: 12 },
+            { name: "Видео-поздравление", donationAmount: 1500, priceEth: "0.06 ETH", available: 10, total: 15 }
         ]
     }
 ];
