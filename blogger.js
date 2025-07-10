@@ -60,7 +60,7 @@ function renderBloggerProfile() {
                     </div>
                 </div>
                 <div class="blogger-description">
-                    <p>Привет! Я ${currentBlogger.name} и я создаю контент в категории "${categoryNames}". Буду рада выполнить для вас персональный заказ! Все услуги выполняются качественно и в срок.</p>
+                    <p>Привет! Я ${currentBlogger.name} и я создаю контент в категории "${categoryNames}". Буду рада создать для вас персональный сюрприз! Все работы выполняются с любовью и в срок.</p>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ function renderBloggerProfile() {
 }
 
 function renderServices() {
-    console.log('Начинаем рендеринг услуг блогера');
+    console.log('Начинаем рендеринг сюрпризов блогера');
     const servicesContainer = document.getElementById('servicesGrid');
     console.log('Элемент servicesGrid найден:', !!servicesContainer);
     
@@ -105,7 +105,7 @@ function renderServices() {
             </div>
         `;
     }).join('');
-    console.log('Рендеринг услуг завершен');
+    console.log('Рендеринг сюрпризов завершен');
 }
 
 function getServiceDescription(serviceName) {
@@ -164,7 +164,7 @@ function openBookingModal(serviceIndex) {
             </div>
             <div class="smart-contract-info">
                 <i class="fas fa-shield-alt"></i>
-                <p>Если заказ не будет выполнен в течение недели, сумма автоматически вернется на ваш кошелек благодаря смарт-контрактам</p>
+                <p>Если сюрприз не будет создан в течение недели, сумма автоматически вернется на ваш кошелек благодаря смарт-контрактам</p>
             </div>
         </div>
     `;
@@ -279,8 +279,8 @@ function showSuccessMessage() {
         <div class="notification-content">
             <i class="fas fa-check-circle"></i>
             <div>
-                <h4>Заказ успешно оформлен!</h4>
-                <p>Блогер получил ваш заказ и скоро приступит к выполнению. Вы можете отслеживать статус в разделе "Сюрпризы".</p>
+                <h4>Поддержка успешно оформлена!</h4>
+                <p>Блогер получил вашу поддержку и скоро приступит к созданию сюрприза. Вы можете отслеживать статус в разделе "Сюрпризы".</p>
             </div>
         </div>
     `;
