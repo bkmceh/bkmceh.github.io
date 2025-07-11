@@ -2,114 +2,114 @@
 const bloggers = [
     {
         id: 1,
-        name: "Анна Стримова",
-        category: ["стример", "ютуб"],
-        avatar: "АС",
+        name: "Anna Streamer",
+        category: ["streamer", "youtube"],
+        avatar: "AS",
         followers: "125K",
-        experience: "3 года",
-        priceFrom: "от 800₽",
+        experience: "3 years",
+        priceFrom: "from $8",
         supportOptions: [
-            { name: "Поздравление с ДР", donationAmount: 800, priceEth: "0.032 ETH", available: 15, total: 50 },
-            { name: "Игровая сессия", donationAmount: 1200, priceEth: "0.048 ETH", available: 8, total: 20 },
-            { name: "Персональный совет", donationAmount: 600, priceEth: "0.024 ETH", available: 25, total: 30 }
+            { name: "Birthday Greeting", donationAmount: 8, priceEth: "0.032 ETH", available: 15, total: 50 },
+            { name: "Gaming Session", donationAmount: 12, priceEth: "0.048 ETH", available: 8, total: 20 },
+            { name: "Personal Advice", donationAmount: 6, priceEth: "0.024 ETH", available: 25, total: 30 }
         ]
     },
     {
         id: 2,
-        name: "Максим Лайф",
-        category: ["тикток", "ютуб"],
-        avatar: "МЛ",
+        name: "Max Life",
+        category: ["tiktok", "youtube"],
+        avatar: "ML",
         followers: "89K",
-        experience: "2 года",
-        priceFrom: "от 500₽",
+        experience: "2 years",
+        priceFrom: "from $5",
         supportOptions: [
-            { name: "Мотивационное видео", donationAmount: 700, priceEth: "0.028 ETH", available: 12, total: 40 },
-            { name: "Поздравление", donationAmount: 500, priceEth: "0.02 ETH", available: 20, total: 35 },
-            { name: "Лайфхак на заказ", donationAmount: 900, priceEth: "0.036 ETH", available: 5, total: 15 }
+            { name: "Motivational Video", donationAmount: 7, priceEth: "0.028 ETH", available: 12, total: 40 },
+            { name: "Greeting", donationAmount: 5, priceEth: "0.02 ETH", available: 20, total: 35 },
+            { name: "Custom Life Hack", donationAmount: 9, priceEth: "0.036 ETH", available: 5, total: 15 }
         ]
     },
     {
         id: 3,
-        name: "София Мьюзик",
-        category: ["ютуб", "стример"],
-        avatar: "СМ",
+        name: "Sofia Music",
+        category: ["youtube", "streamer"],
+        avatar: "SM",
         followers: "200K",
-        experience: "5 лет",
-        priceFrom: "от 1000₽",
+        experience: "5 years",
+        priceFrom: "from $10",
         supportOptions: [
-            { name: "Песня на заказ", donationAmount: 2000, priceEth: "0.08 ETH", available: 3, total: 10 },
-            { name: "Голосовое поздравление", donationAmount: 1000, priceEth: "0.04 ETH", available: 18, total: 25 },
-            { name: "Кавер любимой песни", donationAmount: 1500, priceEth: "0.06 ETH", available: 7, total: 15 }
+            { name: "Custom Song", donationAmount: 20, priceEth: "0.08 ETH", available: 3, total: 10 },
+            { name: "Voice Greeting", donationAmount: 10, priceEth: "0.04 ETH", available: 18, total: 25 },
+            { name: "Favorite Song Cover", donationAmount: 15, priceEth: "0.06 ETH", available: 7, total: 15 }
         ]
     },
     {
         id: 4,
-        name: "Дмитрий Смех",
-        category: ["тикток", "стример"],
-        avatar: "ДС",
+        name: "Dmitry Comedy",
+        category: ["tiktok", "streamer"],
+        avatar: "DC",
         followers: "156K",
-        experience: "4 года",
-        priceFrom: "от 800₽",
+        experience: "4 years",
+        priceFrom: "from $8",
         supportOptions: [
-            { name: "Шуточное поздравление", donationAmount: 800, priceEth: "0.032 ETH", available: 22, total: 40 },
-            { name: "Стендап на заказ", donationAmount: 1200, priceEth: "0.048 ETH", available: 6, total: 12 },
-            { name: "Розыгрыш друга", donationAmount: 1000, priceEth: "0.04 ETH", available: 10, total: 20 }
+            { name: "Funny Greeting", donationAmount: 8, priceEth: "0.032 ETH", available: 22, total: 40 },
+            { name: "Custom Stand-up", donationAmount: 12, priceEth: "0.048 ETH", available: 6, total: 12 },
+            { name: "Friend Prank", donationAmount: 10, priceEth: "0.04 ETH", available: 10, total: 20 }
         ]
     },
     {
         id: 5,
-        name: "Елена Фитнес",
-        category: ["тикток", "ютуб"],
-        avatar: "ЕФ",
+        name: "Elena Fitness",
+        category: ["tiktok", "youtube"],
+        avatar: "EF",
         followers: "95K",
-        experience: "2 года",
-        priceFrom: "от 600₽",
+        experience: "2 years",
+        priceFrom: "from $6",
         supportOptions: [
-            { name: "Персональная тренировка", donationAmount: 1500, priceEth: "0.06 ETH", available: 8, total: 15 },
-            { name: "Мотивация к спорту", donationAmount: 600, priceEth: "0.024 ETH", available: 30, total: 50 },
-            { name: "План питания", donationAmount: 800, priceEth: "0.032 ETH", available: 12, total: 25 }
+            { name: "Personal Training", donationAmount: 15, priceEth: "0.06 ETH", available: 8, total: 15 },
+            { name: "Sports Motivation", donationAmount: 6, priceEth: "0.024 ETH", available: 30, total: 50 },
+            { name: "Nutrition Plan", donationAmount: 8, priceEth: "0.032 ETH", available: 12, total: 25 }
         ]
     },
     {
         id: 6,
-        name: "Артем Гейм",
-        category: ["стример", "ютуб"],
-        avatar: "АГ",
+        name: "Artem Game",
+        category: ["streamer", "youtube"],
+        avatar: "AG",
         followers: "180K",
-        experience: "4 года",
-        priceFrom: "от 800₽",
+        experience: "4 years",
+        priceFrom: "from $8",
         supportOptions: [
-            { name: "Обучение игре", donationAmount: 1000, priceEth: "0.04 ETH", available: 15, total: 30 },
-            { name: "Совместная игра", donationAmount: 800, priceEth: "0.032 ETH", available: 25, total: 40 },
-            { name: "Разбор геймплея", donationAmount: 1200, priceEth: "0.048 ETH", available: 8, total: 20 }
+            { name: "Game Training", donationAmount: 10, priceEth: "0.04 ETH", available: 15, total: 30 },
+            { name: "Co-op Gaming", donationAmount: 8, priceEth: "0.032 ETH", available: 25, total: 40 },
+            { name: "Gameplay Analysis", donationAmount: 12, priceEth: "0.048 ETH", available: 8, total: 20 }
         ]
     },
     {
         id: 7,
-        name: "Виктория Арт",
-        category: ["художник", "тикток"],
-        avatar: "ВА",
+        name: "Victoria Art",
+        category: ["artist", "tiktok"],
+        avatar: "VA",
         followers: "45K",
-        experience: "4 года",
-        priceFrom: "от 1200₽",
+        experience: "4 years",
+        priceFrom: "from $12",
         supportOptions: [
-            { name: "Цифровой портрет", donationAmount: 2500, priceEth: "0.1 ETH", available: 5, total: 10 },
-            { name: "Персонаж для игры", donationAmount: 1800, priceEth: "0.072 ETH", available: 8, total: 15 },
-            { name: "Логотип на заказ", donationAmount: 1200, priceEth: "0.048 ETH", available: 12, total: 20 }
+            { name: "Digital Portrait", donationAmount: 25, priceEth: "0.1 ETH", available: 5, total: 10 },
+            { name: "Game Character", donationAmount: 18, priceEth: "0.072 ETH", available: 8, total: 15 },
+            { name: "Custom Logo", donationAmount: 12, priceEth: "0.048 ETH", available: 12, total: 20 }
         ]
     },
     {
         id: 8,
-        name: "Катя Косплей",
-        category: ["косплей", "тикток", "онлифанс"],
-        avatar: "КК",
+        name: "Kate Cosplay",
+        category: ["cosplay", "tiktok", "onlyfans"],
+        avatar: "KC",
         followers: "92K",
-        experience: "3 года",
-        priceFrom: "от 1500₽",
+        experience: "3 years",
+        priceFrom: "from $15",
         supportOptions: [
-            { name: "Персональный косплей", donationAmount: 3000, priceEth: "0.12 ETH", available: 3, total: 8 },
-            { name: "Фотосессия в образе", donationAmount: 2000, priceEth: "0.08 ETH", available: 6, total: 12 },
-            { name: "Видео-поздравление", donationAmount: 1500, priceEth: "0.06 ETH", available: 10, total: 15 }
+            { name: "Personal Cosplay", donationAmount: 30, priceEth: "0.12 ETH", available: 3, total: 8 },
+            { name: "Character Photoshoot", donationAmount: 20, priceEth: "0.08 ETH", available: 6, total: 12 },
+            { name: "Video Greeting", donationAmount: 15, priceEth: "0.06 ETH", available: 10, total: 15 }
         ]
     }
 ];
@@ -153,8 +153,8 @@ function renderBloggers() {
     if (filteredBloggers.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                <h3 style="color: #718096; margin-bottom: 1rem;">Блогеры не найдены</h3>
-                <p style="color: #a0aec0;">Попробуйте изменить поисковый запрос или фильтр</p>
+                <h3 style="color: #718096; margin-bottom: 1rem;">No bloggers found</h3>
+                <p style="color: #a0aec0;">Try changing your search query or filter</p>
             </div>
         `;
         return;
@@ -187,12 +187,12 @@ function filterBloggers() {
 
 function getCategoryName(category) {
     const categories = {
-        'тикток': 'ТикТок',
-        'ютуб': 'YouTube',
-        'стример': 'Стример',
-        'онлифанс': 'OnlyFans',
-        'художник': 'Художник',
-        'косплей': 'Косплей'
+        'tiktok': 'TikTok',
+    'youtube': 'YouTube',
+    'streamer': 'Streamer',
+    'onlyfans': 'OnlyFans',
+    'artist': 'Artist',
+    'cosplay': 'Cosplay'
     };
     return categories[category] || category;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunSay - Профиль блогера</title>
+    <title>FunSay - Blogger Profile</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,13 +15,13 @@
                 <h1 class="logo">FunSay</h1>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Главная</a>
-                <a href="surprises.html" class="nav-link">Сюрпризы</a>
-                <a href="#" class="nav-link">Профиль</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="surprises.html" class="nav-link">Surprises</a>
+                <a href="#" class="nav-link">Profile</a>
             </div>
             <div class="nav-auth">
-                <button class="btn btn-outline">Войти</button>
-                <button class="btn btn-primary">Регистрация</button>
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Sign Up</button>
             </div>
         </nav>
     </header>
@@ -30,18 +30,18 @@
         <div class="container">
             <div class="back-button">
                 <a href="index.html" class="btn btn-outline">
-                    <i class="fas fa-arrow-left"></i> Назад к поиску
+                    <i class="fas fa-arrow-left"></i> Back to Search
                 </a>
             </div>
 
             <div class="blogger-profile" id="bloggerProfile">
-                <!-- Профиль блогера будет загружен через JavaScript -->
+                <!-- Blogger profile will be loaded via JavaScript -->
             </div>
 
             <div class="services-section">
-                <h2 class="section-title">Доступные сюрпризы</h2>
+                <h2 class="section-title">Available Surprises</h2>
                 <div class="services-grid" id="servicesGrid">
-                    <!-- Сюрпризы будут загружены через JavaScript -->
+                    <!-- Surprises will be loaded via JavaScript -->
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
     <div class="modal" id="bookingModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">Поддержать творчество</h3>
+                <h3 id="modalTitle">Support Creativity</h3>
                 <button class="modal-close" onclick="closeModal()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -62,19 +62,19 @@
                 </div>
                 <form class="booking-form" id="bookingForm">
                     <div class="form-group">
-                        <label for="recipientName">Имя получателя</label>
+                        <label for="recipientName">Recipient Name</label>
                         <input type="text" id="recipientName" name="recipientName" required>
                     </div>
                     <div class="form-group">
-                        <label for="specialRequest">Особые пожелания</label>
-                        <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Расскажите, что именно вы хотите..."></textarea>
+                        <label for="specialRequest">Special Requests</label>
+                        <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Tell us what exactly you want..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="deliveryDate">Желаемая дата выполнения</label>
+                        <label for="deliveryDate">Desired Completion Date</label>
                         <input type="date" id="deliveryDate" name="deliveryDate" required>
                     </div>
                     <div class="payment-section">
-                        <h4>Способ оплаты</h4>
+                        <h4>Payment Method</h4>
                         <div class="payment-methods">
                             <label class="payment-method">
                                 <input type="radio" name="paymentMethod" value="ethereum" checked>
@@ -89,11 +89,11 @@
                         </div>
                     </div>
                     <div class="total-price">
-                        <span>Итого к оплате: </span>
+                        <span>Total to Pay: </span>
                         <span class="price" id="totalPrice">0 ETH</span>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
-                        <i class="fas fa-lock"></i> Поддержать безопасно
+                        <i class="fas fa-lock"></i> Support Securely
                     </button>
                 </form>
             </div>
@@ -107,19 +107,19 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>FunSay</h3>
-                    <p>Платформа для безопасного взаимодействия с блогерами</p>
+                    <p>Platform for safe interaction with bloggers</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>Пользователям</h4>
-                        <a href="#">Как поддержать</a>
-                        <a href="#">Безопасность</a>
-                        <a href="#">Поддержка</a>
+                        <h4>For Users</h4>
+                        <a href="#">How to Support</a>
+                        <a href="#">Security</a>
+                        <a href="#">Support</a>
                     </div>
                     <div class="footer-column">
-                        <h4>Блогерам</h4>
-                        <a href="#">Стать блогером</a>
-                        <a href="#">Условия</a>
+                        <h4>For Bloggers</h4>
+                        <a href="#">Become a Blogger</a>
+                        <a href="#">Terms</a>
                         <a href="#">FAQ</a>
                     </div>
                 </div>

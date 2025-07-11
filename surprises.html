@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunSay - Мои сюрпризы</title>
+    <title>FunSay - My Surprises</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,13 +15,13 @@
                 <h1 class="logo">FunSay</h1>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Главная</a>
-                <a href="surprises.html" class="nav-link active">Сюрпризы</a>
-                <a href="#" class="nav-link">Профиль</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="surprises.html" class="nav-link active">Surprises</a>
+                <a href="#" class="nav-link">Profile</a>
             </div>
             <div class="nav-auth">
-                <button class="btn btn-outline">Войти</button>
-                <button class="btn btn-primary">Регистрация</button>
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Sign Up</button>
             </div>
         </nav>
     </header>
@@ -29,20 +29,20 @@
     <main class="main surprises-page">
         <div class="container">
             <div class="page-header">
-                <h1 class="page-title">Мои сюрпризы</h1>
-                <p class="page-subtitle">Здесь вы можете отслеживать статус ваших поддержек и просматривать готовые сюрпризы</p>
+                <h1 class="page-title">My Surprises</h1>
+                <p class="page-subtitle">Here you can track the status of your support orders and view completed surprises</p>
             </div>
 
             <div class="surprises-filters">
-                <button class="filter-btn active" data-status="all">Все поддержки</button>
-                <button class="filter-btn" data-status="pending">В обработке</button>
-                <button class="filter-btn" data-status="in-progress">Выполняется</button>
-                <button class="filter-btn" data-status="completed">Готово</button>
-                <button class="filter-btn" data-status="delivered">Доставлено</button>
+                <button class="filter-btn active" data-status="all">All Orders</button>
+                <button class="filter-btn" data-status="pending">Processing</button>
+                <button class="filter-btn" data-status="in-progress">In Progress</button>
+                <button class="filter-btn" data-status="completed">Completed</button>
+                <button class="filter-btn" data-status="delivered">Delivered</button>
             </div>
 
             <div class="surprises-content" id="surprisesContent">
-                <!-- Заказы будут загружены через JavaScript -->
+                <!-- Orders will be loaded via JavaScript -->
             </div>
         </div>
     </main>
@@ -51,7 +51,7 @@
     <div class="modal" id="surpriseModal">
         <div class="modal-content surprise-modal">
             <div class="modal-header">
-                <h3 id="surpriseModalTitle">Ваш сюрприз готов!</h3>
+                <h3 id="surpriseModalTitle">Your surprise is ready!</h3>
                 <button class="modal-close" onclick="closeSurpriseModal()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -61,8 +61,8 @@
                     <!-- Surprise content will be loaded here -->
                 </div>
                 <div class="surprise-actions">
-                    <button class="btn btn-outline" onclick="downloadSurprise()">Скачать</button>
-                    <button class="btn btn-primary" onclick="shareSurprise()">Поделиться</button>
+                    <button class="btn btn-outline" onclick="downloadSurprise()">Download</button>
+                    <button class="btn btn-primary" onclick="shareSurprise()">Share</button>
                 </div>
             </div>
         </div>
@@ -75,19 +75,19 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>FunSay</h3>
-                    <p>Платформа для безопасного взаимодействия с блогерами</p>
+                    <p>Platform for safe interaction with bloggers</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>Пользователям</h4>
-                        <a href="#">Как поддержать</a>
-                        <a href="#">Безопасность</a>
-                        <a href="#">Поддержка</a>
+                        <h4>For Users</h4>
+                        <a href="#">How to Support</a>
+                        <a href="#">Security</a>
+                        <a href="#">Support</a>
                     </div>
                     <div class="footer-column">
-                        <h4>Блогерам</h4>
-                        <a href="#">Стать блогером</a>
-                        <a href="#">Условия</a>
+                        <h4>For Bloggers</h4>
+                        <a href="#">Become a Blogger</a>
+                        <a href="#">Terms</a>
                         <a href="#">FAQ</a>
                     </div>
                 </div>

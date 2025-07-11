@@ -4,42 +4,42 @@
 const sampleOrders = [
     {
         id: 1,
-        title: "Обзор косметики",
-        description: "Нужен честный обзор новой линейки косметики от известного бренда. Важно показать текстуру, цвета и результат применения.",
+        title: "Cosmetics Review",
+        description: "Need an honest review of a new cosmetics line from a well-known brand. Important to show texture, colors and application results.",
         price: 2500,
         deadline: "2024-01-15",
         status: "new",
-        customer: "Мария К.",
+        customer: "Maria K.",
         created: "2024-01-10"
     },
     {
         id: 2,
-        title: "Рецепт здорового завтрака",
-        description: "Покажите как готовить полезный и вкусный завтрак за 15 минут. Нужно включить калорийность и пользу ингредиентов.",
+        title: "Healthy Breakfast Recipe",
+        description: "Show how to cook a healthy and delicious breakfast in 15 minutes. Need to include calories and benefits of ingredients.",
         price: 1800,
         deadline: "2024-01-12",
         status: "in-progress",
-        customer: "Анна С.",
+        customer: "Anna S.",
         created: "2024-01-08"
     },
     {
         id: 3,
-        title: "Тренировка дома",
-        description: "Покажите эффективную тренировку для дома без специального оборудования. Длительность 30 минут.",
+        title: "Home Workout",
+        description: "Show an effective home workout without special equipment. Duration 30 minutes.",
         price: 3200,
         deadline: "2024-01-20",
         status: "new",
-        customer: "Елена В.",
+        customer: "Elena V.",
         created: "2024-01-09"
     },
     {
         id: 4,
-        title: "Обзор книги",
-        description: "Нужен подробный обзор книги по саморазвитию с вашими личными впечатлениями и рекомендациями.",
+        title: "Book Review",
+        description: "Need a detailed review of a self-development book with your personal impressions and recommendations.",
         price: 1500,
         deadline: "2024-01-18",
         status: "pending",
-        customer: "Дмитрий Л.",
+        customer: "Dmitry L.",
         created: "2024-01-07"
     }
 ];
@@ -47,27 +47,27 @@ const sampleOrders = [
 const sampleServices = [
     {
         id: 1,
-        name: "Персональная консультация",
-        description: "Индивидуальная консультация по стилю и красоте",
-        price: 5000,
+        name: "Personal Consultation",
+        description: "Individual consultation on style and beauty",
+        price: 50,
         limit: 10,
         sold: 7,
         deadline: 3
     },
     {
         id: 2,
-        name: "Обзор товара",
-        description: "Честный обзор любого товара с детальным разбором",
-        price: 2000,
+        name: "Product Review",
+        description: "Honest review of any product with detailed analysis",
+        price: 20,
         limit: null,
         sold: 23,
         deadline: 5
     },
     {
         id: 3,
-        name: "Рецепт блюда",
-        description: "Приготовление и презентация любого блюда",
-        price: 1500,
+        name: "Recipe Creation",
+        description: "Cooking and presentation of any dish",
+        price: 15,
         limit: 20,
         sold: 15,
         deadline: 2
@@ -77,19 +77,19 @@ const sampleServices = [
 const sampleHistory = [
     {
         id: 101,
-        title: "Утренняя рутина",
-        price: 2200,
+        title: "Morning Routine",
+        price: 22,
         completed: "2024-01-05",
         rating: 5,
-        customer: "Ольга М."
+        customer: "Olga M."
     },
     {
         id: 102,
-        title: "Обзор приложения",
-        price: 1800,
+        title: "App Review",
+        price: 18,
         completed: "2024-01-03",
         rating: 4,
-        customer: "Игорь П."
+        customer: "Igor P."
     }
 ];
 
@@ -163,17 +163,17 @@ function loadOrders() {
                     <h3 class="order-title">${order.title}</h3>
                     <div class="order-meta">
                         <span><i class="fas fa-user"></i> ${order.customer}</span>
-                        <span><i class="fas fa-calendar"></i> До ${formatDate(order.deadline)}</span>
+                        <span><i class="fas fa-calendar"></i> Until ${formatDate(order.deadline)}</span>
                         <span class="status-badge status-${order.status}">${getStatusText(order.status)}</span>
                     </div>
                 </div>
-                <div class="order-price">₽${order.price.toLocaleString()}</div>
+                <div class="order-price">$${order.price.toLocaleString()}</div>
             </div>
             <p class="order-description">${order.description}</p>
             <div class="order-actions">
-                <button class="btn btn-primary btn-small" onclick="acceptOrder(${order.id})">Принять</button>
-                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Подробнее</button>
-                <button class="btn btn-danger btn-small" onclick="rejectOrder(${order.id})">Отказаться</button>
+                <button class="btn btn-primary btn-small" onclick="acceptOrder(${order.id})">Accept</button>
+                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Details</button>
+                <button class="btn btn-danger btn-small" onclick="rejectOrder(${order.id})">Reject</button>
             </div>
         </div>
     `).join('');
@@ -185,7 +185,7 @@ function loadServices() {
     
     servicesGrid.innerHTML = sampleServices.map(service => {
         const availability = service.limit ? (service.limit - service.sold) / service.limit * 100 : 100;
-        const availabilityText = service.limit ? `${service.limit - service.sold} из ${service.limit}` : 'Неограниченно';
+        const availabilityText = service.limit ? `${service.limit - service.sold} of ${service.limit}` : 'Unlimited';
         
         return `
             <div class="service-card">
@@ -194,21 +194,21 @@ function loadServices() {
                         <h3 class="service-name">${service.name}</h3>
                         <p class="service-description">${service.description}</p>
                     </div>
-                    <div class="service-price">₽${service.price.toLocaleString()}</div>
+                    <div class="service-price">$${service.price.toLocaleString()}</div>
                 </div>
                 <div class="service-availability">
                     <div class="availability-bar">
                         <div class="availability-fill" style="width: ${availability}%"></div>
                     </div>
-                    <div class="availability-text">Доступно: ${availabilityText}</div>
+                    <div class="availability-text">Available: ${availabilityText}</div>
                 </div>
                 <div class="service-meta">
-                    <span><i class="fas fa-clock"></i> ${service.deadline} дн.</span>
-                    <span><i class="fas fa-shopping-cart"></i> Продано: ${service.sold}</span>
+                    <span><i class="fas fa-clock"></i> ${service.deadline} days</span>
+                    <span><i class="fas fa-shopping-cart"></i> Sold: ${service.sold}</span>
                 </div>
                 <div class="service-actions">
-                    <button class="btn btn-outline btn-small" onclick="editService(${service.id})">Редактировать</button>
-                    <button class="btn btn-danger btn-small" onclick="deleteService(${service.id})">Удалить</button>
+                    <button class="btn btn-outline btn-small" onclick="editService(${service.id})">Edit</button>
+                    <button class="btn btn-danger btn-small" onclick="deleteService(${service.id})">Delete</button>
                 </div>
             </div>
         `;
@@ -226,15 +226,15 @@ function loadHistory() {
                     <h3 class="order-title">${order.title}</h3>
                     <div class="order-meta">
                         <span><i class="fas fa-user"></i> ${order.customer}</span>
-                        <span><i class="fas fa-calendar"></i> Выполнено ${formatDate(order.completed)}</span>
+                        <span><i class="fas fa-calendar"></i> Completed ${formatDate(order.completed)}</span>
                         <span><i class="fas fa-star"></i> ${order.rating}/5</span>
                     </div>
                 </div>
-                <div class="order-price">₽${order.price.toLocaleString()}</div>
+                <div class="order-price">$${order.price.toLocaleString()}</div>
             </div>
             <div class="order-actions">
-                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Подробнее</button>
-                <button class="btn btn-primary btn-small" onclick="createSimilarService(${order.id})">Создать похожую услугу</button>
+                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Details</button>
+                <button class="btn btn-primary btn-small" onclick="createSimilarService(${order.id})">Create Similar Service</button>
             </div>
         </div>
     `).join('');
@@ -268,50 +268,50 @@ function setupEventListeners() {
 
 // Order actions
 function acceptOrder(orderId) {
-    if (confirm('Принять этот заказ?')) {
+    if (confirm('Accept this order?')) {
         const order = sampleOrders.find(o => o.id === orderId);
         if (order) {
             order.status = 'in-progress';
             loadOrders();
-            showNotification('Заказ принят!', 'success');
+            showNotification('Order accepted!', 'success');
         }
     }
 }
 
 function rejectOrder(orderId) {
-    if (confirm('Отказаться от этого заказа? Это действие нельзя отменить.')) {
+    if (confirm('Reject this order? This action cannot be undone.')) {
         const orderIndex = sampleOrders.findIndex(o => o.id === orderId);
         if (orderIndex !== -1) {
             sampleOrders.splice(orderIndex, 1);
             loadOrders();
-            showNotification('Заказ отклонен', 'info');
+            showNotification('Order rejected', 'info');
         }
     }
 }
 
 function viewOrderDetails(orderId) {
     // This would open a detailed view modal
-    showNotification('Открытие деталей заказа...', 'info');
+    showNotification('Opening order details...', 'info');
 }
 
 // Service actions
 function editService(serviceId) {
-    showNotification('Редактирование услуги...', 'info');
+    showNotification('Editing service...', 'info');
 }
 
 function deleteService(serviceId) {
-    if (confirm('Удалить эту услугу?')) {
+    if (confirm('Delete this service?')) {
         const serviceIndex = sampleServices.findIndex(s => s.id === serviceId);
         if (serviceIndex !== -1) {
             sampleServices.splice(serviceIndex, 1);
             loadServices();
-            showNotification('Услуга удалена', 'info');
+            showNotification('Service deleted', 'info');
         }
     }
 }
 
 function createSimilarService(orderId) {
-    showNotification('Создание похожей услуги...', 'info');
+    showNotification('Creating similar service...', 'info');
     openCreateServiceModal();
 }
 
@@ -344,7 +344,7 @@ function handleCreateService(e) {
     sampleServices.push(serviceData);
     loadServices();
     closeCreateServiceModal();
-    showNotification('Услуга создана!', 'success');
+    showNotification('Service created!', 'success');
 }
 
 // Utility functions
@@ -355,10 +355,10 @@ function formatDate(dateString) {
 
 function getStatusText(status) {
     const statusMap = {
-        'new': 'Новый',
-        'in-progress': 'В работе',
-        'pending': 'Ожидает',
-        'completed': 'Выполнен'
+        'new': 'New',
+        'in-progress': 'In Progress',
+        'pending': 'Pending',
+        'completed': 'Completed'
     };
     return statusMap[status] || status;
 }

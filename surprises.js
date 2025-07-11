@@ -27,11 +27,11 @@ function generateDemoOrders() {
         {
             id: Date.now() - 86400000 * 3,
             bloggerId: 1,
-            bloggerName: "Анна Стримова",
-            serviceName: "Поздравление с ДР",
-            donationAmount: 800,
-            recipientName: "Мария",
-            specialRequest: "Поздравить с 25-летием, упомянуть любовь к кошкам",
+            bloggerName: "Anna Streamer",
+        serviceName: "Birthday Greeting",
+        donationAmount: 8,
+        recipientName: "Maria",
+            specialRequest: "Congratulate on 25th birthday, mention love for cats",
             deliveryDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
             paymentMethod: "card",
             orderDate: new Date(Date.now() - 86400000 * 3).toISOString(),
@@ -42,11 +42,11 @@ function generateDemoOrders() {
         {
             id: Date.now() - 86400000 * 2,
             bloggerId: 3,
-            bloggerName: "София Мьюзик",
-            serviceName: "Голосовое поздравление",
-            donationAmount: 1000,
-            recipientName: "Алексей",
-            specialRequest: "Поздравление с повышением на работе",
+            bloggerName: "Sofia Music",
+        serviceName: "Voice Greeting",
+        donationAmount: 10,
+        recipientName: "Alex",
+            specialRequest: "Congratulations on work promotion",
             deliveryDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0],
             paymentMethod: "wallet",
             orderDate: new Date(Date.now() - 86400000 * 2).toISOString(),
@@ -55,11 +55,11 @@ function generateDemoOrders() {
         {
             id: Date.now() - 86400000,
             bloggerId: 4,
-            bloggerName: "Дмитрий Смех",
-            serviceName: "Шуточное поздравление",
-            donationAmount: 800,
-            recipientName: "Игорь",
-            specialRequest: "Поздравить с днем рождения, добавить шутки про программистов",
+            bloggerName: "Dmitry Comedy",
+        serviceName: "Funny Greeting",
+        donationAmount: 8,
+        recipientName: "Igor",
+            specialRequest: "Birthday congratulations, add programmer jokes",
             deliveryDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
             paymentMethod: "card",
             orderDate: new Date(Date.now() - 86400000).toISOString(),
@@ -93,11 +93,11 @@ function updateOrderStatuses() {
 function generateSurpriseUrl(serviceName) {
     // In a real app, this would be actual URLs to completed content
     const urls = {
-        'Поздравление с ДР': 'https://example.com/birthday-video.mp4',
-        'Голосовое поздравление': 'https://example.com/voice-message.mp3',
-        'Шуточное поздравление': 'https://example.com/funny-video.mp4',
-        'Песня на заказ': 'https://example.com/custom-song.mp3',
-        'Мотивационное видео': 'https://example.com/motivation.mp4'
+        'Birthday Greeting': 'https://example.com/birthday-video.mp4',
+    'Voice Greeting': 'https://example.com/voice-message.mp3',
+    'Funny Greeting': 'https://example.com/funny-video.mp4',
+    'Custom Song': 'https://example.com/custom-song.mp3',
+    'Motivational Video': 'https://example.com/motivation.mp4'
     };
     
     return urls[serviceName] || 'https://example.com/surprise.mp4';
@@ -127,9 +127,9 @@ function renderSurprises() {
                 <div class="empty-icon">
                     <i class="fas fa-gift"></i>
                 </div>
-                <h3>Пока нет поддержек</h3>
-                <p>Когда вы поддержите первого блогера, это появится здесь</p>
-                <a href="index.html" class="btn btn-primary">Найти блогера</a>
+                <h3>No support yet</h3>
+            <p>When you support your first blogger, it will appear here</p>
+            <a href="index.html" class="btn btn-primary">Find Blogger</a>
             </div>
         `;
         return;
@@ -159,7 +159,7 @@ function renderOrderCard(order) {
             <div class="surprise-header">
                 <div class="surprise-info">
                     <h3 class="surprise-title">${order.serviceName}</h3>
-                    <p class="surprise-blogger">от ${order.bloggerName}</p>
+                    <p class="surprise-blogger">from ${order.bloggerName}</p>
                 </div>
                 <div class="surprise-status">
                     <span class="status-badge ${order.status}">
@@ -171,24 +171,24 @@ function renderOrderCard(order) {
             
             <div class="surprise-details">
                 <div class="detail-row">
-                    <span class="detail-label">Получатель:</span>
+                    <span class="detail-label">Recipient:</span>
                     <span class="detail-value">${order.recipientName}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Дата заказа:</span>
+                    <span class="detail-label">Order Date:</span>
                     <span class="detail-value">${orderDate}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Дата выполнения:</span>
+                    <span class="detail-label">Completion Date:</span>
                     <span class="detail-value">${deliveryDate}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Размер поддержки:</span>
+                    <span class="detail-label">Support Amount:</span>
                     <span class="detail-value">${order.donationAmount}₽</span>
                 </div>
                 ${order.specialRequest ? `
                     <div class="detail-row">
-                        <span class="detail-label">Пожелания:</span>
+                        <span class="detail-label">Special Requests:</span>
                         <span class="detail-value">${order.specialRequest}</span>
                     </div>
                 ` : ''}
@@ -197,16 +197,16 @@ function renderOrderCard(order) {
             <div class="surprise-actions">
                 ${order.status === 'completed' || order.status === 'delivered' ? `
                     <button class="btn btn-primary" onclick="viewSurprise(${order.id})">
-                        <i class="fas fa-play"></i> Посмотреть сюрприз
+                        <i class="fas fa-play"></i> View Surprise
                     </button>
                 ` : ''}
                 ${order.status === 'pending' ? `
                     <button class="btn btn-outline" onclick="cancelOrder(${order.id})">
-                        <i class="fas fa-times"></i> Отменить
+                        <i class="fas fa-times"></i> Cancel
                     </button>
                 ` : ''}
                 <button class="btn btn-outline" onclick="contactSupport(${order.id})">
-                    <i class="fas fa-headset"></i> Поддержка
+                    <i class="fas fa-headset"></i> Support
                 </button>
             </div>
             
@@ -217,13 +217,13 @@ function renderOrderCard(order) {
 
 function getStatusInfo(status) {
     const statuses = {
-        'pending': { text: 'В обработке', icon: 'fas fa-clock' },
-        'in-progress': { text: 'Выполняется', icon: 'fas fa-spinner fa-spin' },
-        'completed': { text: 'Готово', icon: 'fas fa-check-circle' },
-        'delivered': { text: 'Доставлено', icon: 'fas fa-gift' }
+        'pending': { text: 'Processing', icon: 'fas fa-clock' },
+    'in-progress': { text: 'In Progress', icon: 'fas fa-spinner fa-spin' },
+    'completed': { text: 'Ready', icon: 'fas fa-check-circle' },
+    'delivered': { text: 'Delivered', icon: 'fas fa-gift' }
     };
     
-    return statuses[status] || { text: 'Неизвестно', icon: 'fas fa-question' };
+    return statuses[status] || { text: 'Unknown', icon: 'fas fa-question' };
 }
 
 function renderProgressBar(status) {
@@ -258,33 +258,33 @@ function viewSurprise(orderId) {
         <div class="surprise-preview">
             <div class="surprise-meta">
                 <h4>${order.serviceName}</h4>
-                <p>от ${order.bloggerName} для ${order.recipientName}</p>
-                <span class="completion-date">Готово ${new Date(order.completedDate).toLocaleDateString('ru-RU')}</span>
+                <p>from ${order.bloggerName} for ${order.recipientName}</p>
+            <span class="completion-date">Ready ${new Date(order.completedDate).toLocaleDateString('en-US')}</span>
             </div>
             
             <div class="surprise-media">
-                ${order.serviceName.includes('Голосовое') || order.serviceName.includes('Песня') ? `
+                ${order.serviceName.includes('Voice') || order.serviceName.includes('Song') ? `
                     <div class="audio-player">
                         <i class="fas fa-music"></i>
-                        <p>Аудио-сюрприз готов к прослушиванию</p>
+                        <p>Audio surprise ready for listening</p>
                         <button class="btn btn-primary" onclick="playAudio()">
-                            <i class="fas fa-play"></i> Воспроизвести
+                            <i class="fas fa-play"></i> Play
                         </button>
                     </div>
                 ` : `
                     <div class="video-player">
                         <i class="fas fa-video"></i>
-                        <p>Видео-сюрприз готов к просмотру</p>
+                        <p>Video surprise ready for viewing</p>
                         <button class="btn btn-primary" onclick="playVideo()">
-                            <i class="fas fa-play"></i> Воспроизвести
+                            <i class="fas fa-play"></i> Play
                         </button>
                     </div>
                 `}
             </div>
             
             <div class="surprise-message">
-                <h5>Сообщение от блогера:</h5>
-                <p>"Спасибо за поддержку! Надеюсь, вам понравится результат. Было очень приятно работать над этим сюрпризом!"</p>
+                <h5>Message from blogger:</h5>
+            <p>"Thank you for your support! I hope you like the result. It was very pleasant to work on this surprise!"</p>
             </div>
         </div>
     `;
@@ -306,16 +306,16 @@ function closeSurpriseModal() {
 }
 
 function playAudio() {
-    showNotification('Аудио воспроизводится...', 'info');
+    showNotification('Audio playing...', 'info');
 }
 
 function playVideo() {
-    showNotification('Видео воспроизводится...', 'info');
+    showNotification('Video playing...', 'info');
 }
 
 function downloadSurprise() {
     if (!selectedSurprise) return;
-    showNotification('Сюрприз скачивается...', 'success');
+    showNotification('Surprise downloading...', 'success');
 }
 
 function shareSurprise() {
@@ -323,25 +323,25 @@ function shareSurprise() {
     
     if (navigator.share) {
         navigator.share({
-            title: `Сюрприз от ${selectedSurprise.bloggerName}`,
-            text: `Посмотрите, какой классный сюрприз я получил от ${selectedSurprise.bloggerName}!`,
+            title: `Surprise from ${selectedSurprise.bloggerName}`,
+        text: `Look what an awesome surprise I got from ${selectedSurprise.bloggerName}!`,
             url: window.location.href
         });
     } else {
         // Fallback for browsers that don't support Web Share API
         navigator.clipboard.writeText(window.location.href);
-        showNotification('Ссылка скопирована в буфер обмена', 'success');
+        showNotification('Link copied to clipboard', 'success');
     }
 }
 
 function cancelOrder(orderId) {
-    if (confirm('Вы уверены, что хотите отменить поддержку?')) {
+    if (confirm('Are you sure you want to cancel the support?')) {
         const orderIndex = userOrders.findIndex(o => o.id === orderId);
         if (orderIndex !== -1) {
             userOrders.splice(orderIndex, 1);
             localStorage.setItem('userOrders', JSON.stringify(userOrders));
             renderSurprises();
-            showNotification('Поддержка отменена', 'info');
+            showNotification('Support cancelled', 'info');
         }
     }
 }
@@ -349,7 +349,7 @@ function cancelOrder(orderId) {
 function contactSupport(orderId) {
     const order = userOrders.find(o => o.id === orderId);
     if (order) {
-        showNotification('Перенаправление в службу поддержки...', 'info');
+        showNotification('Redirecting to support service...', 'info');
         // In a real app, this would open a support chat or form
     }
 }
