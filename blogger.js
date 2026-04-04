@@ -182,8 +182,7 @@ function openBookingModal(index) {
         </div>
     `;
     
-    document.getElementById('totalPriceRub').innerText = `$${selectedSupportOption.donationAmount}`;
-    document.getElementById('totalPriceCrypto').innerText = `≈ ${selectedSupportOption.priceEth}`;
+    updateCryptoPrice();
     
     // Set min date to today
     const dateInput = document.getElementById('deliveryDate');
@@ -195,6 +194,37 @@ function openBookingModal(index) {
     document.body.style.overflow = 'hidden';
 }
 
+function updateCryptoPrice() {
+    if (!selectedSupportOption) return;
+    
+    const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+    const usdAmount = selectedSupportOption.donationAmount;
+    
+    let cryptoAmount = 0;
+    let symbol = '';
+    
+    // Mock exchange rates
+    const rates = {
+        'ethereum': 0.00032, // 1 USD = 0.00032 ETH
+        'solana': 0.0065,    // 1 USD = 0.0065 SOL
+        'polygon': 1.2,      // 1 USD = 1.2 POL
+        'ton': 0.18          // 1 USD = 0.18 TON
+    };
+    
+    const symbols = {
+        'ethereum': 'ETH',
+        'solana': 'SOL',
+        'polygon': 'POL',
+        'ton': 'TON'
+    };
+    
+    cryptoAmount = (usdAmount * rates[method]).toFixed(method === 'ethereum' ? 5 : 2);
+    symbol = symbols[method];
+    
+    document.getElementById('totalPriceRub').innerText = `$${usdAmount}`;
+    document.getElementById('totalPriceCrypto').innerText = `≈ ${cryptoAmount} ${symbol}`;
+}
+
 function closeModal() {
     document.getElementById('bookingModal').classList.remove('active');
     document.body.style.overflow = 'auto';
@@ -202,6 +232,13 @@ function closeModal() {
 
 function setupEventListeners() {
     const form = document.getElementById('bookingForm');
+    
+    // Listen for payment method changes
+    const paymentInputs = document.querySelectorAll('input[name="paymentMethod"]');
+    paymentInputs.forEach(input => {
+        input.addEventListener('change', updateCryptoPrice);
+    });
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');

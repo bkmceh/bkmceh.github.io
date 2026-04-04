@@ -11,9 +11,9 @@ const bloggers = [
         socials: { instagram: "@anna_live", youtube: "AnnaGames", twitter: "@annastream" },
         description: "Professional gamer and variety streamer. I love interacting with my community and creating unique moments for my fans!",
         supportOptions: [
-            { name: "Birthday Greeting", donationAmount: 8, priceEth: "0.0032 ETH", available: 15, total: 50 },
-            { name: "Gaming Session", donationAmount: 12, priceEth: "0.0048 ETH", available: 8, total: 20 },
-            { name: "Personal Advice", donationAmount: 6, priceEth: "0.0024 ETH", available: 25, total: 30 }
+            { name: "Birthday Greeting", donationAmount: 8, available: 15, total: 50 },
+            { name: "Gaming Session", donationAmount: 12, available: 8, total: 20 },
+            { name: "Personal Advice", donationAmount: 6, available: 25, total: 30 }
         ],
         reviews: [
             { author: "GamerPro", rating: 5, text: "Anna's birthday greeting was amazing! My brother was so happy.", avatar: "G" },
@@ -35,9 +35,9 @@ const bloggers = [
         socials: { instagram: "@maxlife_official", tiktok: "@maxlife" },
         description: "Living life to the fullest! I share daily vlogs, life hacks, and motivation to help you be your best self.",
         supportOptions: [
-            { name: "Motivational Video", donationAmount: 7, priceEth: "0.0028 ETH", available: 12, total: 40 },
-            { name: "Greeting", donationAmount: 5, priceEth: "0.002 ETH", available: 20, total: 35 },
-            { name: "Custom Life Hack", donationAmount: 9, priceEth: "0.0036 ETH", available: 5, total: 15 }
+            { name: "Motivational Video", donationAmount: 7, available: 12, total: 40 },
+            { name: "Greeting", donationAmount: 5, available: 20, total: 35 },
+            { name: "Custom Life Hack", donationAmount: 9, available: 5, total: 15 }
         ],
         reviews: [
             { author: "SaraW", rating: 4, text: "Great motivation, thanks Max!", avatar: "S" }
@@ -57,9 +57,9 @@ const bloggers = [
         socials: { instagram: "@sofia_melodies", youtube: "SofiaMusicChannel", spotify: "Sofia Melodies" },
         description: "Singer and songwriter. I turn your stories into songs. Let's create something beautiful together!",
         supportOptions: [
-            { name: "Custom Song", donationAmount: 20, priceEth: "0.008 ETH", available: 3, total: 10 },
-            { name: "Voice Greeting", donationAmount: 10, priceEth: "0.004 ETH", available: 18, total: 25 },
-            { name: "Favorite Song Cover", donationAmount: 15, priceEth: "0.006 ETH", available: 7, total: 15 }
+            { name: "Custom Song", donationAmount: 20, available: 3, total: 10 },
+            { name: "Voice Greeting", donationAmount: 10, available: 18, total: 25 },
+            { name: "Favorite Song Cover", donationAmount: 15, available: 7, total: 15 }
         ],
         reviews: [
             { author: "MelodyFan", rating: 5, text: "Sofia has the voice of an angel. The custom song for my wedding was perfect.", avatar: "M" }
@@ -79,9 +79,9 @@ const bloggers = [
         socials: { instagram: "@dima_jokes", tiktok: "@dima_comedy" },
         description: "Making the world laugh, one joke at a time. Need a laugh? I've got you covered!",
         supportOptions: [
-            { name: "Funny Greeting", donationAmount: 8, priceEth: "0.0032 ETH", available: 22, total: 40 },
-            { name: "Custom Stand-up", donationAmount: 12, priceEth: "0.0048 ETH", available: 6, total: 12 },
-            { name: "Friend Prank", donationAmount: 10, priceEth: "0.004 ETH", available: 10, total: 20 }
+            { name: "Funny Greeting", donationAmount: 8, available: 22, total: 40 },
+            { name: "Custom Stand-up", donationAmount: 12, available: 6, total: 12 },
+            { name: "Friend Prank", donationAmount: 10, available: 10, total: 20 }
         ],
         reviews: [
             { author: "LaughterLover", rating: 5, text: "Dmitry is hilarious! The prank on my friend was legendary.", avatar: "L" }

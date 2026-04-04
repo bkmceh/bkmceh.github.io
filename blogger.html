@@ -97,16 +97,26 @@
                     
                     <div style="margin-top: 2rem;">
                         <h4 style="margin-bottom: 1rem;">Payment Method</h4>
-                        <div class="payment-methods">
+                        <div class="payment-methods" style="grid-template-columns: repeat(2, 1fr);">
                             <label class="payment-method">
                                 <input type="radio" name="paymentMethod" value="ethereum" checked>
-                                <i class="fab fa-ethereum"></i>
+                                <i class="fab fa-ethereum" style="color: #627EEA;"></i>
                                 <span>Ethereum</span>
                             </label>
                             <label class="payment-method">
-                                <input type="radio" name="paymentMethod" value="bitcoin">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Bitcoin</span>
+                                <input type="radio" name="paymentMethod" value="solana">
+                                <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=024" alt="Solana" style="width: 1.25rem; height: 1.25rem;">
+                                <span>Solana</span>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="polygon">
+                                <img src="https://cryptologos.cc/logos/polygon-matic-logo.svg?v=024" alt="Polygon" style="width: 1.25rem; height: 1.25rem;">
+                                <span>Polygon</span>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="ton">
+                                <img src="https://cryptologos.cc/logos/toncoin-ton-logo.svg?v=024" alt="TON" style="width: 1.25rem; height: 1.25rem;">
+                                <span>TON</span>
                             </label>
                         </div>
                     </div>

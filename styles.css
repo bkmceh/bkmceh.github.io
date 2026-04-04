@@ -126,6 +126,8 @@ body {
     cursor: pointer;
     border: 1px solid transparent;
     gap: 0.5rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -148,6 +150,26 @@ body {
 .btn-outline:hover {
     background: var(--surface-hover);
     border-color: var(--border-hover);
+}
+
+/* Back Button Specific */
+.back-button {
+    margin-bottom: 2.5rem;
+}
+
+.back-button .btn-outline {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    border-radius: 0.625rem;
+}
+
+.back-button .btn-outline:hover {
+    color: var(--text-main);
+    border-color: var(--primary);
+    transform: translateX(-4px);
 }
 
 .btn-full {
