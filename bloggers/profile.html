@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogger Profile - FunSay</title>
+    <title>Creator Dashboard - FunSay</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="blogger-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="logo">FunSay</div>
+        <nav class="nav container">
+            <div class="nav-brand">
+                <h1 class="logo" onclick="window.location.href='index.html'">FunSay</h1>
+            </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="#" class="nav-link">How It Works</a>
-                <a href="#" class="nav-link">Benefits</a>
-                <a href="profile.html" class="nav-link active">Profile</a>
+                <a href="#" class="nav-link">Settings</a>
+                <a href="profile.html" class="nav-link active">Dashboard</a>
             </div>
             <div class="nav-auth">
-                <a href="#" class="btn btn-outline">Settings</a>
-                <a href="#" class="btn btn-primary">Sign Out</a>
+                <button class="btn btn-outline">Sign Out</button>
             </div>
         </nav>
     </header>
 
-    <!-- Profile Header -->
     <section class="profile-header">
         <div class="container">
             <div class="profile-info">
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div class="profile-avatar">AS</div>
                 <div class="profile-details">
-                    <h1>Anna Blogger</h1>
-                    <p class="profile-description">Lifestyle Blogger | Verified Account</p>
+                    <h1>Anna Streamer</h1>
+                    <p class="profile-description">Gaming & Lifestyle Creator • Verified Account</p>
                     <div class="profile-stats">
                         <div class="stat-item">
-                            <div class="stat-value">24</div>
-                            <div class="stat-label">Active Orders</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Active</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value">156</div>
+                            <div class="stat-value">342</div>
                             <div class="stat-label">Completed</div>
                         </div>
                         <div class="stat-item">
@@ -51,8 +47,8 @@
                             <div class="stat-label">Rating</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value">$452</div>
-                            <div class="stat-label">Earned</div>
+                            <div class="stat-value">$2,450</div>
+                            <div class="stat-label">Earnings</div>
                         </div>
                     </div>
                 </div>
@@ -60,154 +56,122 @@
         </div>
     </section>
 
-    <!-- Dashboard -->
-    <section class="dashboard">
-        <div class="container">
-            <div class="dashboard-nav">
-                <button class="dashboard-tab active" data-tab="orders">Active Orders</button>
-                <button class="dashboard-tab" data-tab="services">My Services</button>
-                <button class="dashboard-tab" data-tab="history">History</button>
-                <button class="dashboard-tab" data-tab="analytics">Analytics</button>
+    <main class="dashboard container">
+        <div class="dashboard-nav">
+            <button class="dashboard-tab active" data-tab="orders">Requests</button>
+            <button class="dashboard-tab" data-tab="services">My Offers</button>
+            <button class="dashboard-tab" data-tab="analytics">Analytics</button>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Orders Tab -->
+            <div class="tab-content active" id="orders">
+                <div class="orders-header" style="margin-bottom: 2rem; align-items: flex-end;">
+                    <div>
+                        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">Fan Requests</h2>
+                        <div class="order-status-tabs" style="display: flex; gap: 0.75rem; background: var(--surface); padding: 0.375rem; border-radius: 0.75rem; border: 1px solid var(--border);">
+                            <button class="status-tab active" data-status="new">New</button>
+                            <button class="status-tab" data-status="in-progress">In Progress</button>
+                            <button class="status-tab" data-status="completed">Completed</button>
+                        </div>
+                    </div>
+                    <div class="orders-filters">
+                        <label style="display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase;">Sort By</label>
+                        <select class="filter-select" id="sortBy">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="price-asc">Price: Low to High</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="ordersGrid">
+                    <!-- Loaded via JS -->
+                </div>
             </div>
 
-            <div class="dashboard-content">
-                <!-- Orders Tab -->
-                <div class="tab-content active" id="orders">
-                    <div class="orders-header">
-                        <h2>Active Orders</h2>
-                        <div class="orders-filters">
-                            <select class="filter-select" id="sortBy">
-                                <option value="date">By Date</option>
-                                <option value="price">By Price</option>
-                                <option value="deadline">By Deadline</option>
-                            </select>
-                            <select class="filter-select" id="filterStatus">
-                                <option value="all">All Statuses</option>
-                                <option value="new">New</option>
-                                <option value="in-progress">In Progress</option>
-                                <option value="pending">Pending</option>
-                            </select>
+            <!-- Services Tab -->
+            <div class="tab-content" id="services" style="display: none;">
+                <div class="services-header">
+                    <h2 style="font-size: 1.5rem; font-weight: 800;">My Offerings</h2>
+                    <button class="btn btn-primary" onclick="openCreateServiceModal()">
+                        <i class="fas fa-plus"></i> New Offer
+                    </button>
+                </div>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Loaded via JS -->
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics" style="display: none;">
+                <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem;">Performance Overview</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Total Revenue</h3>
+                        <div class="analytics-value">$2,450</div>
+                        <div class="analytics-change positive">
+                            <i class="fas fa-arrow-up"></i> 12.5%
                         </div>
                     </div>
-                    <div class="orders-grid" id="ordersGrid">
-                        <!-- Orders will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- Services Tab -->
-                <div class="tab-content" id="services">
-                    <div class="services-header">
-                        <h2>My Services</h2>
-                        <button class="btn btn-primary" onclick="openCreateServiceModal()">Create Service</button>
-                    </div>
-                    <div class="services-grid" id="servicesGrid">
-                        <!-- Services will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- History Tab -->
-                <div class="tab-content" id="history">
-                    <h2>Order History</h2>
-                    <div class="orders-grid" id="historyGrid">
-                        <!-- History will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- Analytics Tab -->
-                <div class="tab-content" id="analytics">
-                    <h2>Analytics</h2>
-                    <div class="analytics-grid">
-                        <div class="analytics-card">
-                            <h3>Monthly Income</h3>
-                            <div class="analytics-value">$125</div>
-                            <div class="analytics-change positive">+15% from last month</div>
+                    <div class="analytics-card">
+                        <h3>Fan Retention</h3>
+                        <div class="analytics-value">84%</div>
+                        <div class="analytics-change positive">
+                            <i class="fas fa-arrow-up"></i> 3.2%
                         </div>
-                        <div class="analytics-card">
-                            <h3>Average Check</h3>
-                            <div class="analytics-value">$85</div>
-                            <div class="analytics-change positive">+5% from last month</div>
-                        </div>
-                        <div class="analytics-card">
-                            <h3>Conversion</h3>
-                            <div class="analytics-value">78%</div>
-                            <div class="analytics-change negative">-2% from last month</div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Response Time</h3>
+                        <div class="analytics-value">1.2d</div>
+                        <div class="analytics-change negative">
+                            <i class="fas fa-arrow-down"></i> 0.4d
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Create Service Modal -->
+    <!-- Modal for service creation -->
     <div class="modal" id="createServiceModal">
+        <div class="modal-overlay" onclick="closeCreateServiceModal()"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Create New Service</h3>
+                <h3>Create New Offer</h3>
                 <button class="modal-close" onclick="closeCreateServiceModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="createServiceForm">
-                <div class="form-group">
-                    <label class="form-label" for="serviceName">Service Name</label>
-                    <input type="text" class="form-input" id="serviceName" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="serviceDescription">Description</label>
-                    <textarea class="form-textarea" id="serviceDescription" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="servicePrice">Price (₽)</label>
-                    <input type="number" class="form-input" id="servicePrice" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="serviceLimit">Limited Quantity</label>
-                    <input type="number" class="form-input" id="serviceLimit" min="1" placeholder="Leave empty for unlimited">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="serviceDeadline">Delivery Time (days)</label>
-                    <input type="number" class="form-input" id="serviceDeadline" min="1" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeCreateServiceModal()">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Service</button>
-                </div>
-            </form>
+            <div class="modal-body">
+                <form id="createServiceForm">
+                    <div class="form-group">
+                        <label>Offer Name</label>
+                        <input type="text" id="serviceName" placeholder="e.g. Birthday Shoutout" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="serviceDescription" rows="3" placeholder="What will the fan get?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price ($)</label>
+                        <input type="number" id="servicePrice" min="1" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Max Availability (Optional)</label>
+                        <input type="number" id="serviceLimit" min="1" placeholder="Unlimited if empty">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" style="margin-top: 2rem;">
+                        Publish Offer
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>FunSay</h3>
-                    <p>Safe platform for blogger and follower interaction</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Platform</h4>
-                        <a href="#">How It Works</a>
-                        <a href="#">Security</a>
-                        <a href="#">Support</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>For Bloggers</h4>
-                        <a href="#">Registration</a>
-                        <a href="#">Profile</a>
-                        <a href="#">Earnings</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Contacts</h4>
-                        <a href="#">Support</a>
-                        <a href="#">Telegram</a>
-                        <a href="#">Email</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 FunSay. All rights reserved.</p>
-            </div>
+        <div class="container" style="text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+            <p>&copy; 2026 FunSay Creator Portal. All rights reserved.</p>
         </div>
     </footer>
 

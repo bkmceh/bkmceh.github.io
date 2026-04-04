@@ -1,500 +1,266 @@
-// Blogger Platform JavaScript
-
-// Sample data
-const sampleOrders = [
+// Creator Platform Logic
+let sampleOrders = [
     {
         id: 1,
-        title: "Cosmetics Review",
-        description: "Need an honest review of a new cosmetics line from a well-known brand. Important to show texture, colors and application results.",
-        price: 2500,
-        deadline: "2024-01-15",
+        title: "Birthday Greeting for Maria",
+        description: "Please record a 1-minute video for my friend Maria. She loves your gaming streams!",
+        price: 8.00,
+        deadline: "2026-04-10",
         status: "new",
-        customer: "Maria K.",
-        created: "2024-01-10"
+        customer: "Alex K.",
+        created: "2026-04-04T10:00:00Z"
     },
     {
         id: 2,
-        title: "Healthy Breakfast Recipe",
-        description: "Show how to cook a healthy and delicious breakfast in 15 minutes. Need to include calories and benefits of ingredients.",
-        price: 1800,
-        deadline: "2024-01-12",
+        title: "Gaming Session Request",
+        description: "Would love to play one round of Battle Arena with you this weekend.",
+        price: 12.00,
+        deadline: "2026-04-08",
         status: "in-progress",
-        customer: "Anna S.",
-        created: "2024-01-08"
+        customer: "ProGamer99",
+        created: "2026-04-03T15:30:00Z"
     },
     {
         id: 3,
-        title: "Home Workout",
-        description: "Show an effective home workout without special equipment. Duration 30 minutes.",
-        price: 3200,
-        deadline: "2024-01-20",
+        title: "Custom Song for Wedding",
+        description: "Need a short melody for my wedding anniversary. Something romantic and sweet.",
+        price: 25.00,
+        deadline: "2026-04-15",
         status: "new",
-        customer: "Elena V.",
-        created: "2024-01-09"
+        customer: "James L.",
+        created: "2026-04-05T09:00:00Z"
     },
     {
         id: 4,
-        title: "Book Review",
-        description: "Need a detailed review of a self-development book with your personal impressions and recommendations.",
-        price: 1500,
-        deadline: "2024-01-18",
-        status: "pending",
-        customer: "Dmitry L.",
-        created: "2024-01-07"
+        title: "Personal Shoutout",
+        description: "Shoutout to my brother who just graduated from university!",
+        price: 5.00,
+        deadline: "2026-04-05",
+        status: "completed",
+        customer: "Linda M.",
+        created: "2026-04-01T11:00:00Z"
+    },
+    {
+        id: 5,
+        title: "Gameplay Review",
+        description: "Analyze my gameplay and give some tips on how to improve my strategy.",
+        price: 15.00,
+        deadline: "2026-04-12",
+        status: "in-progress",
+        customer: "NoobMaster",
+        created: "2026-04-02T14:20:00Z"
     }
 ];
 
 const sampleServices = [
-    {
-        id: 1,
-        name: "Personal Consultation",
-        description: "Individual consultation on style and beauty",
-        price: 50,
-        limit: 10,
-        sold: 7,
-        deadline: 3
-    },
-    {
-        id: 2,
-        name: "Product Review",
-        description: "Honest review of any product with detailed analysis",
-        price: 20,
-        limit: null,
-        sold: 23,
-        deadline: 5
-    },
-    {
-        id: 3,
-        name: "Recipe Creation",
-        description: "Cooking and presentation of any dish",
-        price: 15,
-        limit: 20,
-        sold: 15,
-        deadline: 2
-    }
+    { id: 1, name: "Birthday Greeting", description: "Personal video shoutout for birthdays.", price: 8, sold: 156, total: 500 },
+    { id: 2, name: "Gaming Session", description: "Play together for 30 minutes.", price: 12, sold: 42, total: 100 }
 ];
 
-const sampleHistory = [
-    {
-        id: 101,
-        title: "Morning Routine",
-        price: 22,
-        completed: "2024-01-05",
-        rating: 5,
-        customer: "Olga M."
-    },
-    {
-        id: 102,
-        title: "App Review",
-        price: 18,
-        completed: "2024-01-03",
-        rating: 4,
-        customer: "Igor P."
-    }
-];
+let currentOrderStatus = 'new';
+let currentOrderSort = 'date-desc';
 
-// DOM Elements
-let currentTab = 'orders';
-let currentSort = 'date';
-let currentFilter = 'all';
-
-// Initialize page
 document.addEventListener('DOMContentLoaded', function() {
-    initializeTabs();
-    loadOrders();
-    loadServices();
-    loadHistory();
-    setupEventListeners();
+    initDashboard();
 });
 
-// Tab functionality
-function initializeTabs() {
+function initDashboard() {
+    setupTabs();
+    setupOrderStatusTabs();
+    setupSorting();
+    renderOrders();
+    renderServices();
+    setupForm();
+}
+
+function setupTabs() {
     const tabs = document.querySelectorAll('.dashboard-tab');
-    const contents = document.querySelectorAll('.tab-content');
-    
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            const tabName = tab.dataset.tab;
-            
-            // Update active tab
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             
-            // Update active content
-            contents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === tabName) {
-                    content.classList.add('active');
-                }
+            const target = tab.dataset.tab;
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = content.id === target ? 'block' : 'none';
             });
-            
-            currentTab = tabName;
         });
     });
 }
 
-// Load orders
-function loadOrders() {
-    const ordersGrid = document.getElementById('ordersGrid');
-    let filteredOrders = [...sampleOrders];
-    
-    // Apply filters
-    if (currentFilter !== 'all') {
-        filteredOrders = filteredOrders.filter(order => order.status === currentFilter);
-    }
-    
-    // Apply sorting
-    filteredOrders.sort((a, b) => {
-        switch (currentSort) {
-            case 'price':
-                return b.price - a.price;
-            case 'deadline':
-                return new Date(a.deadline) - new Date(b.deadline);
-            case 'date':
-            default:
-                return new Date(b.created) - new Date(a.created);
-        }
+function setupOrderStatusTabs() {
+    const statusTabs = document.querySelectorAll('.status-tab');
+    statusTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            statusTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentOrderStatus = tab.dataset.status;
+            renderOrders();
+        });
     });
-    
-    ordersGrid.innerHTML = filteredOrders.map(order => `
-        <div class="order-card">
-            <div class="order-header">
-                <div>
-                    <h3 class="order-title">${order.title}</h3>
-                    <div class="order-meta">
-                        <span><i class="fas fa-user"></i> ${order.customer}</span>
-                        <span><i class="fas fa-calendar"></i> Until ${formatDate(order.deadline)}</span>
-                        <span class="status-badge status-${order.status}">${getStatusText(order.status)}</span>
-                    </div>
-                </div>
-                <div class="order-price">$${order.price.toLocaleString()}</div>
-            </div>
-            <p class="order-description">${order.description}</p>
-            <div class="order-actions">
-                <button class="btn btn-primary btn-small" onclick="acceptOrder(${order.id})">Accept</button>
-                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Details</button>
-                <button class="btn btn-danger btn-small" onclick="rejectOrder(${order.id})">Reject</button>
-            </div>
-        </div>
-    `).join('');
 }
 
-// Load services
-function loadServices() {
-    const servicesGrid = document.getElementById('servicesGrid');
-    
-    servicesGrid.innerHTML = sampleServices.map(service => {
-        const availability = service.limit ? (service.limit - service.sold) / service.limit * 100 : 100;
-        const availabilityText = service.limit ? `${service.limit - service.sold} of ${service.limit}` : 'Unlimited';
-        
-        return `
-            <div class="service-card">
-                <div class="service-header">
-                    <div>
-                        <h3 class="service-name">${service.name}</h3>
-                        <p class="service-description">${service.description}</p>
-                    </div>
-                    <div class="service-price">$${service.price.toLocaleString()}</div>
-                </div>
-                <div class="service-availability">
-                    <div class="availability-bar">
-                        <div class="availability-fill" style="width: ${availability}%"></div>
-                    </div>
-                    <div class="availability-text">Available: ${availabilityText}</div>
-                </div>
-                <div class="service-meta">
-                    <span><i class="fas fa-clock"></i> ${service.deadline} days</span>
-                    <span><i class="fas fa-shopping-cart"></i> Sold: ${service.sold}</span>
-                </div>
-                <div class="service-actions">
-                    <button class="btn btn-outline btn-small" onclick="editService(${service.id})">Edit</button>
-                    <button class="btn btn-danger btn-small" onclick="deleteService(${service.id})">Delete</button>
-                </div>
+function setupSorting() {
+    const sortBy = document.getElementById('sortBy');
+    if (sortBy) {
+        sortBy.addEventListener('change', (e) => {
+            currentOrderSort = e.target.value;
+            renderOrders();
+        });
+    }
+}
+
+function renderOrders() {
+    const grid = document.getElementById('ordersGrid');
+    if (!grid) return;
+
+    // Filter by status
+    let filteredOrders = sampleOrders.filter(order => order.status === currentOrderStatus);
+
+    // Sort
+    filteredOrders.sort((a, b) => {
+        const [field, direction] = currentOrderSort.split('-');
+        if (field === 'date') {
+            const dateA = new Date(a.created);
+            const dateB = new Date(b.created);
+            return direction === 'desc' ? dateB - dateA : dateA - dateB;
+        } else if (field === 'price') {
+            return direction === 'desc' ? b.price - a.price : a.price - b.price;
+        }
+        return 0;
+    });
+
+    if (filteredOrders.length === 0) {
+        grid.innerHTML = `
+            <div style="text-align: center; padding: 4rem 2rem; background: var(--surface); border-radius: 1.5rem; border: 1px dashed var(--border);">
+                <i class="fas fa-inbox" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--text-muted); font-size: 1.125rem;">No ${currentOrderStatus} requests yet.</h3>
             </div>
         `;
-    }).join('');
-}
+        return;
+    }
 
-// Load history
-function loadHistory() {
-    const historyGrid = document.getElementById('historyGrid');
-    
-    historyGrid.innerHTML = sampleHistory.map(order => `
+    grid.innerHTML = filteredOrders.map(order => `
         <div class="order-card">
             <div class="order-header">
                 <div>
-                    <h3 class="order-title">${order.title}</h3>
-                    <div class="order-meta">
-                        <span><i class="fas fa-user"></i> ${order.customer}</span>
-                        <span><i class="fas fa-calendar"></i> Completed ${formatDate(order.completed)}</span>
-                        <span><i class="fas fa-star"></i> ${order.rating}/5</span>
-                    </div>
+                    <span class="status-badge status-${order.status}">${getStatusLabel(order.status)}</span>
+                    <h3 class="order-title" style="margin-top: 0.75rem;">${order.title}</h3>
                 </div>
-                <div class="order-price">$${order.price.toLocaleString()}</div>
+                <div class="order-price">$${order.price}</div>
             </div>
-            <div class="order-actions">
-                <button class="btn btn-outline btn-small" onclick="viewOrderDetails(${order.id})">Details</button>
-                <button class="btn btn-primary btn-small" onclick="createSimilarService(${order.id})">Create Similar Service</button>
+            <div class="order-meta">
+                <span><i class="fas fa-user"></i> ${order.customer}</span>
+                <span><i class="fas fa-clock"></i> Due ${new Date(order.deadline).toLocaleDateString()}</span>
+            </div>
+            <p class="order-description">${order.description}</p>
+            <div style="display: flex; gap: 1rem;">
+                ${getActionButtons(order)}
             </div>
         </div>
     `).join('');
 }
 
-// Setup event listeners
-function setupEventListeners() {
-    const sortSelect = document.getElementById('sortBy');
-    const filterSelect = document.getElementById('filterStatus');
-    
-    if (sortSelect) {
-        sortSelect.addEventListener('change', (e) => {
-            currentSort = e.target.value;
-            loadOrders();
-        });
-    }
-    
-    if (filterSelect) {
-        filterSelect.addEventListener('change', (e) => {
-            currentFilter = e.target.value;
-            loadOrders();
-        });
-    }
-    
-    // Create service form
-    const createServiceForm = document.getElementById('createServiceForm');
-    if (createServiceForm) {
-        createServiceForm.addEventListener('submit', handleCreateService);
-    }
+function getStatusLabel(status) {
+    const labels = {
+        'new': 'New Request',
+        'in-progress': 'Working',
+        'completed': 'Completed'
+    };
+    return labels[status] || status;
 }
 
-// Order actions
-function acceptOrder(orderId) {
-    if (confirm('Accept this order?')) {
-        const order = sampleOrders.find(o => o.id === orderId);
-        if (order) {
-            order.status = 'in-progress';
-            loadOrders();
-            showNotification('Order accepted!', 'success');
-        }
+function getActionButtons(order) {
+    if (order.status === 'new') {
+        return `
+            <button class="btn btn-primary" onclick="updateOrderStatus(${order.id}, 'in-progress')">
+                <i class="fas fa-check"></i> Accept Request
+            </button>
+            <button class="btn btn-outline" style="color: #ef4444; border-color: #ef4444;" onclick="alert('Request declined')">Decline</button>
+        `;
+    } else if (order.status === 'in-progress') {
+        return `
+            <button class="btn btn-primary" onclick="updateOrderStatus(${order.id}, 'completed')">
+                <i class="fas fa-upload"></i> Deliver Surprise
+            </button>
+            <button class="btn btn-outline" onclick="alert('Viewing details...')">Details</button>
+        `;
+    } else {
+        return `
+            <button class="btn btn-outline" onclick="alert('Opening delivered content...')">View Content</button>
+            <button class="btn btn-outline" onclick="alert('Opening support chat...')">Support</button>
+        `;
     }
 }
 
-function rejectOrder(orderId) {
-    if (confirm('Reject this order? This action cannot be undone.')) {
-        const orderIndex = sampleOrders.findIndex(o => o.id === orderId);
-        if (orderIndex !== -1) {
-            sampleOrders.splice(orderIndex, 1);
-            loadOrders();
-            showNotification('Order rejected', 'info');
-        }
+function updateOrderStatus(orderId, newStatus) {
+    const order = sampleOrders.find(o => o.id === orderId);
+    if (order) {
+        order.status = newStatus;
+        showSuccessNotification(`Request updated to ${newStatus}`);
+        renderOrders();
     }
 }
 
-function viewOrderDetails(orderId) {
-    // This would open a detailed view modal
-    showNotification('Opening order details...', 'info');
+function renderServices() {
+    const grid = document.getElementById('servicesGrid');
+    if (!grid) return;
+
+    grid.innerHTML = sampleServices.map(service => `
+        <div class="order-card">
+            <div class="order-header">
+                <h3 class="order-title">${service.name}</h3>
+                <div class="order-price">$${service.price}</div>
+            </div>
+            <p class="order-description">${service.description}</p>
+            <div class="order-meta">
+                <span><i class="fas fa-shopping-cart"></i> ${service.sold} sold</span>
+                <span><i class="fas fa-check-circle"></i> Active</span>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-outline" onclick="alert('Editing...')">Edit</button>
+                <button class="btn btn-outline" style="color: #ef4444; border-color: #ef4444;" onclick="alert('Pausing...')">Pause</button>
+            </div>
+        </div>
+    `).join('');
 }
 
-// Service actions
-function editService(serviceId) {
-    showNotification('Editing service...', 'info');
-}
-
-function deleteService(serviceId) {
-    if (confirm('Delete this service?')) {
-        const serviceIndex = sampleServices.findIndex(s => s.id === serviceId);
-        if (serviceIndex !== -1) {
-            sampleServices.splice(serviceIndex, 1);
-            loadServices();
-            showNotification('Service deleted', 'info');
-        }
-    }
-}
-
-function createSimilarService(orderId) {
-    showNotification('Creating similar service...', 'info');
-    openCreateServiceModal();
-}
-
-// Modal functions
 function openCreateServiceModal() {
-    const modal = document.getElementById('createServiceModal');
-    modal.classList.add('active');
+    document.getElementById('createServiceModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeCreateServiceModal() {
-    const modal = document.getElementById('createServiceModal');
-    modal.classList.remove('active');
-    document.getElementById('createServiceForm').reset();
+    document.getElementById('createServiceModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
 
-function handleCreateService(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const serviceData = {
-        id: sampleServices.length + 1,
-        name: document.getElementById('serviceName').value,
-        description: document.getElementById('serviceDescription').value,
-        price: parseInt(document.getElementById('servicePrice').value),
-        limit: document.getElementById('serviceLimit').value ? parseInt(document.getElementById('serviceLimit').value) : null,
-        deadline: parseInt(document.getElementById('serviceDeadline').value),
-        sold: 0
-    };
-    
-    sampleServices.push(serviceData);
-    loadServices();
-    closeCreateServiceModal();
-    showNotification('Service created!', 'success');
+function setupForm() {
+    const form = document.getElementById('createServiceForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showSuccessNotification('Service published successfully!');
+        closeCreateServiceModal();
+    });
 }
 
-// Utility functions
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('ru-RU');
-}
-
-function getStatusText(status) {
-    const statusMap = {
-        'new': 'New',
-        'in-progress': 'In Progress',
-        'pending': 'Pending',
-        'completed': 'Completed'
-    };
-    return statusMap[status] || status;
-}
-
-function showNotification(message, type = 'info') {
-    // Create notification element
+function showSuccessNotification(message) {
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    // Style the notification
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        box-shadow: var(--card-shadow);
-        z-index: 1001;
-        max-width: 300px;
-        animation: slideIn 0.3s ease;
+    notification.className = 'success-notification';
+    notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <div>
+            <h4 style="margin-bottom: 0.25rem;">Success</h4>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">${message}</p>
+        </div>
     `;
-    
-    // Add to page
     document.body.appendChild(notification);
     
-    // Remove after 3 seconds
+    setTimeout(() => notification.classList.add('show'), 100);
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 3000);
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
 }
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-    
-    .status-badge {
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-    
-    .status-new {
-        background: #e3f2fd;
-        color: #1976d2;
-    }
-    
-    .status-in-progress {
-        background: #fff3e0;
-        color: #f57c00;
-    }
-    
-    .status-pending {
-        background: #f3e5f5;
-        color: #7b1fa2;
-    }
-    
-    .status-completed {
-        background: #e8f5e8;
-        color: #388e3c;
-    }
-    
-    .analytics-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
-    
-    .analytics-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        text-align: center;
-    }
-    
-    .analytics-card h3 {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-    }
-    
-    .analytics-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-    }
-    
-    .analytics-change {
-        font-size: 0.9rem;
-    }
-    
-    .analytics-change.positive {
-        color: #388e3c;
-    }
-    
-    .analytics-change.negative {
-        color: #d32f2f;
-    }
-    
-    .form-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: flex-end;
-        margin-top: 1.5rem;
-    }
-`;
-document.head.appendChild(style);

@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunSay - Blogger Profile</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <nav class="nav">
+        <nav class="nav container">
             <div class="nav-brand">
-                <h1 class="logo">FunSay</h1>
+                <h1 class="logo" onclick="window.location.href='index.html'">FunSay</h1>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="surprises.html" class="nav-link">Surprises</a>
-                <a href="#" class="nav-link">Profile</a>
+                <a href="#" class="nav-link active">Profile</a>
             </div>
             <div class="nav-auth">
                 <button class="btn btn-outline">Sign In</button>
@@ -26,103 +26,133 @@
         </nav>
     </header>
 
-    <main class="main blogger-page">
+    <main class="main">
         <div class="container">
-            <div class="back-button">
+            <div class="back-button" style="margin-bottom: 2rem;">
                 <a href="index.html" class="btn btn-outline">
-                    <i class="fas fa-arrow-left"></i> Back to Search
+                    <i class="fas fa-arrow-left"></i> Back to Explorers
                 </a>
             </div>
 
-            <div class="blogger-profile" id="bloggerProfile">
-                <!-- Blogger profile will be loaded via JavaScript -->
-            </div>
-
-            <div class="services-section">
-                <h2 class="section-title">Available Surprises</h2>
-                <div class="services-grid" id="servicesGrid">
-                    <!-- Surprises will be loaded via JavaScript -->
+            <!-- Profile Header -->
+            <div id="bloggerProfile">
+                <!-- Loaded via JS -->
+                <div class="blogger-header" style="background: var(--surface); height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
                 </div>
             </div>
+
+            <!-- Services Section -->
+            <section class="services-section">
+                <h2 class="section-title">Available Surprises</h2>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Loaded via JS -->
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery-section">
+                <h2 class="section-title">Recent Creations</h2>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Loaded via JS -->
+                </div>
+            </section>
+
+            <!-- Reviews Section -->
+            <section class="reviews-section">
+                <h2 class="section-title">Fan Feedback</h2>
+                <div class="reviews-grid" id="reviewsGrid">
+                    <!-- Loaded via JS -->
+                </div>
+            </section>
         </div>
     </main>
 
     <!-- Modal for service booking -->
     <div class="modal" id="bookingModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">Support Creativity</h3>
+                <h3>Request a Surprise</h3>
                 <button class="modal-close" onclick="closeModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="service-details" id="serviceDetails">
-                    <!-- Service details will be loaded here -->
-                </div>
-                <form class="booking-form" id="bookingForm">
+                <div id="serviceDetails"></div>
+                
+                <form class="booking-form" id="bookingForm" style="margin-top: 2rem;">
                     <div class="form-group">
-                        <label for="recipientName">Recipient Name</label>
-                        <input type="text" id="recipientName" name="recipientName" required>
+                        <label for="recipientName">For whom is this surprise?</label>
+                        <input type="text" id="recipientName" name="recipientName" placeholder="Name or nickname" required>
                     </div>
                     <div class="form-group">
-                        <label for="specialRequest">Special Requests</label>
-                        <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Tell us what exactly you want..."></textarea>
+                        <label for="specialRequest">Your wishes / Instructions</label>
+                        <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Be specific! The blogger will follow your instructions..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="deliveryDate">Desired Completion Date</label>
+                        <label for="deliveryDate">Desired completion date</label>
                         <input type="date" id="deliveryDate" name="deliveryDate" required>
                     </div>
-                    <div class="payment-section">
-                        <h4>Payment Method</h4>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Payment Method</h4>
                         <div class="payment-methods">
                             <label class="payment-method">
                                 <input type="radio" name="paymentMethod" value="ethereum" checked>
-                                <span class="payment-icon"><i class="fab fa-ethereum"></i></span>
-                                <span>Ethereum (ETH)</span>
+                                <i class="fab fa-ethereum"></i>
+                                <span>Ethereum</span>
                             </label>
                             <label class="payment-method">
                                 <input type="radio" name="paymentMethod" value="bitcoin">
-                                <span class="payment-icon"><i class="fab fa-bitcoin"></i></span>
-                                <span>Bitcoin (BTC)</span>
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Bitcoin</span>
                             </label>
                         </div>
                     </div>
-                    <div class="total-price">
-                        <span>Total to Pay: </span>
-                        <span class="price" id="totalPrice">0 ETH</span>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--background); border-radius: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-muted); font-weight: 500;">Total Amount</span>
+                        <div style="text-align: right;">
+                            <div class="service-price" id="totalPriceRub" style="font-size: 1.5rem;">$0</div>
+                            <div style="color: var(--accent); font-size: 0.875rem; font-weight: 600;" id="totalPriceCrypto">≈ 0 ETH</div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <i class="fas fa-lock"></i> Support Securely
+
+                    <button type="submit" class="btn btn-primary btn-full" style="margin-top: 2rem; padding: 1rem;">
+                        <i class="fas fa-shield-alt"></i> Secure Order via Escrow
                     </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>FunSay</h3>
-                    <p>Platform for safe interaction with bloggers</p>
+                    <p>Connecting creators and fans through personalized experiences. Secured by smart contracts.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>For Users</h4>
-                        <a href="#">How to Support</a>
-                        <a href="#">Security</a>
-                        <a href="#">Support</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>For Bloggers</h4>
-                        <a href="#">Become a Blogger</a>
-                        <a href="#">Terms</a>
-                        <a href="#">FAQ</a>
-                    </div>
+                <div>
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">How it works</a></li>
+                        <li class="footer-link"><a href="#">Security</a></li>
+                        <li class="footer-link"><a href="#">Support</a></li>
+                    </ul>
                 </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#">Terms of Service</a></li>
+                        <li class="footer-link"><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+                © 2026 FunSay Platform. All rights reserved.
             </div>
         </div>
     </footer>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunSay - My Surprises</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <nav class="nav">
+        <nav class="nav container">
             <div class="nav-brand">
-                <h1 class="logo">FunSay</h1>
+                <h1 class="logo" onclick="window.location.href='index.html'">FunSay</h1>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
@@ -26,71 +26,79 @@
         </nav>
     </header>
 
-    <main class="main surprises-page">
+    <main class="main">
         <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">My Surprises</h1>
-                <p class="page-subtitle">Here you can track the status of your support orders and view completed surprises</p>
+            <div class="page-header" style="text-align: center; margin-bottom: 4rem;">
+                <h1 class="hero-title" style="font-size: 3rem;">My Surprises</h1>
+                <p class="hero-subtitle">Track your orders and view your personalized content.</p>
             </div>
 
-            <div class="surprises-filters">
+            <div class="surprises-filters" style="margin-bottom: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
                 <button class="filter-btn active" data-status="all">All Orders</button>
                 <button class="filter-btn" data-status="pending">Processing</button>
                 <button class="filter-btn" data-status="in-progress">In Progress</button>
-                <button class="filter-btn" data-status="completed">Completed</button>
-                <button class="filter-btn" data-status="delivered">Delivered</button>
+                <button class="filter-btn" data-status="completed">Ready</button>
             </div>
 
-            <div class="surprises-content" id="surprisesContent">
-                <!-- Orders will be loaded via JavaScript -->
+            <div id="surprisesContent">
+                <!-- Loaded via JS -->
+                <div style="display: flex; justify-content: center; padding: 4rem;">
+                    <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+                </div>
             </div>
         </div>
     </main>
 
     <!-- Modal for viewing completed surprises -->
     <div class="modal" id="surpriseModal">
-        <div class="modal-content surprise-modal">
+        <div class="modal-overlay" onclick="closeSurpriseModal()"></div>
+        <div class="modal-content">
             <div class="modal-header">
-                <h3 id="surpriseModalTitle">Your surprise is ready!</h3>
+                <h3 id="surpriseModalTitle">Your Surprise is Ready!</h3>
                 <button class="modal-close" onclick="closeSurpriseModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="surprise-content" id="surpriseContent">
-                    <!-- Surprise content will be loaded here -->
-                </div>
-                <div class="surprise-actions">
-                    <button class="btn btn-outline" onclick="downloadSurprise()">Download</button>
-                    <button class="btn btn-primary" onclick="shareSurprise()">Share</button>
+                <div id="surpriseContent"></div>
+                <div class="surprise-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <button class="btn btn-primary btn-full" onclick="downloadSurprise()">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="btn btn-outline btn-full" onclick="shareSurprise()">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal-overlay" id="surpriseModalOverlay" onclick="closeSurpriseModal()"></div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>FunSay</h3>
-                    <p>Platform for safe interaction with bloggers</p>
+                    <p>Connecting creators and fans through personalized experiences. Secured by smart contracts.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>For Users</h4>
-                        <a href="#">How to Support</a>
-                        <a href="#">Security</a>
-                        <a href="#">Support</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>For Bloggers</h4>
-                        <a href="#">Become a Blogger</a>
-                        <a href="#">Terms</a>
-                        <a href="#">FAQ</a>
-                    </div>
+                <div>
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">How it works</a></li>
+                        <li class="footer-link"><a href="#">Security</a></li>
+                        <li class="footer-link"><a href="#">Support</a></li>
+                    </ul>
                 </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#">Terms of Service</a></li>
+                        <li class="footer-link"><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+                © 2026 FunSay Platform. All rights reserved.
             </div>
         </div>
     </footer>

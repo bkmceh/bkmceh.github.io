@@ -1,4 +1,4 @@
-// Mock data for bloggers
+// Mock data for bloggers with enriched information
 const bloggers = [
     {
         id: 1,
@@ -8,10 +8,20 @@ const bloggers = [
         followers: "125K",
         experience: "3 years",
         priceFrom: "from $8",
+        socials: { instagram: "@anna_live", youtube: "AnnaGames", twitter: "@annastream" },
+        description: "Professional gamer and variety streamer. I love interacting with my community and creating unique moments for my fans!",
         supportOptions: [
-            { name: "Birthday Greeting", donationAmount: 8, priceEth: "0.032 ETH", available: 15, total: 50 },
-            { name: "Gaming Session", donationAmount: 12, priceEth: "0.048 ETH", available: 8, total: 20 },
-            { name: "Personal Advice", donationAmount: 6, priceEth: "0.024 ETH", available: 25, total: 30 }
+            { name: "Birthday Greeting", donationAmount: 8, priceEth: "0.0032 ETH", available: 15, total: 50 },
+            { name: "Gaming Session", donationAmount: 12, priceEth: "0.0048 ETH", available: 8, total: 20 },
+            { name: "Personal Advice", donationAmount: 6, priceEth: "0.0024 ETH", available: 25, total: 30 }
+        ],
+        reviews: [
+            { author: "GamerPro", rating: 5, text: "Anna's birthday greeting was amazing! My brother was so happy.", avatar: "G" },
+            { author: "Alex99", rating: 5, text: "The gaming session was super helpful. I learned a lot of new tricks.", avatar: "A" }
+        ],
+        gallery: [
+            { type: "image", url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80", title: "Gaming Setup" },
+            { type: "image", url: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&q=80", title: "Last Stream" }
         ]
     },
     {
@@ -22,10 +32,18 @@ const bloggers = [
         followers: "89K",
         experience: "2 years",
         priceFrom: "from $5",
+        socials: { instagram: "@maxlife_official", tiktok: "@maxlife" },
+        description: "Living life to the fullest! I share daily vlogs, life hacks, and motivation to help you be your best self.",
         supportOptions: [
-            { name: "Motivational Video", donationAmount: 7, priceEth: "0.028 ETH", available: 12, total: 40 },
-            { name: "Greeting", donationAmount: 5, priceEth: "0.02 ETH", available: 20, total: 35 },
-            { name: "Custom Life Hack", donationAmount: 9, priceEth: "0.036 ETH", available: 5, total: 15 }
+            { name: "Motivational Video", donationAmount: 7, priceEth: "0.0028 ETH", available: 12, total: 40 },
+            { name: "Greeting", donationAmount: 5, priceEth: "0.002 ETH", available: 20, total: 35 },
+            { name: "Custom Life Hack", donationAmount: 9, priceEth: "0.0036 ETH", available: 5, total: 15 }
+        ],
+        reviews: [
+            { author: "SaraW", rating: 4, text: "Great motivation, thanks Max!", avatar: "S" }
+        ],
+        gallery: [
+            { type: "image", url: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=80", title: "Travel Vlog" }
         ]
     },
     {
@@ -36,10 +54,18 @@ const bloggers = [
         followers: "200K",
         experience: "5 years",
         priceFrom: "from $10",
+        socials: { instagram: "@sofia_melodies", youtube: "SofiaMusicChannel", spotify: "Sofia Melodies" },
+        description: "Singer and songwriter. I turn your stories into songs. Let's create something beautiful together!",
         supportOptions: [
-            { name: "Custom Song", donationAmount: 20, priceEth: "0.08 ETH", available: 3, total: 10 },
-            { name: "Voice Greeting", donationAmount: 10, priceEth: "0.04 ETH", available: 18, total: 25 },
-            { name: "Favorite Song Cover", donationAmount: 15, priceEth: "0.06 ETH", available: 7, total: 15 }
+            { name: "Custom Song", donationAmount: 20, priceEth: "0.008 ETH", available: 3, total: 10 },
+            { name: "Voice Greeting", donationAmount: 10, priceEth: "0.004 ETH", available: 18, total: 25 },
+            { name: "Favorite Song Cover", donationAmount: 15, priceEth: "0.006 ETH", available: 7, total: 15 }
+        ],
+        reviews: [
+            { author: "MelodyFan", rating: 5, text: "Sofia has the voice of an angel. The custom song for my wedding was perfect.", avatar: "M" }
+        ],
+        gallery: [
+            { type: "image", url: "https://images.unsplash.com/photo-1514525253361-bee8a19740c1?w=500&q=80", title: "Studio Session" }
         ]
     },
     {
@@ -50,66 +76,18 @@ const bloggers = [
         followers: "156K",
         experience: "4 years",
         priceFrom: "from $8",
+        socials: { instagram: "@dima_jokes", tiktok: "@dima_comedy" },
+        description: "Making the world laugh, one joke at a time. Need a laugh? I've got you covered!",
         supportOptions: [
-            { name: "Funny Greeting", donationAmount: 8, priceEth: "0.032 ETH", available: 22, total: 40 },
-            { name: "Custom Stand-up", donationAmount: 12, priceEth: "0.048 ETH", available: 6, total: 12 },
-            { name: "Friend Prank", donationAmount: 10, priceEth: "0.04 ETH", available: 10, total: 20 }
-        ]
-    },
-    {
-        id: 5,
-        name: "Elena Fitness",
-        category: ["tiktok", "youtube"],
-        avatar: "EF",
-        followers: "95K",
-        experience: "2 years",
-        priceFrom: "from $6",
-        supportOptions: [
-            { name: "Personal Training", donationAmount: 15, priceEth: "0.06 ETH", available: 8, total: 15 },
-            { name: "Sports Motivation", donationAmount: 6, priceEth: "0.024 ETH", available: 30, total: 50 },
-            { name: "Nutrition Plan", donationAmount: 8, priceEth: "0.032 ETH", available: 12, total: 25 }
-        ]
-    },
-    {
-        id: 6,
-        name: "Artem Game",
-        category: ["streamer", "youtube"],
-        avatar: "AG",
-        followers: "180K",
-        experience: "4 years",
-        priceFrom: "from $8",
-        supportOptions: [
-            { name: "Game Training", donationAmount: 10, priceEth: "0.04 ETH", available: 15, total: 30 },
-            { name: "Co-op Gaming", donationAmount: 8, priceEth: "0.032 ETH", available: 25, total: 40 },
-            { name: "Gameplay Analysis", donationAmount: 12, priceEth: "0.048 ETH", available: 8, total: 20 }
-        ]
-    },
-    {
-        id: 7,
-        name: "Victoria Art",
-        category: ["artist", "tiktok"],
-        avatar: "VA",
-        followers: "45K",
-        experience: "4 years",
-        priceFrom: "from $12",
-        supportOptions: [
-            { name: "Digital Portrait", donationAmount: 25, priceEth: "0.1 ETH", available: 5, total: 10 },
-            { name: "Game Character", donationAmount: 18, priceEth: "0.072 ETH", available: 8, total: 15 },
-            { name: "Custom Logo", donationAmount: 12, priceEth: "0.048 ETH", available: 12, total: 20 }
-        ]
-    },
-    {
-        id: 8,
-        name: "Kate Cosplay",
-        category: ["cosplay", "tiktok", "onlyfans"],
-        avatar: "KC",
-        followers: "92K",
-        experience: "3 years",
-        priceFrom: "from $15",
-        supportOptions: [
-            { name: "Personal Cosplay", donationAmount: 30, priceEth: "0.12 ETH", available: 3, total: 8 },
-            { name: "Character Photoshoot", donationAmount: 20, priceEth: "0.08 ETH", available: 6, total: 12 },
-            { name: "Video Greeting", donationAmount: 15, priceEth: "0.06 ETH", available: 10, total: 15 }
+            { name: "Funny Greeting", donationAmount: 8, priceEth: "0.0032 ETH", available: 22, total: 40 },
+            { name: "Custom Stand-up", donationAmount: 12, priceEth: "0.0048 ETH", available: 6, total: 12 },
+            { name: "Friend Prank", donationAmount: 10, priceEth: "0.004 ETH", available: 10, total: 20 }
+        ],
+        reviews: [
+            { author: "LaughterLover", rating: 5, text: "Dmitry is hilarious! The prank on my friend was legendary.", avatar: "L" }
+        ],
+        gallery: [
+            { type: "image", url: "https://images.unsplash.com/photo-1527224857830-43a7acc85260?w=500&q=80", title: "Live Show" }
         ]
     }
 ];
@@ -126,20 +104,19 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupEventListeners() {
     // Search functionality
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function(e) {
-        searchQuery = e.target.value.toLowerCase();
-        renderBloggers();
-    });
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            searchQuery = e.target.value.toLowerCase();
+            renderBloggers();
+        });
+    }
 
     // Filter buttons
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterButtons.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
-            
             currentFilter = this.dataset.category;
             renderBloggers();
         });
@@ -148,13 +125,15 @@ function setupEventListeners() {
 
 function renderBloggers() {
     const grid = document.getElementById('bloggersGrid');
+    if (!grid) return;
+
     const filteredBloggers = filterBloggers();
     
     if (filteredBloggers.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                <h3 style="color: #718096; margin-bottom: 1rem;">No bloggers found</h3>
-                <p style="color: #a0aec0;">Try changing your search query or filter</p>
+                <h3 style="color: var(--text-muted); margin-bottom: 1rem;">No bloggers found</h3>
+                <p style="color: var(--text-muted);">Try changing your search query or filter</p>
             </div>
         `;
         return;
@@ -169,7 +148,7 @@ function renderBloggers() {
                 <span><i class="fas fa-users"></i> ${blogger.followers}</span>
                 <span><i class="fas fa-clock"></i> ${blogger.experience}</span>
             </div>
-            <div class="blogger-price">${blogger.priceFrom}</div>
+            <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 700; font-size: 1.125rem;">${blogger.priceFrom}</div>
         </div>
     `).join('');
 }
@@ -188,62 +167,27 @@ function filterBloggers() {
 function getCategoryName(category) {
     const categories = {
         'tiktok': 'TikTok',
-    'youtube': 'YouTube',
-    'streamer': 'Streamer',
-    'onlyfans': 'OnlyFans',
-    'artist': 'Artist',
-    'cosplay': 'Cosplay'
+        'youtube': 'YouTube',
+        'streamer': 'Streamer',
+        'onlyfans': 'OnlyFans',
+        'artist': 'Artist',
+        'cosplay': 'Cosplay'
     };
     return categories[category] || category;
 }
 
 function searchBloggers() {
     const searchInput = document.getElementById('searchInput');
-    searchQuery = searchInput.value.toLowerCase();
-    renderBloggers();
+    if (searchInput) {
+        searchQuery = searchInput.value.toLowerCase();
+        renderBloggers();
+    }
 }
 
 function openBloggerPage(bloggerId) {
-    // Store blogger ID in localStorage for the blogger page
     localStorage.setItem('selectedBloggerId', bloggerId);
-    // Navigate to blogger page
     window.location.href = 'blogger.html';
 }
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Add some interactive effects
-document.addEventListener('mousemove', function(e) {
-    const cards = document.querySelectorAll('.blogger-card');
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-        } else {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-        }
-    });
-});
 
 // Export bloggers data for other pages
 window.bloggersData = bloggers;
