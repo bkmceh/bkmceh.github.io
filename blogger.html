@@ -19,9 +19,13 @@
                 <a href="surprises.html" class="nav-link">Surprises</a>
                 <a href="#" class="nav-link active">Profile</a>
             </div>
-            <div class="nav-auth">
-                <button class="btn btn-outline">Sign In</button>
-                <button class="btn btn-primary">Sign Up</button>
+            <div class="nav-auth" id="navAuth">
+                <a href="bloggers/index.html" class="btn btn-outline" style="margin-right: 0.5rem;">
+                    <i class="fas fa-star"></i> Join as Creator
+                </a>
+                <button class="btn btn-primary" id="connectWalletBtn" onclick="toggleWalletConnection()">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
             </div>
         </nav>
     </header>
@@ -97,27 +101,8 @@
                     
                     <div style="margin-top: 2rem;">
                         <h4 style="margin-bottom: 1rem;">Payment Method</h4>
-                        <div class="payment-methods" style="grid-template-columns: repeat(2, 1fr);">
-                            <label class="payment-method">
-                                <input type="radio" name="paymentMethod" value="ethereum" checked>
-                                <i class="fab fa-ethereum" style="color: #627EEA;"></i>
-                                <span>Ethereum</span>
-                            </label>
-                            <label class="payment-method">
-                                <input type="radio" name="paymentMethod" value="solana">
-                                <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=024" alt="Solana" style="width: 1.25rem; height: 1.25rem;">
-                                <span>Solana</span>
-                            </label>
-                            <label class="payment-method">
-                                <input type="radio" name="paymentMethod" value="polygon">
-                                <img src="https://cryptologos.cc/logos/polygon-matic-logo.svg?v=024" alt="Polygon" style="width: 1.25rem; height: 1.25rem;">
-                                <span>Polygon</span>
-                            </label>
-                            <label class="payment-method">
-                                <input type="radio" name="paymentMethod" value="ton">
-                                <img src="https://cryptologos.cc/logos/toncoin-ton-logo.svg?v=024" alt="TON" style="width: 1.25rem; height: 1.25rem;">
-                                <span>TON</span>
-                            </label>
+                        <div class="payment-methods" id="paymentMethodsGrid" style="grid-template-columns: repeat(2, 1fr);">
+                            <!-- Dynamic content -->
                         </div>
                     </div>
 

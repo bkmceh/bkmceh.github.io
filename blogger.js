@@ -182,6 +182,7 @@ function openBookingModal(index) {
         </div>
     `;
     
+    renderPaymentMethods();
     updateCryptoPrice();
     
     // Set min date to today
@@ -192,6 +193,39 @@ function openBookingModal(index) {
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+function renderPaymentMethods() {
+    const grid = document.getElementById('paymentMethodsGrid');
+    const networks = currentBlogger.supportedNetworks || ['ethereum'];
+    
+    const icons = {
+        'ethereum': '<i class="fab fa-ethereum" style="color: #627EEA;"></i>',
+        'solana': '<img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=024" style="width: 1.25rem; height: 1.25rem;">',
+        'polygon': '<img src="https://cryptologos.cc/logos/polygon-matic-logo.svg?v=024" style="width: 1.25rem; height: 1.25rem;">',
+        'ton': '<img src="https://cryptologos.cc/logos/toncoin-ton-logo.svg?v=024" style="width: 1.25rem; height: 1.25rem;">'
+    };
+    
+    const names = {
+        'ethereum': 'Ethereum',
+        'solana': 'Solana',
+        'polygon': 'Polygon',
+        'ton': 'TON'
+    };
+    
+    grid.innerHTML = networks.map((net, i) => `
+        <label class="payment-method">
+            <input type="radio" name="paymentMethod" value="${net}" ${i === 0 ? 'checked' : ''}>
+            ${icons[net]}
+            <span>${names[net]}</span>
+        </label>
+    `).join('');
+    
+    // Re-attach listeners to new radio buttons
+    const paymentInputs = document.querySelectorAll('input[name="paymentMethod"]');
+    paymentInputs.forEach(input => {
+        input.addEventListener('change', updateCryptoPrice);
+    });
 }
 
 function updateCryptoPrice() {
@@ -223,6 +257,88 @@ function updateCryptoPrice() {
     
     document.getElementById('totalPriceRub').innerText = `$${usdAmount}`;
     document.getElementById('totalPriceCrypto').innerText = `≈ ${cryptoAmount} ${symbol}`;
+
+    // Update Pay Button state based on wallet
+    updatePayButton(method, symbol);
+}
+
+function updatePayButton(method, symbol) {
+    const btn = document.querySelector('#bookingForm button[type="submit"]');
+    const wallet = JSON.parse(localStorage.getItem('connectedWallet'));
+    const isConnected = !!wallet;
+    const networkNames = {
+        'ethereum': 'Ethereum',
+        'solana': 'Solana',
+        'polygon': 'Polygon',
+        'ton': 'TON'
+    };
+    
+    if (!isConnected) {
+        btn.innerHTML = `<i class="fas fa-wallet"></i> Connect & Pay ${document.getElementById('totalPriceCrypto').innerText.replace('≈ ', '')}`;
+        btn.onclick = async (e) => {
+            e.preventDefault();
+            const walletData = await window.connectWallet(method);
+            if (walletData) {
+                processPayment();
+            }
+        };
+    } else if (wallet.network !== method) {
+        btn.innerHTML = `<i class="fas fa-exchange-alt"></i> Switch to ${networkNames[method]} Wallet`;
+        btn.classList.add('btn-secondary'); // Visual hint that a switch is needed
+        btn.onclick = async (e) => {
+            e.preventDefault();
+            const walletData = await window.connectWallet(method);
+            if (walletData) {
+                processPayment();
+            }
+        };
+    } else {
+        btn.innerHTML = `<i class="fas fa-shield-alt"></i> Pay ${document.getElementById('totalPriceCrypto').innerText.replace('≈ ', '')}`;
+        btn.classList.remove('btn-secondary');
+        btn.onclick = (e) => {
+            e.preventDefault();
+            processPayment();
+        };
+    }
+}
+
+function processPayment() {
+    const form = document.getElementById('bookingForm');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalHtml = btn.innerHTML;
+    const wallet = JSON.parse(localStorage.getItem('connectedWallet'));
+    
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authorizing...';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+        // Save order to local storage
+        const orders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+        const newOrder = {
+            id: Date.now(),
+            bloggerName: currentBlogger.name,
+            serviceName: selectedSupportOption.name,
+            donationAmount: selectedSupportOption.donationAmount,
+            recipientName: document.getElementById('recipientName').value,
+            orderDate: new Date().toISOString(),
+            status: 'pending',
+            walletAddress: wallet ? wallet.address : 'unknown',
+            network: document.querySelector('input[name="paymentMethod"]:checked').value
+        };
+        orders.push(newOrder);
+        localStorage.setItem('userOrders', JSON.stringify(orders));
+
+        showSuccess();
+        closeModal();
+        btn.innerHTML = originalHtml;
+        btn.disabled = false;
+        form.reset();
+    }, 2000);
 }
 
 function closeModal() {
@@ -239,21 +355,14 @@ function setupEventListeners() {
         input.addEventListener('change', updateCryptoPrice);
     });
 
+    // Listen for wallet connection status
+    window.addEventListener('walletStatusChanged', () => {
+        updateCryptoPrice();
+    });
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const originalHtml = btn.innerHTML;
-        
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        btn.disabled = true;
-        
-        setTimeout(() => {
-            showSuccess();
-            closeModal();
-            btn.innerHTML = originalHtml;
-            btn.disabled = false;
-            form.reset();
-        }, 2000);
+        processPayment();
     });
 }
 

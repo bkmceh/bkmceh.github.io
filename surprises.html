@@ -19,9 +19,13 @@
                 <a href="surprises.html" class="nav-link active">Surprises</a>
                 <a href="#" class="nav-link">Profile</a>
             </div>
-            <div class="nav-auth">
-                <button class="btn btn-outline">Sign In</button>
-                <button class="btn btn-primary">Sign Up</button>
+            <div class="nav-auth" id="navAuth">
+                <a href="bloggers/index.html" class="btn btn-outline" style="margin-right: 0.5rem;">
+                    <i class="fas fa-star"></i> Join as Creator
+                </a>
+                <button class="btn btn-primary" id="connectWalletBtn" onclick="toggleWalletConnection()">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
             </div>
         </nav>
     </header>

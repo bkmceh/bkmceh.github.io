@@ -50,6 +50,10 @@ function generateDemoOrders() {
 }
 
 function setupEventListeners() {
+    window.addEventListener('walletStatusChanged', () => {
+        renderSurprises();
+    });
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -63,6 +67,34 @@ function setupEventListeners() {
 
 function renderSurprises() {
     const container = document.getElementById('surprisesContent');
+    
+    // Check if wallet is connected
+    const wallet = JSON.parse(localStorage.getItem('connectedWallet'));
+    const knownWallets = JSON.parse(localStorage.getItem('knownWallets') || '[]');
+    
+    if (!wallet && knownWallets.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 6rem 2rem;">
+                <div style="font-size: 4rem; color: var(--surface-hover); margin-bottom: 2rem;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Surprises are Locked</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Connect any of your wallets to see your personalized content and order status.</p>
+                <button class="btn btn-primary" onclick="window.connectWallet()">Connect Wallet</button>
+            </div>
+        `;
+        return;
+    }
+
+    // Load all orders from known wallets
+    const allOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+    const currentWalletAddress = wallet ? wallet.address : null;
+    const knownAddresses = knownWallets.map(w => w.address);
+
+    const userOrders = allOrders.filter(order => 
+        knownAddresses.includes(order.walletAddress) || order.walletAddress === currentWalletAddress
+    );
+
     const filtered = currentFilter === 'all' ? userOrders : userOrders.filter(o => o.status === currentFilter);
     
     if (filtered.length === 0) {

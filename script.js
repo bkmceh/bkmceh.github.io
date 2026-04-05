@@ -9,6 +9,7 @@ const bloggers = [
         experience: "3 years",
         priceFrom: "from $8",
         socials: { instagram: "@anna_live", youtube: "AnnaGames", twitter: "@annastream" },
+        supportedNetworks: ['ethereum', 'solana', 'ton'],
         description: "Professional gamer and variety streamer. I love interacting with my community and creating unique moments for my fans!",
         supportOptions: [
             { name: "Birthday Greeting", donationAmount: 8, available: 15, total: 50 },
@@ -33,6 +34,7 @@ const bloggers = [
         experience: "2 years",
         priceFrom: "from $5",
         socials: { instagram: "@maxlife_official", tiktok: "@maxlife" },
+        supportedNetworks: ['solana', 'polygon'],
         description: "Living life to the fullest! I share daily vlogs, life hacks, and motivation to help you be your best self.",
         supportOptions: [
             { name: "Motivational Video", donationAmount: 7, available: 12, total: 40 },
@@ -55,6 +57,7 @@ const bloggers = [
         experience: "5 years",
         priceFrom: "from $10",
         socials: { instagram: "@sofia_melodies", youtube: "SofiaMusicChannel", spotify: "Sofia Melodies" },
+        supportedNetworks: ['ethereum', 'polygon', 'ton'],
         description: "Singer and songwriter. I turn your stories into songs. Let's create something beautiful together!",
         supportOptions: [
             { name: "Custom Song", donationAmount: 20, available: 3, total: 10 },
@@ -77,6 +80,7 @@ const bloggers = [
         experience: "4 years",
         priceFrom: "from $8",
         socials: { instagram: "@dima_jokes", tiktok: "@dima_comedy" },
+        supportedNetworks: ['solana', 'ton'],
         description: "Making the world laugh, one joke at a time. Need a laugh? I've got you covered!",
         supportOptions: [
             { name: "Funny Greeting", donationAmount: 8, available: 22, total: 40 },
@@ -95,8 +99,88 @@ const bloggers = [
 let currentFilter = 'all';
 let searchQuery = '';
 
+// Wallet Connection Logic
+let connectedWallet = JSON.parse(localStorage.getItem('connectedWallet')) || null;
+let knownWallets = JSON.parse(localStorage.getItem('knownWallets') || '[]');
+
+function toggleWalletConnection() {
+    if (connectedWallet) {
+        disconnectWallet();
+    } else {
+        // By default connect to Ethereum if just clicking the header button
+        connectWallet('ethereum');
+    }
+}
+
+function connectWallet(network = 'ethereum') {
+    return new Promise((resolve) => {
+        // Mock wallet connection
+        const prefixes = { 'ethereum': '0x', 'solana': 'SOL', 'ton': 'TON', 'polygon': '0x' };
+        const prefix = prefixes[network] || '0x';
+        const mockAddress = prefix + Math.random().toString(16).slice(2, 10) + '...' + Math.random().toString(16).slice(2, 6);
+        
+        const walletData = { address: mockAddress, network: network };
+        connectedWallet = walletData;
+        localStorage.setItem('connectedWallet', JSON.stringify(walletData));
+        
+        // Add to known wallets if not already there
+        const isAlreadyKnown = knownWallets.some(w => w.address === mockAddress);
+        if (!isAlreadyKnown) {
+            knownWallets.push(walletData);
+            localStorage.setItem('knownWallets', JSON.stringify(knownWallets));
+        }
+        
+        updateWalletUI();
+        showNotification(`${network.toUpperCase()} Wallet connected!`, 'success');
+        resolve(walletData);
+    });
+}
+
+function disconnectWallet() {
+    connectedWallet = null;
+    localStorage.removeItem('connectedWallet');
+    updateWalletUI();
+    showNotification('Wallet disconnected', 'info');
+}
+
+function updateWalletUI() {
+    const btn = document.getElementById('connectWalletBtn');
+    if (!btn) return;
+
+    if (connectedWallet) {
+        const networkIcon = connectedWallet.network === 'ethereum' ? 'fab fa-ethereum' : 'fas fa-wallet';
+        btn.innerHTML = `<span style="font-size: 0.75rem; color: var(--primary); margin-right: 0.5rem;">${connectedWallet.network.toUpperCase()}</span> <i class="${networkIcon}"></i> ${connectedWallet.address}`;
+        btn.classList.replace('btn-primary', 'btn-outline');
+    } else {
+        btn.innerHTML = `<i class="fas fa-wallet"></i> Connect Wallet`;
+        btn.classList.replace('btn-outline', 'btn-primary');
+    }
+    
+    // Dispatch custom event for other scripts to listen
+    window.dispatchEvent(new CustomEvent('walletStatusChanged', { detail: { connected: !!connectedWallet, wallet: connectedWallet } }));
+}
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `success-notification show`;
+    notification.style.borderLeft = `4px solid var(--${type === 'success' ? 'primary' : 'text-muted'})`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        <div>
+            <h4 style="margin-bottom: 0.25rem;">${type === 'success' ? 'Wallet' : 'System'}</h4>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">${message}</p>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
+    updateWalletUI();
     renderBloggers();
     setupEventListeners();
 });
