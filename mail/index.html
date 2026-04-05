@@ -10,6 +10,9 @@
         .ExternalClass { width:100%; }
         .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
         
+        /* Reset for ghost paragraphs */
+        p { margin: 0 !important; padding: 0 !important; }
+        
         /* Responsive Styles */
         @media only screen and (max-width: 600px) {
             .container { width: 100% !important; border-radius: 0 !important; border: none !important; }
@@ -21,26 +24,33 @@
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0f172a;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0f172a;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #0f172a;">
         <tr>
             <!-- Advanced Glow Effect -->
-            <td align="center" style="padding: 40px 0; background-image: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(15, 23, 42, 0) 60%);">
-                <table border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="background-color: #1e293b; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <td align="center" style="background-color: #0f172a; background-image: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, #0f172a 60%);">
+                <!-- Top Spacer using Table for maximum compatibility -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td height="40" style="font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;">&nbsp;</td>
+                    </tr>
+                </table>
+                
+                <table border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="border-collapse: collapse; background-color: #1e293b; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
                     
                     <!-- Header & Logo -->
                     <tr>
                         <td align="center" style="padding: 48px 40px 32px 40px;">
-                            <div style="font-size: 30px; font-weight: 900; letter-spacing: -1px; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); -webkit-background-clip: text; color: #6366f1; text-transform: uppercase;">FunSay</div>
+                            <div style="font-size: 30px; font-weight: 900; letter-spacing: -1px; color: #6366f1; text-transform: uppercase;">FunSay</div>
                         </td>
                     </tr>
                     
                     <!-- Hero Section -->
                     <tr>
                         <td style="padding: 0 48px 40px 48px;" class="content-padding">
-                            <h1 class="hero-title" style="margin: 0 0 20px 0; font-size: 44px; font-weight: 800; line-height: 1.1; color: #f8fafc; text-align: center; letter-spacing: -0.04em;">
+                            <h1 class="hero-title" style="margin: 0 0 20px 0 !important; font-size: 44px; font-weight: 800; line-height: 1.1; color: #f8fafc; text-align: center; letter-spacing: -0.04em;">
                                 Твои правила. <br/><span style="color: #6366f1;">Твои фанаты.</span> <br/>Никаких третьих лиц.
                             </h1>
-                            <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #94a3b8; text-align: center; font-weight: 400;">
+                            <p style="margin: 0 !important; font-size: 19px; line-height: 1.6; color: #94a3b8; text-align: center; font-weight: 400;">
                                 Мы создали <strong>FunSay</strong> — место, где ты взаимодействуешь с аудиторией напрямую. Честно, выгодно и под твоим полным контролем.
                             </p>
                         </td>
@@ -64,7 +74,7 @@
                                     <td class="step-cell" width="33.33%" align="center" style="vertical-align: top;">
                                         <div style="width: 44px; height: 44px; background-color: rgba(99, 102, 241, 0.15); border-radius: 14px; line-height: 44px; color: #818cf8; font-weight: 800; font-size: 18px; margin-bottom: 16px;">3</div>
                                         <div style="font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">Получай доход</div>
-                                        <div style="font-size: 13px; color: #94a3b8; line-height: 1.5; padding: 0 10px;">Средства приходят сразу на твой кошелек</div>
+                                        <div style="font-size: 13px; color: #94a3b8; line-height: 1.5; padding: 0 5px;">Средства приходят сразу на твой кошелек</div>
                                     </td>
                                 </tr>
                             </table>
@@ -126,7 +136,7 @@
                     <!-- Exclusive Partner Offer -->
                     <tr>
                         <td style="padding: 0 48px 48px 48px;" class="content-padding">
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border-radius: 28px; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #6366f1; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border-radius: 28px; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);">
                                 <tr>
                                     <td align="center" style="padding: 44px;">
                                         <div style="background-color: rgba(255,255,255,0.25); display: inline-block; padding: 6px 18px; border-radius: 100px; font-size: 13px; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px;">Early Bird Access 🚀</div>
@@ -172,8 +182,15 @@
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
+
+                <!-- Bottom Spacer -->
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                     <tr>
+                         <td height="40" style="font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;">&nbsp;</td>
+                     </tr>
+                 </table>
+             </td>
+         </tr>
     </table>
 </body>
 </html>
